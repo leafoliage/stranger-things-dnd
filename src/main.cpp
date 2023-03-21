@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Dungeon.h"
-#include "Item.h"
-#include "Monster.h"
-#include "NPC.h"
-#include "Player.h"
+#include "models/Dungeon.h"
+#include "models/Item.h"
+#include "models/Monster.h"
+#include "models/NPC.h"
+#include "models/Player.h"
 
 
 using namespace std;
