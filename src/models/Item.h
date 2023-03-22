@@ -6,6 +6,7 @@
 #include <vector>
 #include "Object.h"
 #include "Player.h"
+#include "enums.h"
 using namespace std;
 
 class Player;
@@ -13,10 +14,12 @@ class Player;
 class Item: public Object
 {
 private:
-    int health,attack,defense;
+    ItemType itemType;
+    int hardness;
+    int visibility;
 public:
     Item();
-    Item(string, int, int, int);
+    Item(string, ItemType, int, int);
 
     /* Virtual function that you need to complete    */
     /* In Item, this function should deal with the   */
@@ -24,13 +27,15 @@ public:
     /* player.                                       */
     bool triggerEvent(Object*);
 
+    virtual int useHardness();
+
     /* Set & Get function*/
-    int getHealth();
-    int getAttack();
-    int getDefense();
-    void setHealth(int);
-    void setAttack(int);
-    void setDefense(int);
+    void setItemType(ItemType);
+    void setHardness(int);
+    void setVisibility(int);
+    ItemType getItemType() const;
+    int getHardness() const;
+    int getVisibility() const;
 };
 
 #endif // ITEM_H_INCLUDED
