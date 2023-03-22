@@ -11,19 +11,19 @@ class Object
 {
 private:
     string name;
-    string tag;
+    ObjectType objectType;
 public:
     Object();
-    Object(string,string);
+    Object(string,ObjectType);
 
     /* pure virtual function */
     virtual bool triggerEvent(Object*) = 0;
 
     /* Set & Get function*/
     void setName(string);
-    void setTag(string);
-    string getName();
-    string getTag();
+    void setObjectType(ObjectType);
+    string getName() const;
+    string getObjectType() const;
 };
 
 #endif // OBJECT_H_INCLUDED
