@@ -13,11 +13,11 @@ using namespace std;
 class NPC: public GameCharacter
 {
 private:
-    string script;
+    vector<string> script;
     vector<Item> commodity;
 public:
     NPC();
-    NPC(string, string, vector<Item>);
+    NPC(string, vector<string>, vector<Item>);
     void listCommodity(); /*print all the Item in this NPC*/
 
     /* Virtual function that you need to complete   */
@@ -26,10 +26,10 @@ public:
     bool triggerEvent(Object*);
 
     /* Set & Get function*/
-    void setScript(string);
+    void setScript(vector<string>);
     void setCommodity(vector<Item>);
-    string getScript();
-    vector<Item> getCommodity();
+    vector<string> getScript() const;
+    vector<Item> getCommodity() const;
 };
 
 
