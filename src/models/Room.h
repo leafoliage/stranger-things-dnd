@@ -11,16 +11,19 @@ using namespace std;
 class Room
 {
 private:
+    string name;
     Room* upRoom;
     Room* downRoom;
     Room* leftRoom;
     Room* rightRoom;
+    Room* innerRoom;
+    Room* outerRoom;
     bool isExit;
     int index;
     vector<Object*> objects; /*contain 1 or multiple objects, including monster, npc, etc*/
 public:
     Room();
-    Room(bool, int, vector<Object*>);
+    Room(string, bool, int, vector<Object*>);
     bool popObject(Object*); /*pop out the specific object, used when the interaction is done*/
 
     /* Set & Get function*/
@@ -28,16 +31,21 @@ public:
     void setDownRoom(Room*);
     void setLeftRoom(Room*);
     void setRightRoom(Room*);
+    void setInnerRoom(Room*);
+    void setOuterRoom(Room*);
+    void setNeighborRoom(Room*, Room*, Room*, Room*, Room*, Room*);
     void setIsExit(bool);
     void setIndex(int);
     void setObjects(vector<Object*>);
     bool getIsExit();
     int getIndex();
     vector<Object*> getObjects();
-    Room* getUpRoom();
-    Room* getDownRoom();
-    Room* getLeftRoom();
-    Room* getRightRoom();
+    Room* getUpRoom() const;
+    Room* getDownRoom() const;
+    Room* getLeftRoom() const;
+    Room* getRightRoom() const;
+    Room* getInnerRoom() const;
+    Room* getOuterRoom() const;
 };
 
 #endif // ROOM_H_INCLUDED
