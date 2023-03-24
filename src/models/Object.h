@@ -23,7 +23,7 @@ public:
     void setName(string);
     void setObjectType(ObjectType);
     string getName() const;
-    string getObjectType() const;
+    ObjectType getObjectType() const;
 };
 
 #endif // OBJECT_H_INCLUDED
