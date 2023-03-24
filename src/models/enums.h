@@ -3,7 +3,7 @@
 
 enum ObjectType { CHARACTER, ITEM };
 
-enum CharacterType { PLAYER, NPC, ALLY, ENEMY };
+enum CharacterType { PLAYER, NEUTRAL, ALLY, ENEMY };
 
 enum ItemType { WEAPON, ARMOR, PROP };
 
