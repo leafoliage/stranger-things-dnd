@@ -1,12 +1,12 @@
 #ifndef ENUM_H_INCLUDED
 #define ENUM_H_INCLUDED
 
-enum ObjectType { character, item };
+enum ObjectType { CHARACTER, ITEM };
 
-enum CharacterType { player, npc, ally, enemy };
+enum CharacterType { PLAYER, NPC, ALLY, ENEMY };
 
-enum ItemType { weapon, armor, prop };
+enum ItemType { WEAPON, ARMOR, PROP };
 
-enum WeaponType { melee, range };
+enum WeaponType { MELEE, RANGE };
 
 #endif // ENUM_H_INCLUDED

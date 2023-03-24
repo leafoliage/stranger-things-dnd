@@ -4,7 +4,7 @@
 Item::Item() {}
 
 Item::Item(string name, ItemType itemType, int hardness, int visibility):
-    Object(name, item), itemType(itemType), hardness(hardness), visibility(visibility) {}
+    Object(name, ITEM), itemType(itemType), hardness(hardness), visibility(visibility) {}
 
 bool Item::triggerEvent(Object*) {
     return true;
