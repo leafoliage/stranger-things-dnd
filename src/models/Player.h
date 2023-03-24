@@ -26,9 +26,16 @@ private:
 public:
     Player();
     Player(string,int,int,int,int);
+
+    // add armor to the wardrobe
+    void addArmor(Armor);
+
+    // add weapons to the weapons list
     void addWeapon(Weapon);
+
+    // add item to the item list
     void addItem(Item);
-    void increaseStates(int,int,int);
+
     void changeRoom(Room*);
 
     /* Virtual function that you need to complete   */
@@ -36,15 +43,21 @@ public:
     /* status of player.                            */
     bool triggerEvent(Object*);
 
-    int initiate();
-    int attackCheck();
-    int damage();
+    // int initiate();
+    // int attackCheck();
+    // int damage();
 
+    // switch the weapon of the given number with the first weapon in the weapons list
     void switchWeapon(int);
+
+    // get the first weapon in the weapons list
     Weapon getCurrWeapon() const;
 
+    // switch the armor of the given number with the first armor in the wardrobe
     void switchArmor(int);
-    Weapon getCurrArmor() const;
+
+    // get the first armor in the wardrobe
+    Armor getCurrArmor() const;
 
     /* Set & Get function*/
     void setCurrentRoom(Room*);
