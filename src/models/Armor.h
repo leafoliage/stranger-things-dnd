@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 #include "Object.h"
 #include "Item.h"
 #include "enums.h"
@@ -13,6 +12,7 @@ class Armor: public Item {
     private:
 
     public:
+        Armor(string, int, int);
         int useHardness();
         
 };
