@@ -5,19 +5,18 @@
 #include <string>
 #include <vector>
 #include "GameCharacter.h"
-#include "Player.h"
 
 using namespace std;
 
-class Monster: public GameCharacter
+class Enemy: public GameCharacter
 {
 private:
 public:
-    Monster();
-    Monster(string,int,int,int);
+    Enemy();
+    Enemy(string,int,int,int,int);
 
     /* Virtual function that you need to complete   */
-    /* In Monster, this function should deal with   */
+    /* In Enemy, this function should deal with   */
     /* the combat system.                           */
     bool triggerEvent(Object*);
 };
