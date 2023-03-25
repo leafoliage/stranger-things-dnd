@@ -3,14 +3,14 @@
 
 Object::Object() {}
 
-Object::Object(string name, ObjectType type):
+Object::Object(string name, int type):
     name(name), objectType(type) {}
 
 string Object::getName() const {
     return name;
 }
 
-ObjectType Object::getObjectType() const {
+int Object::getObjectType() const {
     return objectType;
 }
 
@@ -18,6 +18,6 @@ void Object::setName(string newName) {
     name = newName;
 }
 
-void Object::setObjectType(ObjectType newType) {
+void Object::setObjectType(int newType) {
     objectType = newType;
 }

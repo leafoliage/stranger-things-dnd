@@ -3,7 +3,7 @@
 
 GameCharacter::GameCharacter() {}
 
-GameCharacter::GameCharacter(string name, ObjectType objectType, CharacterType characterType, int maxHp, int currHp, int strength, int dexterity, int constitution, int wisdom): 
+GameCharacter::GameCharacter(string name, int objectType, int characterType, int maxHp, int currHp, int strength, int dexterity, int constitution, int wisdom): 
     Object(name, objectType), characterType(characterType), maxHp(maxHp), currHp(currHp), strength(strength), dexterity(dexterity), constitution(constitution), wisdom(wisdom) {}
 
 bool GameCharacter::checkIsDead() {
@@ -18,7 +18,7 @@ int GameCharacter::takeDamage(int damage) {
     return currHp;
 }
 
-void GameCharacter::setCharacterType(CharacterType characterType) {
+void GameCharacter::setCharacterType(int characterType) {
     this->characterType = characterType;
 }
 
@@ -46,7 +46,7 @@ void GameCharacter::setWisdom(int wisdom) {
     this->wisdom = wisdom;
 }
 
-CharacterType GameCharacter::getCharacterType() const {
+int GameCharacter::getCharacterType() const {
     return characterType;
 }
 

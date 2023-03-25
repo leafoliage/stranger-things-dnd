@@ -14,12 +14,12 @@ class Player;
 class Item: public Object
 {
 private:
-    ItemType itemType;
+    int itemType;
     int hardness;
     int visibility;
 public:
     Item();
-    Item(string, ItemType, int, int);
+    Item(string, int, int, int);
 
     /* Virtual function that you need to complete    */
     /* In Item, this function should deal with the   */
@@ -30,10 +30,10 @@ public:
     virtual int useHardness();
 
     /* Set & Get function*/
-    void setItemType(ItemType);
+    void setItemType(int);
     void setHardness(int);
     void setVisibility(int);
-    ItemType getItemType() const;
+    int getItemType() const;
     int getHardness() const;
     int getVisibility() const;
 };

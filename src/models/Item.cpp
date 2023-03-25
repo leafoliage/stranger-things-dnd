@@ -3,7 +3,7 @@
 
 Item::Item() {}
 
-Item::Item(string name, ItemType itemType, int hardness, int visibility):
+Item::Item(string name, int itemType, int hardness, int visibility):
     Object(name, ITEM), itemType(itemType), hardness(hardness), visibility(visibility) {}
 
 bool Item::triggerEvent(Object*) {
@@ -14,7 +14,7 @@ int Item::useHardness() {
     return hardness;
 }
 
-void Item::setItemType(ItemType itemType) {
+void Item::setItemType(int itemType) {
     this->itemType = itemType;
 }
 
@@ -26,7 +26,7 @@ void Item::setVisibility(int visibility) {
     this->visibility = visibility;
 }
 
-ItemType Item::getItemType() const {
+int Item::getItemType() const {
     return itemType;
 }
 
