@@ -3,7 +3,6 @@
 #include <vector>
 #include "models/Dungeon.h"
 #include "models/Item.h"
-#include "models/Monster.h"
 #include "models/NPC.h"
 #include "models/Player.h"
 
