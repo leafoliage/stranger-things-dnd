@@ -12,6 +12,7 @@ class Armor: public Item {
     private:
 
     public:
+        Armor();
         Armor(string, int, int);
         int useHardness();
         

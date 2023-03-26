@@ -10,15 +10,15 @@ using namespace std;
 
 class Weapon: public Item {
     private:
-        WeaponType weaponType;
+        int weaponType;
 
     public:
         Weapon();
-        Weapon(string, WeaponType, int, int);
+        Weapon(string, int, int, int);
         int useHardness();
 
-        void setWeaponType(WeaponType);
-        WeaponType getWeaponType();
+        void setWeaponType(int);
+        int getWeaponType();
 };
 
 #endif // WEAPON_H_INCLUDED

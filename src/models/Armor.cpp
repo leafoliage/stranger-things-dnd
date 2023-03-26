@@ -3,6 +3,7 @@
 #include "Object.h"
 #include "Item.h"
 #include "enums.h"
+#include "Armor.h"
 
 Armor::Armor() {}
 
