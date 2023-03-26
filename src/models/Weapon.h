@@ -13,7 +13,9 @@ class Weapon: public Item {
     public:
         Weapon();
         Weapon(string, int, int, int);
+
         int useHardness();
+        bool triggerEvent(Object*);
 
         void setWeaponType(int);
         int getWeaponType();

@@ -7,8 +7,6 @@
 #include "Object.h"
 using namespace std;
 
-// class Player;
-
 class Item: public Object
 {
 private:

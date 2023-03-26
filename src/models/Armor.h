@@ -12,8 +12,9 @@ class Armor: public Item {
     public:
         Armor();
         Armor(string, int, int);
+
         int useHardness();
-        
+        bool triggerEvent(Object*);
 };
 
 #endif // ARMOR_H_INCLUDED
