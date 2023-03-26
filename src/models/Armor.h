@@ -3,9 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include "Object.h"
 #include "Item.h"
-#include "enums.h"
 using namespace std;
 
 class Armor: public Item {

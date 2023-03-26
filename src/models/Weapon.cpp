@@ -1,8 +1,3 @@
-#include <iostream>
-#include <string>
-#include "Object.h"
-#include "Item.h"
-#include "enums.h"
 #include "Weapon.h"
 
 Weapon::Weapon() : Item() {}

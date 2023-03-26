@@ -5,10 +5,9 @@
 #include <string>
 #include <vector>
 #include "Object.h"
-#include "enums.h"
 using namespace std;
 
-class Player;
+// class Player;
 
 class Item: public Object
 {

@@ -1,7 +1,5 @@
 #include "Room.h"
 
-#include "Room.h"
-
 Room::Room() {}
 
 Room::Room(string name, bool isExit, int index, vector<Object*> objects)

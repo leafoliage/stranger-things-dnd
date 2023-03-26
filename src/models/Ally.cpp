@@ -1,10 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
 #include "Ally.h"
-#include "GameCharacter.h"
-#include "Player.h"
-#include "enums.h"
 
 Ally::Ally() {}
 

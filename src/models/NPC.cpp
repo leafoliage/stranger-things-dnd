@@ -1,5 +1,4 @@
 #include "NPC.h"
-#include "enums.h"
 
 NPC::NPC() {}
 

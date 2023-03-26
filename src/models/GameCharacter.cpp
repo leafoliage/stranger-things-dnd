@@ -1,5 +1,4 @@
 #include "GameCharacter.h"
-#include "enums.h"
 
 GameCharacter::GameCharacter() {}
 
