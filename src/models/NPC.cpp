@@ -5,6 +5,11 @@ NPC::NPC() {}
 NPC::NPC(string name, vector<string> script, vector<Item> commodity):
     GameCharacter(name,CHARACTER,NEUTRAL,25,25,0,0,0,0), script(script), commodity(commodity) {}
 
+bool NPC::triggerEvent(Object* obj) {
+    // TODO
+    return true;
+}
+
 void NPC::listCommodity() {
     for (Item i : commodity) {
         cout << i.getName() << endl;
