@@ -6,6 +6,11 @@ Weapon::Weapon() : Item() {}
 Weapon::Weapon(string name, int weaponType, int hardness, int visibility)
     : Item(name, WEAPON, hardness, visibility), weaponType(weaponType) {}
 
+int Weapon::useHardness(Player* player) {
+    int addition = weaponType == MELEE ? player->getStrength() : player->getDexterity();
+    return getHardness() + addition;
+}
+
 bool Weapon::triggerEvent(Object* obj) {
     Player *player = dynamic_cast<Player*>(obj);
     if (player == nullptr) return false;

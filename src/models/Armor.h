@@ -13,7 +13,7 @@ class Armor: public Item {
         Armor();
         Armor(string, int, int);
 
-        int useHardness();
+        int useHardness(Player*);
         bool triggerEvent(Object*);
 };
 

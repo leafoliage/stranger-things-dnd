@@ -14,7 +14,7 @@ class Weapon: public Item {
         Weapon();
         Weapon(string, int, int, int);
 
-        int useHardness();
+        int useHardness(Player*);
         bool triggerEvent(Object*);
 
         void setWeaponType(int);

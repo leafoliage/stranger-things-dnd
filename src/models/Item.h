@@ -7,6 +7,8 @@
 #include "Object.h"
 using namespace std;
 
+class Player;
+
 class Item: public Object
 {
 private:
@@ -23,7 +25,7 @@ public:
     /* player.                                       */
     bool triggerEvent(Object*);
 
-    virtual int useHardness();
+    virtual int useHardness(Player*);
 
     /* Set & Get function*/
     void setItemType(int);

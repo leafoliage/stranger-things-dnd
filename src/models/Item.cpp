@@ -14,7 +14,7 @@ bool Item::triggerEvent(Object* obj) {
     return true;
 }
 
-int Item::useHardness() {
+int Item::useHardness(Player* player) {
     return hardness;
 }
 
