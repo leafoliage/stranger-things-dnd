@@ -12,7 +12,7 @@ class Weapon: public Item {
 
     public:
         Weapon();
-        Weapon(string, int, int, int);
+        Weapon(string name, int weaponType, int hardness, int visibility);
 
         int useHardness(Player*);
         bool triggerEvent(Object*);

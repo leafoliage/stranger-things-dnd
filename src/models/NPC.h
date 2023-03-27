@@ -17,7 +17,7 @@ private:
     vector<Item> commodity;
 public:
     NPC();
-    NPC(string, vector<string>, vector<Item>);
+    NPC(string name, vector<string> script, vector<Item> commodity);
     void listCommodity(); /*print all the Item in this NPC*/
 
     /* Virtual function that you need to complete   */

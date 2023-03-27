@@ -13,7 +13,7 @@ class Enemy: public GameCharacter
 private:
 public:
     Enemy();
-    Enemy(string,int,int,int,int);
+    Enemy(string name, int strength, int dexterity, int constitution, int wisdom);
 
     /* Virtual function that you need to complete   */
     /* In Enemy, this function should deal with   */

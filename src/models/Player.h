@@ -25,7 +25,7 @@ private:
     vector<Item> inventory;
 public:
     Player();
-    Player(string,int,int,int,int);
+    Player(string name, int strength, int dexterity, int constitution, int wisdom);
 
     // add armor to the wardrobe
     void addArmor(Armor);

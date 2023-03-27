@@ -15,7 +15,7 @@ private:
     int objectType;
 public:
     Object();
-    Object(string,int);
+    Object(string name, int objectType);
 
     /* pure virtual function */
     virtual bool triggerEvent(Object*) = 0;

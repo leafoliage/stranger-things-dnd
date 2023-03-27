@@ -23,7 +23,7 @@ private:
     vector<Object*> objects; /*contain 1 or multiple objects, including monster, npc, etc*/
 public:
     Room();
-    Room(string, bool, int, vector<Object*>);
+    Room(string name, bool isExit, int index, vector<Object*> objects);
     bool popObject(Object*); /*pop out the specific object, used when the interaction is done*/
 
     /* Set & Get function*/

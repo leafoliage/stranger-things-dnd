@@ -17,7 +17,7 @@ private:
     int visibility;
 public:
     Item();
-    Item(string, int, int, int);
+    Item(string name, int itemType, int hardness, int visibility);
 
     /* Virtual function that you need to complete    */
     /* In Item, this function should deal with the   */
