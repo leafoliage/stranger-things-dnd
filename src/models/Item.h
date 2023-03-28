@@ -8,6 +8,7 @@
 using namespace std;
 
 class Player;
+class GameCharacter;
 
 class Item: public Object
 {
@@ -19,7 +20,8 @@ public:
     Item();
     Item(string name, int itemType, int quality, int visibility);
 
-    virtual int useQuality(Player*) = 0;
+    virtual int useQuality(GameCharacter* user) = 0;
+    virtual void workOn(GameCharacter* target, GameCharacter* user) = 0;
 
     /* Set & Get function*/
     void setItemType(int);

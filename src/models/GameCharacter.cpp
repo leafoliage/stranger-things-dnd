@@ -17,6 +17,10 @@ int GameCharacter::takeDamage(int damage) {
     return currHp;
 }
 
+void GameCharacter::attack(GameCharacter* rival, Item* equipment) {
+    equipment->workOn(rival, this);
+}
+
 void GameCharacter::setCharacterType(int characterType) {
     this->characterType = characterType;
 }

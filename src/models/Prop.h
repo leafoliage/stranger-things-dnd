@@ -13,7 +13,8 @@ class Prop: public Item {
         Prop();
         Prop(string name, int quality, int visibility);
 
-        int useQuality(Player*);
+        int useQuality(GameCharacter* user);
+        void workOn(GameCharacter* target, GameCharacter* user);
         bool triggerEvent(Object*);
 };
 

@@ -1,12 +1,12 @@
 #include "Item.h"
-#include "Player.h"
+#include "GameCharacter.h"
 
 Item::Item() {}
 
 Item::Item(string name, int itemType, int quality, int visibility):
     Object(name, ITEM), itemType(itemType), quality(quality), visibility(visibility) {}
 
-int Item::useQuality(Player* player) {
+int Item::useQuality(GameCharacter* user) {
     return quality;
 }
 

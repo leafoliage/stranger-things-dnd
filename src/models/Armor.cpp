@@ -6,9 +6,11 @@ Armor::Armor() {}
 Armor::Armor(string name, int quality, int visibility):
     Item(name, ARMOR, quality, visibility) {}
 
-int Armor::useQuality(Player* player) {
-    return getQuality() + player->getDexterity() + 10;
+int Armor::useQuality(GameCharacter* user) {
+    return getQuality() + user->getDexterity() + 10;
 }
+
+void Armor::workOn(GameCharacter* target, GameCharacter* user) {}
 
 bool Armor::triggerEvent(Object* obj) {
     Player *player = dynamic_cast<Player*>(obj);

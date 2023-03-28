@@ -6,9 +6,14 @@ Weapon::Weapon() : Item() {}
 Weapon::Weapon(string name, int weaponType, int quality, int visibility)
     : Item(name, WEAPON, quality, visibility), weaponType(weaponType) {}
 
-int Weapon::useQuality(Player* player) {
-    int addition = weaponType == MELEE ? player->getStrength() : player->getDexterity();
+int Weapon::useQuality(GameCharacter* user) {
+    int addition = weaponType == MELEE ? user->getStrength() : user->getDexterity();
     return getQuality() + addition;
+}
+
+void Weapon::workOn(GameCharacter* target, GameCharacter* user) {
+    if (target->getDexterity() > user->getDexterity()) return; // TODO: revise combat rule
+    target->takeDamage(this->useQuality(user));
 }
 
 bool Weapon::triggerEvent(Object* obj) {

@@ -14,7 +14,8 @@ class Weapon: public Item {
         Weapon();
         Weapon(string name, int weaponType, int quality, int visibility);
 
-        int useQuality(Player*);
+        int useQuality(GameCharacter* user);
+        void workOn(GameCharacter* target, GameCharacter* user);
         bool triggerEvent(Object*);
 
         void setWeaponType(int);

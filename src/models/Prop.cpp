@@ -6,8 +6,12 @@ Prop::Prop() {}
 Prop::Prop(string name, int quality, int visibility): 
     Item(name, ItemType::PROP, quality, visibility) {}
 
-int Prop::useQuality(Player* p) {
+int Prop::useQuality(GameCharacter* user) {
     return getQuality();
+}
+
+void Prop::workOn(GameCharacter* target, GameCharacter* user) {
+    // target->setEffect
 }
 
 bool Prop::triggerEvent(Object* obj) {

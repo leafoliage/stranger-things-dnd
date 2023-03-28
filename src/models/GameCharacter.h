@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "Object.h"
+#include "Item.h"
 using namespace std;
 
 class GameCharacter: public Object
@@ -19,8 +20,10 @@ private:
 public:
     GameCharacter();
     GameCharacter(string name, int objectType, int characterType, int maxHp, int currHp, int strength, int dexterity, int constitution, int wisdom);
+
     bool checkIsDead();
     int takeDamage(int);
+    void attack(GameCharacter* rival, Item* equipment);
 
     /* Set & Get function*/
     void setCharacterType(int);
