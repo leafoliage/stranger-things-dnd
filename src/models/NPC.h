@@ -14,10 +14,10 @@ class NPC: public GameCharacter
 {
 private:
     vector<string> script;
-    vector<Item> commodity;
+    vector<Item*> commodity;
 public:
     NPC();
-    NPC(string name, vector<string> script, vector<Item> commodity);
+    NPC(string name, vector<string> script, vector<Item*> commodity);
     void listCommodity(); /*print all the Item in this NPC*/
 
     /* Virtual function that you need to complete   */
@@ -27,9 +27,9 @@ public:
 
     /* Set & Get function*/
     void setScript(vector<string>);
-    void setCommodity(vector<Item>);
+    void setCommodity(vector<Item*>);
     vector<string> getScript() const;
-    vector<Item> getCommodity() const;
+    vector<Item*> getCommodity() const;
 };
 
 

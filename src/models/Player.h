@@ -20,21 +20,21 @@ private:
     Room* currentRoom;
     Room* previousRoom;
     int money;
-    vector<Armor> wardrobe;
-    vector<Weapon> weapons;
-    vector<Item> inventory;
+    vector<Armor*> wardrobe;
+    vector<Weapon*> weapons;
+    vector<Item*> inventory;
 public:
     Player();
     Player(string name, int strength, int dexterity, int constitution, int wisdom);
 
     // add armor to the wardrobe
-    void addArmor(Armor);
+    void addArmor(Armor*);
 
     // add weapons to the weapons list
-    void addWeapon(Weapon);
+    void addWeapon(Weapon*);
 
     // add item to the item list
-    void addItem(Item);
+    void addItem(Item*);
 
     void changeRoom(Room*);
 
@@ -51,25 +51,25 @@ public:
     void switchWeapon(int);
 
     // get the first weapon in the weapons list
-    Weapon getCurrWeapon() const;
+    Weapon* getCurrWeapon() const;
 
     // switch the armor of the given number with the first armor in the wardrobe
     void switchArmor(int);
 
     // get the first armor in the wardrobe
-    Armor getCurrArmor() const;
+    Armor* getCurrArmor() const;
 
     /* Set & Get function*/
     void setCurrentRoom(Room*);
     void setPreviousRoom(Room*);
-    void setArmor(vector<Armor>);
-    void setWeapons(vector<Weapon>);
-    void setInventory(vector<Item>);
+    void setArmor(vector<Armor*>);
+    void setWeapons(vector<Weapon*>);
+    void setInventory(vector<Item*>);
     Room* getCurrentRoom() const;
     Room* getPreviousRoom() const;
-    vector<Armor> getWardrobe() const;
-    vector<Weapon> getWeapons() const;
-    vector<Item> getInventory() const;
+    vector<Armor*> getWardrobe() const;
+    vector<Weapon*> getWeapons() const;
+    vector<Item*> getInventory() const;
 };
 
 #endif // PLAYER_H_INCLUDED

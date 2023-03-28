@@ -9,7 +9,7 @@ Item::Item(string name, int itemType, int hardness, int visibility):
 bool Item::triggerEvent(Object* obj) {
     Player *player = dynamic_cast<Player*>(obj);
     if (player == nullptr) return false;
-    player->addItem(*this);
+    player->addItem(this);
     bool popped = player->getCurrentRoom()->popObject(this);
     if (popped) cout << "You picked up " << this->getName() << endl;
     return true;
