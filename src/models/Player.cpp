@@ -5,18 +5,6 @@ Player::Player() {}
 Player::Player(string name, int strength, int dexterity, int constitution, int wisdom):
     GameCharacter(name,CHARACTER,PLAYER,25+constitution,25+constitution,strength,dexterity,constitution,wisdom) {}
 
-void Player::addArmor(Armor* armor) {
-    wardrobe.push_back(armor);
-}
-
-void Player::addWeapon(Weapon* weapon) {
-    weapons.push_back(weapon);
-}
-
-void Player::addItem(Item* item) {
-    inventory.push_back(item);
-}
-
 void Player::changeRoom(Room* newRoom) {
     previousRoom = currentRoom;
     currentRoom = newRoom;
@@ -35,32 +23,24 @@ bool Player::triggerEvent(Object* obj) {
     return true;
 }
 
-void Player::switchWeapon(int index) {
-    if (index >= 0 && index < weapons.size()) {
-        swap(weapons[0], weapons[index]);
+void Player::take(Item* item) {
+    if (inventory.size() >= MAX_INVENTORY) {
+        cout << "Your backpack is full!" << endl << "Discard something!";
+        return;
     }
+    inventory.push_back(item);
 }
 
-Weapon* Player::getCurrWeapon() const {
-    if (!weapons.empty()) {
-        return weapons[0];
-    }
-    // return an empty weapon if the weapons list is empty
-    return new Weapon();
+void Player::wear(Armor* arm) {
+    if (armor != NULL) currentRoom->getObjects().push_back(armor);
+    armor = arm;
 }
 
-void Player::switchArmor(int index) {
-    if (index >= 0 && index < wardrobe.size()) {
-        swap(wardrobe[0], wardrobe[index]);
+void Player::discard(int index) {
+    if (index >=0 && index < inventory.size()) {
+        currentRoom->getObjects().push_back(inventory[index]);
+        inventory.erase(inventory.begin() + index);
     }
-}
-
-Armor* Player::getCurrArmor() const {
-    if (!wardrobe.empty()) {
-        return wardrobe[0];
-    }
-    // return an empty armor if the wardrobe is empty
-    return new Armor();
 }
 
 void Player::setCurrentRoom(Room* room) {
@@ -69,14 +49,6 @@ void Player::setCurrentRoom(Room* room) {
 
 void Player::setPreviousRoom(Room* room) {
     previousRoom = room;
-}
-
-void Player::setArmor(vector<Armor*> armorList) {
-    wardrobe = armorList;
-}
-
-void Player::setWeapons(vector<Weapon*> weaponList) {
-    weapons = weaponList;
 }
 
 void Player::setInventory(vector<Item*> inventory) {
@@ -91,14 +63,10 @@ Room* Player::getPreviousRoom() const {
     return previousRoom;
 }
 
-vector<Armor*> Player::getWardrobe() const {
-    return wardrobe;
-}
-
-vector<Weapon*> Player::getWeapons() const {
-    return weapons;
-}
-
 vector<Item*> Player::getInventory() const {
     return inventory;
+}
+
+Armor* Player::getArmor() const {
+    return armor;
 }

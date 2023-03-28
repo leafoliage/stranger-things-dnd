@@ -19,18 +19,14 @@ bool NPC::triggerEvent(Object* obj) {
     cin >> choice;
     if (choice >=0 && choice < commodity.size()) {
         switch (commodity[choice]->getItemType()) {
-        case ItemType::PROP: {
-            p->addItem(commodity[choice]);
-            break;
-        }
         case ItemType::ARMOR: {
             Armor* arm = dynamic_cast<Armor*>(commodity[choice]);
-            p->addArmor(arm);
+            p->wear(arm);
             break;
         }
+        case ItemType::PROP:
         case ItemType::WEAPON: {
-            Weapon* wep = dynamic_cast<Weapon*>(commodity[choice]);
-            p->addWeapon(wep);
+            p->take(commodity[choice]);
             break;
         }
         default:

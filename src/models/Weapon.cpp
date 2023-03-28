@@ -14,7 +14,7 @@ int Weapon::useQuality(Player* player) {
 bool Weapon::triggerEvent(Object* obj) {
     Player *player = dynamic_cast<Player*>(obj);
     if (player == nullptr) return false;
-    player->addWeapon(this);
+    player->take(this);
     bool popped = player->getCurrentRoom()->popObject(this);
     if (popped) cout << "You picked up " << this->getName() << endl;
     return true;

@@ -3,6 +3,8 @@
 
 const int MAX_HEALTH = 25;
 
+const int MAX_INVENTORY = 6;
+
 enum ObjectType { CHARACTER, ITEM };
 
 enum CharacterType { PLAYER, NEUTRAL, ALLY, ENEMY };
