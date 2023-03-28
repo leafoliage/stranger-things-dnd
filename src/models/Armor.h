@@ -11,9 +11,9 @@ class Armor: public Item {
 
     public:
         Armor();
-        Armor(string name, int hardness, int visibility);
+        Armor(string name, int quality, int visibility);
 
-        int useHardness(Player*);
+        int useQuality(Player*);
         bool triggerEvent(Object*);
 };
 

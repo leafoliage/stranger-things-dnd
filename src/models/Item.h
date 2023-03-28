@@ -13,11 +13,11 @@ class Item: public Object
 {
 private:
     int itemType;
-    int hardness;
+    int quality;
     int visibility;
 public:
     Item();
-    Item(string name, int itemType, int hardness, int visibility);
+    Item(string name, int itemType, int quality, int visibility);
 
     /* Virtual function that you need to complete    */
     /* In Item, this function should deal with the   */
@@ -25,14 +25,14 @@ public:
     /* player.                                       */
     bool triggerEvent(Object*);
 
-    virtual int useHardness(Player*);
+    virtual int useQuality(Player*) = 0;
 
     /* Set & Get function*/
     void setItemType(int);
-    void setHardness(int);
+    void setQuality(int);
     void setVisibility(int);
     int getItemType() const;
-    int getHardness() const;
+    int getQuality() const;
     int getVisibility() const;
 };
 

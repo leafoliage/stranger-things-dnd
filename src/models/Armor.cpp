@@ -3,11 +3,11 @@
 
 Armor::Armor() {}
 
-Armor::Armor(string name, int hardness, int visibility):
-    Item(name, ARMOR, hardness, visibility) {}
+Armor::Armor(string name, int quality, int visibility):
+    Item(name, ARMOR, quality, visibility) {}
 
-int Armor::useHardness(Player* player) {
-    return getHardness() + player->getDexterity() + 10;
+int Armor::useQuality(Player* player) {
+    return getQuality() + player->getDexterity() + 10;
 }
 
 bool Armor::triggerEvent(Object* obj) {

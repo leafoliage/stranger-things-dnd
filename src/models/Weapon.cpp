@@ -3,12 +3,12 @@
 
 Weapon::Weapon() : Item() {}
 
-Weapon::Weapon(string name, int weaponType, int hardness, int visibility)
-    : Item(name, WEAPON, hardness, visibility), weaponType(weaponType) {}
+Weapon::Weapon(string name, int weaponType, int quality, int visibility)
+    : Item(name, WEAPON, quality, visibility), weaponType(weaponType) {}
 
-int Weapon::useHardness(Player* player) {
+int Weapon::useQuality(Player* player) {
     int addition = weaponType == MELEE ? player->getStrength() : player->getDexterity();
-    return getHardness() + addition;
+    return getQuality() + addition;
 }
 
 bool Weapon::triggerEvent(Object* obj) {

@@ -3,8 +3,8 @@
 
 Item::Item() {}
 
-Item::Item(string name, int itemType, int hardness, int visibility):
-    Object(name, ITEM), itemType(itemType), hardness(hardness), visibility(visibility) {}
+Item::Item(string name, int itemType, int quality, int visibility):
+    Object(name, ITEM), itemType(itemType), quality(quality), visibility(visibility) {}
 
 bool Item::triggerEvent(Object* obj) {
     Player *player = dynamic_cast<Player*>(obj);
@@ -15,16 +15,16 @@ bool Item::triggerEvent(Object* obj) {
     return true;
 }
 
-int Item::useHardness(Player* player) {
-    return hardness;
+int Item::useQuality(Player* player) {
+    return quality;
 }
 
 void Item::setItemType(int itemType) {
     this->itemType = itemType;
 }
 
-void Item::setHardness(int hardness) {
-    this->hardness = hardness;
+void Item::setQuality(int quality) {
+    this->quality = quality;
 }
 
 void Item::setVisibility(int visibility) {
@@ -35,8 +35,8 @@ int Item::getItemType() const {
     return itemType;
 }
 
-int Item::getHardness() const {
-    return hardness;
+int Item::getQuality() const {
+    return quality;
 }
 
 int Item::getVisibility() const {
