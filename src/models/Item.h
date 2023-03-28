@@ -19,12 +19,6 @@ public:
     Item();
     Item(string name, int itemType, int quality, int visibility);
 
-    /* Virtual function that you need to complete    */
-    /* In Item, this function should deal with the   */
-    /* pick up action. You should add status to the  */
-    /* player.                                       */
-    bool triggerEvent(Object*);
-
     virtual int useQuality(Player*) = 0;
 
     /* Set & Get function*/
