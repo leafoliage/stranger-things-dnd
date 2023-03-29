@@ -3,7 +3,7 @@
 Player::Player() {}
 
 Player::Player(string name, int strength, int dexterity, int constitution, int wisdom):
-    GameCharacter(name,CHARACTER,PLAYER,25+constitution,25+constitution,strength,dexterity,constitution,wisdom) {}
+    GameCharacter(name,PLAYER,25+constitution,25+constitution,strength,dexterity,constitution,wisdom) {}
 
 void Player::changeRoom(Room* newRoom) {
     previousRoom = currentRoom;

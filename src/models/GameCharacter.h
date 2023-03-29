@@ -19,7 +19,7 @@ private:
     int wisdom;
 public:
     GameCharacter();
-    GameCharacter(string name, int objectType, int characterType, int maxHp, int currHp, int strength, int dexterity, int constitution, int wisdom);
+    GameCharacter(string name, int characterType, int maxHp, int currHp, int strength, int dexterity, int constitution, int wisdom);
 
     bool checkIsDead();
     int takeDamage(int);
