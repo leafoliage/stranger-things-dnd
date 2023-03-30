@@ -7,7 +7,7 @@ Armor::Armor(string name, int quality, int visibility):
     Item(name, ARMOR, quality, visibility) {}
 
 int Armor::useQuality(GameCharacter* user) {
-    return getQuality() + user->getDexterity() + 10;
+    return getQuality();
 }
 
 void Armor::workOn(GameCharacter* target, GameCharacter* user) {}

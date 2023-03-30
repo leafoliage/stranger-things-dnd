@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "enums.h"
+#include "Dice.h"
 
 using namespace std;
 

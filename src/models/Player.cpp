@@ -23,6 +23,26 @@ bool Player::triggerEvent(Object* obj) {
     return true;
 }
 
+void Player::attack(GameCharacter* rival, Item* equipment) {
+    char c;
+    cout << "Roll to Attack! Press Enter to roll a D20: ";
+    scanf("%c", &c);
+    int hit = hitCheck(equipment);
+    if (hit <= rival->armorClass() && hit < 20) {
+        cout << "That attack was a miss" << endl;
+        return;
+    }
+    cout << rival->getName() << " got hit by your " << equipment->getName() << "!" << endl;
+    cout << "Now roll the damage. Press Enter to roll a D20: ";
+    scanf("%c", &c);
+    equipment->workOn(rival, this);
+}
+
+int Player::armorClass() {
+    if (!armor) return ARMOR_CLASS_BASE + getDexterity();
+    return armor->useQuality(this);
+}
+
 void Player::take(Item* item) {
     if (inventory.size() >= MAX_INVENTORY) {
         cout << "Your backpack is full!" << endl << "Discard something!";

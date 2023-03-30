@@ -18,7 +18,31 @@ int GameCharacter::takeDamage(int damage) {
 }
 
 void GameCharacter::attack(GameCharacter* rival, Item* equipment) {
+    int hit = hitCheck(equipment);
+    if (hit <= rival->armorClass() && hit < 20) return;
     equipment->workOn(rival, this);
+}
+
+int GameCharacter::abilityCheck(int ability) {
+    if (ability < 0 || ability >= 4) return rollDice(20);
+    int abilities[4] = { strength, dexterity, constitution, wisdom };
+    return rollDice(20) + abilities[ability];
+}
+
+int GameCharacter::hitCheck(Item* equipment) {
+    if (!equipment) return abilityCheck(-1);
+    int itemType = equipment->getItemType();
+    if (itemType == ItemType::PROP) return abilityCheck(Ability::WISDOM);
+    if (itemType == ItemType::WEAPON) {
+        Weapon* wep = dynamic_cast<Weapon*>(equipment);
+        if (wep->getWeaponType() == WeaponType::MELEE) return abilityCheck(Ability::STRENGTH);
+        return abilityCheck(Ability::DEXTERITY);
+    }
+    return 0;
+}
+
+int GameCharacter::armorClass() {
+    return ARMOR_CLASS_BASE + dexterity;
 }
 
 void GameCharacter::setCharacterType(int characterType) {
