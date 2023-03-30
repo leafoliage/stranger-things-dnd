@@ -3,7 +3,7 @@
 Ally::Ally() {}
 
 Ally::Ally(string name, vector<string> script, int strength, int dexterity, int constitution, int wisdom): 
-    GameCharacter(name, CHARACTER, ALLY, MAX_HEALTH, MAX_HEALTH, strength, dexterity, constitution, wisdom), script(script) {}
+    GameCharacter(name, ALLY, MAX_HEALTH, MAX_HEALTH, strength, dexterity, constitution, wisdom), script(script) {}
 
 bool Ally::triggerEvent(Object* obj) {
     // TODO
