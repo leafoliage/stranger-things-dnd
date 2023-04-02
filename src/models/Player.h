@@ -19,6 +19,7 @@ private:
     Room* currentRoom;
     Room* previousRoom;
     int money;
+    int job;
     vector<Item*> inventory;
     Armor* armor;
 public:
@@ -41,20 +42,18 @@ public:
     bool pay(int money);
     bool acquire(Item*);
 
-    // int initiate();
-    // int attackCheck();
-    // int damage();
-
     /* Set & Get function*/
     void setCurrentRoom(Room*);
     void setPreviousRoom(Room*);
     void setInventory(vector<Item*>);
     void setMoney(int);
+    void setJob(int);
     Room* getCurrentRoom() const;
     Room* getPreviousRoom() const;
     vector<Item*> getInventory() const;
     Armor* getArmor() const;
     int getMoney() const;
+    int getJob() const;
 };
 
 #endif // PLAYER_H_INCLUDED

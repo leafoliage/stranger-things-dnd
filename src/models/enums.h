@@ -17,4 +17,10 @@ enum WeaponType { MELEE, RANGE };
 
 enum Ability { STRENGTH, DEXTERITY, CONSTITUTION, WISDOM };
 
+enum Job { BASKETBALL_PLAYER, GUITARIST, CHEERLEADER, REPORTER, SCOOPS_AHOY };
+
+const int jobAilities[5][4] = {
+    {3,1,-2,-2}, {1,-2,3,-2}, {1,3,-2,-2}, {-2,-2,1,3}, {0,0,0,0}
+};
+
 #endif // ENUM_H_INCLUDED
