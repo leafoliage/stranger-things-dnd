@@ -38,6 +38,8 @@ public:
     void take(Item*);
     void wear(Armor*);
     void discard(int index);
+    bool pay(int money);
+    bool acquire(Item*);
 
     // int initiate();
     // int attackCheck();
@@ -47,10 +49,12 @@ public:
     void setCurrentRoom(Room*);
     void setPreviousRoom(Room*);
     void setInventory(vector<Item*>);
+    void setMoney(int);
     Room* getCurrentRoom() const;
     Room* getPreviousRoom() const;
     vector<Item*> getInventory() const;
     Armor* getArmor() const;
+    int getMoney() const;
 };
 
 #endif // PLAYER_H_INCLUDED

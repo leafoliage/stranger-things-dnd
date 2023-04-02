@@ -3,8 +3,8 @@
 
 Item::Item() {}
 
-Item::Item(string name, int itemType, int quality, int visibility):
-    Object(name, ITEM), itemType(itemType), quality(quality), visibility(visibility) {}
+Item::Item(string name, int itemType, int quality, int price):
+    Object(name, ITEM), itemType(itemType), quality(quality), price(price) {}
 
 int Item::useQuality(GameCharacter* user) {
     return quality;
@@ -18,8 +18,8 @@ void Item::setQuality(int quality) {
     this->quality = quality;
 }
 
-void Item::setVisibility(int visibility) {
-    this->visibility = visibility;
+void Item::setPrice(int price) {
+    this->price = price;
 }
 
 int Item::getItemType() const {
@@ -30,6 +30,6 @@ int Item::getQuality() const {
     return quality;
 }
 
-int Item::getVisibility() const {
-    return visibility;
+int Item::getPrice() const {
+    return price;
 }

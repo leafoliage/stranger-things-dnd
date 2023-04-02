@@ -15,10 +15,10 @@ class Item: public Object
 private:
     int itemType;
     int quality;
-    int visibility;
+    int price;
 public:
     Item();
-    Item(string name, int itemType, int quality, int visibility);
+    Item(string name, int itemType, int quality, int price);
 
     virtual int useQuality(GameCharacter* user) = 0;
     virtual void workOn(GameCharacter* target, GameCharacter* user) = 0;
@@ -26,10 +26,10 @@ public:
     /* Set & Get function*/
     void setItemType(int);
     void setQuality(int);
-    void setVisibility(int);
+    void setPrice(int);
     int getItemType() const;
     int getQuality() const;
-    int getVisibility() const;
+    int getPrice() const;
 };
 
 #endif // ITEM_H_INCLUDED

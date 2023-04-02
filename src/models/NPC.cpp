@@ -7,33 +7,25 @@ NPC::NPC(string name, vector<string> script, vector<Item*> commodity):
 
 bool NPC::triggerEvent(Object* obj) {
     Player* p = dynamic_cast<Player*>(obj);
+    if (!p) return false;
 
     for (auto it = script.begin(); it != script.end(); ++it) {
         cout << *it << endl;
     }
+
     int i = 0, choice;
     for (auto it = commodity.begin(); it != commodity.end(); ++it) {
-        cout << i++ << " " << (*it)->getName() << endl;
+        cout << i++ << ": " << (*it)->getName() << " - $" << (*it)->getPrice() << endl;
     } 
-    cout << "What do you want to buy? " ;
-    cin >> choice;
-    if (choice >=0 && choice < commodity.size()) {
-        switch (commodity[choice]->getItemType()) {
-        case ItemType::ARMOR: {
-            Armor* arm = dynamic_cast<Armor*>(commodity[choice]);
-            p->wear(arm);
-            break;
-        }
-        case ItemType::PROP:
-        case ItemType::WEAPON: {
-            p->take(commodity[choice]);
-            break;
-        }
-        default:
-            break;
-        }
-        cout << "You got a " << commodity[choice]->getName() << " from " << this->getName() << "!" << endl;
-        commodity.erase(commodity.begin() + choice);
+    cout << i << ": leave" << endl;
+
+    bool deal = false;
+    while (!deal) {
+        cout << "Anything you want to buy? " ;
+        cin >> choice;
+        if (choice < 0 || choice >= commodity.size()) return false;
+        deal = p->acquire(commodity[choice]);
+        if (deal) commodity.erase(commodity.begin() + choice);
     }
     return true;
 }

@@ -1,9 +1,13 @@
 #include "Player.h"
 
-Player::Player() {}
+Player::Player() {
+    this->armor = NULL;
+}
 
 Player::Player(string name, int strength, int dexterity, int constitution, int wisdom):
-    GameCharacter(name,PLAYER,25+constitution,25+constitution,strength,dexterity,constitution,wisdom) {}
+    GameCharacter(name,PLAYER,25+constitution,25+constitution,strength,dexterity,constitution,wisdom) {
+        this->armor = NULL;
+    }
 
 void Player::changeRoom(Room* newRoom) {
     previousRoom = currentRoom;
@@ -69,6 +73,33 @@ void Player::discard(int index) {
     }
 }
 
+bool Player::pay(int money) {
+    if (this->money < money) return false;
+    this->money -= money;
+    cout << "You have " << this->money << " galleons left" << endl;
+    return true;
+}
+
+bool Player::acquire(Item* item) {
+    if (!pay(item->getPrice())) {
+        cout << "Not enough galleons to buy that fancy toy!" << endl;
+        return false;
+    }
+    switch (item->getItemType()) {
+        case ItemType::ARMOR: 
+            this->wear(dynamic_cast<Armor*>(item));
+            break;
+        case ItemType::PROP:
+        case ItemType::WEAPON: 
+            this->take(item);
+            break;
+        default:
+            break;
+    }
+    cout << "You got a " << item->getName() << "!" << endl;
+    return true;
+}
+
 void Player::setCurrentRoom(Room* room) {
     currentRoom = room;
 }
@@ -79,6 +110,10 @@ void Player::setPreviousRoom(Room* room) {
 
 void Player::setInventory(vector<Item*> inventory) {
     this->inventory = inventory;
+}
+
+void Player::setMoney(int money) {
+    this->money = money;
 }
 
 Room* Player::getCurrentRoom() const {
@@ -95,4 +130,8 @@ vector<Item*> Player::getInventory() const {
 
 Armor* Player::getArmor() const {
     return armor;
+}
+
+int Player::getMoney() const {
+    return money;
 }
