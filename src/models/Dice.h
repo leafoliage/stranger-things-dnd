@@ -4,6 +4,8 @@
 #include <iostream>
 #include "cstdlib"
 
-int rollDice(int face);
+using namespace std;
+
+int rollDice(int face, bool output);
 
 #endif // DICE_H_INCLUDED

@@ -25,10 +25,10 @@ public:
 
     virtual void attack(GameCharacter* rival, Item* equipment);
     virtual int armorClass();
+    virtual int abilityCheck(int ability);
 
     bool checkIsDead();
     int takeDamage(int);
-    int abilityCheck(int ability);
     int hitCheck(Item* equipment);
 
     /* Set & Get function*/

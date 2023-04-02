@@ -24,23 +24,29 @@ bool Player::triggerEvent(Object* obj) {
 }
 
 void Player::attack(GameCharacter* rival, Item* equipment) {
-    char c;
-    cout << "Roll to Attack! Press Enter to roll a D20: ";
-    scanf("%c", &c);
+    cout << "Roll to Attack! ";
     int hit = hitCheck(equipment);
     if (hit <= rival->armorClass() && hit < 20) {
         cout << "That attack was a miss" << endl;
         return;
     }
-    cout << rival->getName() << " got hit by your " << equipment->getName() << "!" << endl;
-    cout << "Now roll the damage. Press Enter to roll a D20: ";
-    scanf("%c", &c);
+    cout << "You hit " << rival->getName() << "!" << endl;
+
+    cout << "Now roll the damage. ";
+    if (!equipment) int dam = rollDice(8, true);
     equipment->workOn(rival, this);
 }
 
 int Player::armorClass() {
     if (!armor) return ARMOR_CLASS_BASE + getDexterity();
     return armor->useQuality(this);
+}
+
+int Player::abilityCheck(int ability) {
+    int rolled = rollDice(20, true);
+    if (ability < 0 || ability >= 4) return rolled;
+    int abilities[4] = { getStrength(), getDexterity(), getConstitution(), getWisdom() };
+    return rolled + abilities[ability];
 }
 
 void Player::take(Item* item) {

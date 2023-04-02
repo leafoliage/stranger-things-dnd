@@ -18,15 +18,19 @@ int GameCharacter::takeDamage(int damage) {
 }
 
 void GameCharacter::attack(GameCharacter* rival, Item* equipment) {
+    cout << getName() << " attacked " << rival->getName() << "!" << endl;
     int hit = hitCheck(equipment);
-    if (hit <= rival->armorClass() && hit < 20) return;
+    if (hit <= rival->armorClass() && hit < 20) {
+        cout << getName() << " missed!" << endl;
+        return;
+    }
     equipment->workOn(rival, this);
 }
 
 int GameCharacter::abilityCheck(int ability) {
-    if (ability < 0 || ability >= 4) return rollDice(20);
+    if (ability < 0 || ability >= 4) return rollDice(20, false);
     int abilities[4] = { strength, dexterity, constitution, wisdom };
-    return rollDice(20) + abilities[ability];
+    return rollDice(20, false) + abilities[ability];
 }
 
 int GameCharacter::hitCheck(Item* equipment) {

@@ -8,15 +8,15 @@ Weapon::Weapon(string name, int weaponType, int quality, int visibility)
 
 int Weapon::useQuality(GameCharacter* user) {
     int addition = weaponType == MELEE ? user->getStrength() : user->getDexterity();
-    return rollDice(getQuality()) + addition;
+    bool needDiceOutput = user->getCharacterType() == CharacterType::PLAYER;
+    int rolled = rollDice(getQuality(), needDiceOutput);
+    return rolled + addition;
 }
 
 void Weapon::workOn(GameCharacter* target, GameCharacter* user) {
     int damage = this->useQuality(user);
     target->takeDamage(damage);
-    if (user->getCharacterType() == CharacterType::PLAYER) {
-        cout << target->getName() << " lost " << damage << " hp!" << endl;
-    }
+    cout << target->getName() << " lost " << damage << " hp!" << endl;
 }
 
 bool Weapon::triggerEvent(Object* obj) {
