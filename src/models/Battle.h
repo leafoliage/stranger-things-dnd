@@ -1,0 +1,22 @@
+#ifndef BATTLE_H_INCLUDED
+#define BATTLE_H_INCLUDED
+
+#include <cstdlib>
+#include <vector>
+#include "GameCharacter.h"
+using namespace std;
+
+class Battle {
+    private:
+        bool end;
+        vector< pair<int,GameCharacter*> > fighters;
+    public:
+        Battle();
+
+        void add(GameCharacter* fighter);
+        void initiate();
+        void run();
+        void terminate();
+};
+
+#endif // BATTLE_H_INCLUDED
