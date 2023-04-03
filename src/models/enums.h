@@ -23,4 +23,6 @@ const int jobAilities[5][4] = {
     {3,1,-2,-2}, {1,-2,3,-2}, {1,3,-2,-2}, {-2,-2,1,3}, {0,0,0,0}
 };
 
+enum Effect { CURE, REFRESH, SOLIDIFY, BURN, FREEZE, POISON };
+
 #endif // ENUM_H_INCLUDED
