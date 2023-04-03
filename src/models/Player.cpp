@@ -4,8 +4,17 @@ Player::Player() {
     this->armor = NULL;
 }
 
+Player::Player(string name, int job):
+    GameCharacter(name,PLAYER,
+    MAX_HEALTH+jobAilities[job][CONSTITUTION], MAX_HEALTH+jobAilities[job][CONSTITUTION],
+    jobAilities[job][STRENGTH],jobAilities[job][DEXTERITY],
+    jobAilities[job][CONSTITUTION],jobAilities[job][WISDOM]) {
+        this->armor = NULL;
+    }
+
 Player::Player(string name, int strength, int dexterity, int constitution, int wisdom):
-    GameCharacter(name,PLAYER,25+constitution,25+constitution,strength,dexterity,constitution,wisdom) {
+    GameCharacter(name,PLAYER,MAX_HEALTH+constitution,MAX_HEALTH+constitution,
+    strength,dexterity,constitution,wisdom) {
         this->armor = NULL;
     }
 

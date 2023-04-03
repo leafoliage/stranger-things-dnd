@@ -24,6 +24,7 @@ private:
     Armor* armor;
 public:
     Player();
+    Player(string name, int job);
     Player(string name, int strength, int dexterity, int constitution, int wisdom);
 
     void changeRoom(Room*);
