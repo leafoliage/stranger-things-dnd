@@ -45,6 +45,11 @@ int GameCharacter::hitCheck(Item* equipment) {
     return 0;
 }
 
+bool GameCharacter::hostile(GameCharacter* character) {
+    int type1 = this->getCharacterType(), type2 = character->getCharacterType();
+    return (type1!=type2) && (type1*type2>=3);
+}
+
 int GameCharacter::armorClass() {
     return ARMOR_CLASS_BASE + dexterity;
 }

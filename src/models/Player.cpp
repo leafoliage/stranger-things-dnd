@@ -109,6 +109,16 @@ bool Player::acquire(Item* item) {
     return true;
 }
 
+int inputNumPrompt(int lowbound, int upbound) {
+    int input;
+    cin >> input;
+    while (input<lowbound || input>=upbound) {
+        cout << "Choice out of range! Choose again: ";
+        cin >> input;
+    }
+    return input;
+}
+
 void Player::setCurrentRoom(Room* room) {
     currentRoom = room;
 }

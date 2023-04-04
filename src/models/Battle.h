@@ -3,6 +3,7 @@
 
 #include <cstdlib>
 #include <vector>
+#include <algorithm>
 #include "GameCharacter.h"
 using namespace std;
 
@@ -10,6 +11,8 @@ class Battle {
     private:
         bool end;
         vector< pair<int,GameCharacter*> > fighters;
+
+        GameCharacter* findOpponent(int index, int size);
     public:
         Battle();
 

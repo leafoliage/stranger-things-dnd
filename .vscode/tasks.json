@@ -46,6 +46,7 @@
                 "main.cpp",
                 "models/Ally.cpp",
                 "models/Armor.cpp",
+                "models/Battle.cpp",
                 "models/Dice.cpp",
                 "models/Dungeon.cpp",
                 "models/Enemy.cpp",

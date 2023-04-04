@@ -42,6 +42,8 @@ public:
     void discard(int index);
     bool pay(int money);
     bool acquire(Item*);
+    int inputNumPrompt(int lowbound, int upbound);
+    void listInventory();
 
     /* Set & Get function*/
     void setCurrentRoom(Room*);
