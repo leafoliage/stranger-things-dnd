@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "Object.h"
+#include "Battle.h"
 
 using namespace std;
 
@@ -25,6 +26,8 @@ public:
     Room();
     Room(string name, bool isExit, int index, vector<Object*> objects);
     bool popObject(Object*); /*pop out the specific object, used when the interaction is done*/
+
+    void callEnemy(Battle*);
 
     /* Set & Get function*/
     void setUpRoom(Room*);

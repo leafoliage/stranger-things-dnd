@@ -18,6 +18,7 @@ class Battle {
 
         void add(GameCharacter* fighter);
         void initiate();
+        void showInitiative();
         void run();
         void terminate();
 };

@@ -1,15 +1,24 @@
 #include "Battle.h"
 #include "Player.h"
 
-Battle::Battle() {}
+Battle::Battle() {
+    cout << "A battle begins..." << endl;
+}
 
 void Battle::add(GameCharacter* fighter) {
+    if (fighter->getCharacterType() == CharacterType::PLAYER) {
+        cout << "Initiate!" << endl << "Roll your initiative. " << endl;
+    }
     int initiative = fighter->abilityCheck(Ability::DEXTERITY);
     fighters.push_back({initiative, fighter});
 }
 
 void Battle::initiate() {
     sort(fighters.begin(), fighters.end());
+    showInitiative();
+}
+
+void Battle::showInitiative() {
     cout << "------Initiative------" << endl;
     int i=0;
     for (auto it=fighters.begin();it!=fighters.end();++it) {
@@ -26,8 +35,16 @@ void Battle::run() {
             Player *p = dynamic_cast<Player*>(attacker);
             Item* weapon;
             int objectIndex;
-            cout << "Who to attack (index)? ";
-            objectIndex = p->inputNumPrompt(0,number);
+
+            cout << "Your turn!" << endl;
+            showInitiative();
+            cout << "Choose your target (index), or input -1 to retreat: ";
+            objectIndex = p->inputNumPrompt(-1,number);
+            if (objectIndex<0) {
+                cout << "Guys! Retreat!" << endl;
+                terminate();
+                break;
+            }
             weapon = p->getWeapon();
             p->attack(fighters[objectIndex].second, weapon);
         } else {

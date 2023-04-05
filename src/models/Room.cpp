@@ -15,6 +15,18 @@ bool Room::popObject(Object* obj) {
     return false;
 }
 
+void Room::callEnemy(Battle* battle) {
+    for (auto it=objects.begin();it!=objects.end();++it) {
+        Object* obj = *it;
+        if (obj->getObjectType()==ObjectType::CHARACTER) {
+            GameCharacter* character = dynamic_cast<GameCharacter*>(obj);
+            if (character->getCharacterType() == CharacterType::ENEMY) {
+                battle->add(character);
+            }
+        }
+    }
+}
+
 void Room::setUpRoom(Room* room) {
     upRoom = room;
 }
