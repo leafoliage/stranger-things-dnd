@@ -30,6 +30,10 @@ bool NPC::triggerEvent(Object* obj) {
     return true;
 }
 
+Item* NPC::getWeapon() {
+    return NULL;
+}
+
 void NPC::listCommodity() {
     for (Item *i : commodity) {
         cout << i->getName() << endl;

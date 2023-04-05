@@ -24,6 +24,7 @@ public:
     /* In NPC, this function should deal with the   */
     /* transaction in easy implementation           */
     bool triggerEvent(Object*);
+    Item* getWeapon();
 
     /* Set & Get function*/
     void setScript(vector<string>);

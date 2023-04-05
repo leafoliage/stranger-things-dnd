@@ -24,13 +24,12 @@ void Battle::run() {
         GameCharacter *attacker = fighters[i].second, *opponent;
         if (attacker->getCharacterType() == CharacterType::PLAYER) {
             Player *p = dynamic_cast<Player*>(attacker);
-            int objectIndex, itemIndex;
-            cout << "Choose your object (index): ";
+            Item* weapon;
+            int objectIndex;
+            cout << "Who to attack (index)? ";
             objectIndex = p->inputNumPrompt(0,number);
-            p->listInventory();
-            cout << "What item do you want to use? ";
-            itemIndex = p->inputNumPrompt(0,p->getInventory().size());
-            p->attack(fighters[objectIndex].second, p->getInventory()[itemIndex]);
+            weapon = p->getWeapon();
+            p->attack(fighters[objectIndex].second, weapon);
         } else {
             opponent = this->findOpponent(i,number);
             if (opponent == NULL) break;

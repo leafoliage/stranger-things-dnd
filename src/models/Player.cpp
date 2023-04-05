@@ -62,6 +62,14 @@ int Player::abilityCheck(int ability) {
     return rolled + abilities[ability];
 }
 
+Item* Player::getWeapon() {
+    int itemIndex;
+    this->listInventory();
+    cout << "Choose your weapon: ";
+    itemIndex = this->inputNumPrompt(0,this->getInventory().size());
+    return this->getInventory()[itemIndex];
+}
+
 void Player::take(Item* item) {
     if (inventory.size() >= MAX_INVENTORY) {
         cout << "Your backpack is full!" << endl << "Discard something!";
@@ -109,7 +117,7 @@ bool Player::acquire(Item* item) {
     return true;
 }
 
-int inputNumPrompt(int lowbound, int upbound) {
+int Player::inputNumPrompt(int lowbound, int upbound) {
     int input;
     cin >> input;
     while (input<lowbound || input>=upbound) {
@@ -117,6 +125,15 @@ int inputNumPrompt(int lowbound, int upbound) {
         cin >> input;
     }
     return input;
+}
+
+void Player::listInventory() {
+    int i=0;
+    cout << "------Inventory------" << endl;
+    for (auto it=inventory.begin();it!=inventory.end();++it) {
+        cout << i << "- " << (*it)->getName() << endl;
+    }
+    cout << "---------------------" << endl;
 }
 
 void Player::setCurrentRoom(Room* room) {
@@ -153,4 +170,8 @@ Armor* Player::getArmor() const {
 
 int Player::getMoney() const {
     return money;
+}
+
+int Player::getJob() const {
+    return job;
 }

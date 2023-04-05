@@ -36,6 +36,7 @@ public:
     void attack(GameCharacter* rival, Item* equipment);
     int armorClass();
     int abilityCheck(int ability);
+    Item* getWeapon();
 
     void take(Item*);
     void wear(Armor*);
@@ -50,7 +51,6 @@ public:
     void setPreviousRoom(Room*);
     void setInventory(vector<Item*>);
     void setMoney(int);
-    void setJob(int);
     Room* getCurrentRoom() const;
     Room* getPreviousRoom() const;
     vector<Item*> getInventory() const;

@@ -12,19 +12,22 @@ using namespace std;
 class Ally: public GameCharacter
 {
 private:
+    Weapon* weapon;
     vector<string> script;
 public:
     Ally();
-    Ally(string name, vector<string> script, int strength, int dexterity, int constitution, int wisdom);
+    Ally(string name, Weapon* weapon, vector<string> script, int strength, int dexterity, int constitution, int wisdom);
 
     /* Virtual function that you need to complete   */
     /* In Ally, this function should deal with   */
     /* teaming up with the ally  */
     bool triggerEvent(Object*);
+    Item* getWeapon();
 
     /* Set & Get function*/
     void setScript(vector<string>);
     vector<string> getScript() const;
+    void setWeapon(Weapon*);
 };
 
 
