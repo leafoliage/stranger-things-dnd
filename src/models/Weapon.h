@@ -12,7 +12,7 @@ class Weapon: public Item {
 
     public:
         Weapon();
-        Weapon(string name, int weaponType, int quality, int visibility);
+        Weapon(string name, int weaponType, int quality, int price);
 
         int useQuality(GameCharacter* user);
         void workOn(GameCharacter* target, GameCharacter* user);

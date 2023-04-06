@@ -3,8 +3,8 @@
 
 Prop::Prop() {}
 
-Prop::Prop(string name, int quality, int visibility): 
-    Item(name, ItemType::PROP, quality, visibility) {}
+Prop::Prop(string name, int quality, int price): 
+    Item(name, ItemType::PROP, quality, price) {}
 
 int Prop::useQuality(GameCharacter* user) {
     return getQuality();

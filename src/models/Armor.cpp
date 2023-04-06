@@ -3,8 +3,8 @@
 
 Armor::Armor() {}
 
-Armor::Armor(string name, int quality, int visibility):
-    Item(name, ARMOR, quality, visibility) {}
+Armor::Armor(string name, int quality, int price):
+    Item(name, ARMOR, quality, price) {}
 
 int Armor::useQuality(GameCharacter* user) {
     return getQuality();

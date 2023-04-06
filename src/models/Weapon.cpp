@@ -3,8 +3,8 @@
 
 Weapon::Weapon() : Item() {}
 
-Weapon::Weapon(string name, int weaponType, int quality, int visibility)
-    : Item(name, WEAPON, quality, visibility), weaponType(weaponType) {}
+Weapon::Weapon(string name, int weaponType, int quality, int price)
+    : Item(name, WEAPON, quality, price), weaponType(weaponType) {}
 
 int Weapon::useQuality(GameCharacter* user) {
     int addition = weaponType == MELEE ? user->getStrength() : user->getDexterity();

@@ -11,7 +11,7 @@ class Prop: public Item {
 
     public:
         Prop();
-        Prop(string name, int quality, int visibility);
+        Prop(string name, int quality, int price);
 
         int useQuality(GameCharacter* user);
         void workOn(GameCharacter* target, GameCharacter* user);

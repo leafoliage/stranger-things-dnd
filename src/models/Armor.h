@@ -11,7 +11,7 @@ class Armor: public Item {
 
     public:
         Armor();
-        Armor(string name, int quality, int visibility);
+        Armor(string name, int quality, int price);
 
         int useQuality(GameCharacter* user);
         void workOn(GameCharacter* target, GameCharacter* user);
