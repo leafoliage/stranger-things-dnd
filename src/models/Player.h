@@ -33,7 +33,7 @@ public:
     /* In Player, this function should show the     */
     /* status of player.                            */
     bool triggerEvent(Object*);
-    void attack(GameCharacter* rival, Item* equipment);
+    bool attack(GameCharacter* rival, Item* equipment);
     int armorClass();
     int abilityCheck(int ability);
     Item* getWeapon();

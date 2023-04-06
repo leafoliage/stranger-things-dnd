@@ -10,6 +10,7 @@ using namespace std;
 class Battle {
     private:
         bool end;
+        int fighterNumber;
         vector< pair<int,GameCharacter*> > fighters;
 
         GameCharacter* findOpponent(int index, int size);
@@ -20,7 +21,10 @@ class Battle {
         void initiate();
         void showInitiative();
         void run();
+        void removeFighter(GameCharacter* fighter);
         void terminate();
+
+        bool ended() const;
 };
 
 #endif // BATTLE_H_INCLUDED

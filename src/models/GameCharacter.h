@@ -23,7 +23,7 @@ public:
     GameCharacter();
     GameCharacter(string name, int characterType, int maxHp, int currHp, int strength, int dexterity, int constitution, int wisdom);
 
-    virtual void attack(GameCharacter* rival, Item* equipment);
+    virtual bool attack(GameCharacter* rival, Item* equipment);
     virtual int armorClass();
     virtual int abilityCheck(int ability);
     virtual Item* getWeapon() = 0;

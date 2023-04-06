@@ -36,18 +36,19 @@ bool Player::triggerEvent(Object* obj) {
     return true;
 }
 
-void Player::attack(GameCharacter* rival, Item* equipment) {
+bool Player::attack(GameCharacter* rival, Item* equipment) {
     cout << "Roll to Attack! ";
     int hit = hitCheck(equipment);
     if (hit <= rival->armorClass() && hit < 20) {
         cout << "That attack was a miss" << endl;
-        return;
+        return false;
     }
     cout << "You hit " << rival->getName() << "!" << endl;
 
     cout << "Now roll the damage. ";
     if (!equipment) int dam = rollDice(8, true);
     equipment->workOn(rival, this);
+    return rival->checkIsDead();
 }
 
 int Player::armorClass() {

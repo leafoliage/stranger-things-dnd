@@ -13,7 +13,7 @@ bool Enemy::triggerEvent(Object* obj) {
     player->getCurrentRoom()->callEnemy(&battleground);
     battleground.add(player);
     battleground.initiate();
-    battleground.run();
+    while (!battleground.ended()) battleground.run();
     return true;
 }
 

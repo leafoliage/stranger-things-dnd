@@ -17,14 +17,18 @@ int GameCharacter::takeDamage(int damage) {
     return currHp;
 }
 
-void GameCharacter::attack(GameCharacter* rival, Item* equipment) {
+bool GameCharacter::attack(GameCharacter* rival, Item* equipment) {
     cout << getName() << " attacked " << rival->getName() << "!" << endl;
     int hit = hitCheck(equipment);
     if (hit <= rival->armorClass() && hit < 20) {
         cout << getName() << " missed!" << endl;
-        return;
+        return false;
     }
-    equipment->workOn(rival, this);
+    if (!equipment) {
+        rival->takeDamage(rollDice(this->strength+this->dexterity, false));
+    }
+    else equipment->workOn(rival, this);
+    return rival->checkIsDead();
 }
 
 int GameCharacter::abilityCheck(int ability) {
@@ -47,7 +51,9 @@ int GameCharacter::hitCheck(Item* equipment) {
 
 bool GameCharacter::hostile(GameCharacter* character) {
     int type1 = this->getCharacterType(), type2 = character->getCharacterType();
-    return (type1!=type2) && (type1*type2>=3);
+    // return (type1!=type2) && (type1*type2>=3);
+    if (type1 >= CharacterType::ENEMY) return type2 < CharacterType::ENEMY;
+    return type2 >= CharacterType::ENEMY;
 }
 
 int GameCharacter::armorClass() {
