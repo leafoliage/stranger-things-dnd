@@ -2,7 +2,6 @@
 
 int rollDice(int face, bool output) {
     char c;
-    fflush(stdin);
     if (output) {
         cout << "Press Enter to roll a dice: ";
         while ((c = getchar()) != '\n') {}

@@ -125,6 +125,7 @@ int Player::inputNumPrompt(int lowbound, int upbound) {
         cout << "Choice out of range! Choose again: ";
         cin >> input;
     }
+    getchar();
     return input;
 }
 

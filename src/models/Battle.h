@@ -13,13 +13,13 @@ class Battle {
         int fighterNumber;
         vector< pair<int,GameCharacter*> > fighters;
 
-        GameCharacter* findOpponent(int index, int size);
+        GameCharacter* findOpponent(GameCharacter* fighter, int initiative);
     public:
         Battle();
 
         void add(GameCharacter* fighter);
         void initiate();
-        void showInitiative();
+        void showFighters(bool initiative);
         void run();
         void removeFighter(GameCharacter* fighter);
         void terminate();
