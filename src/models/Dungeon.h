@@ -10,6 +10,7 @@
 #include "Room.h"
 #include "Record.h"
 #include "Ally.h"
+#include "Battle.h"
 
 using namespace std;
 
@@ -27,6 +28,8 @@ public:
     /* Create a map, which include several different rooms */
     void createMap();
 
+    void handleMoveTo(Room* nextRoom);
+
     /* Deal with player's moveing action */
     void handleMovement();
 
@@ -37,11 +40,17 @@ public:
     /* Including create player, create map etc  */
     void startGame();
 
+    void runBattle();
+
+    void runRoom();
+
+    void chooseRoom();
+
     /* Deal with the player's action     */
     /* including showing the action list */
     /* that player can do at that room   */
     /* and dealing with player's input   */
-    void chooseAction(vector<Object*>);
+    void chooseAction();
 
     /* Check whether the game should end or not */
     /* Including player victory, or he/she dead */

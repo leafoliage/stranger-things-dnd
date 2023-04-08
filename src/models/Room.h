@@ -28,6 +28,7 @@ public:
     bool popObject(Object*); /*pop out the specific object, used when the interaction is done*/
 
     void callEnemy(Battle*);
+    bool hasEnemy() const;
 
     /* Set & Get function*/
     void setNorthRoom(Room*);

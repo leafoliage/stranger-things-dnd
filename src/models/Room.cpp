@@ -3,7 +3,9 @@
 Room::Room() {}
 
 Room::Room(string name, bool isExit, int index, vector<Object*> objects)
-    : name(name), isExit(isExit), index(index), objects(objects) {}
+    : name(name), isExit(isExit), index(index), objects(objects),
+    northRoom(NULL), southRoom(NULL), eastRoom(NULL), westRoom(NULL), 
+    innerRoom(NULL), outerRoom(NULL) {}
 
 bool Room::popObject(Object* obj) {
     for (auto it = objects.begin(); it != objects.end(); ++it) {
@@ -25,6 +27,18 @@ void Room::callEnemy(Battle* battle) {
             }
         }
     }
+}
+
+bool Room::hasEnemy() const {
+    for (auto it = objects.begin();it!=objects.end();++it) {
+        if ((*it)->getObjectType()==ObjectType::CHARACTER) {
+            GameCharacter* character = dynamic_cast<GameCharacter*>(*it);
+            if (character && character->getCharacterType()==CharacterType::ENEMY) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 void Room::setNorthRoom(Room* room) {
