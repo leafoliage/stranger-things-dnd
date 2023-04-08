@@ -3,7 +3,7 @@
 int rollDice(int face, bool output) {
     char c;
     if (output) {
-        cout << "Press Enter to roll a dice: ";
+        cout << "Press Enter to roll a dice ノ[•] ";
         while ((c = getchar()) != '\n') {}
     }
     int res = rand() % face + 1;

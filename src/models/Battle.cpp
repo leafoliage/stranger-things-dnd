@@ -7,7 +7,7 @@ Battle::Battle(): end(false) {
 
 void Battle::add(GameCharacter* fighter) {
     if (fighter->getCharacterType() == CharacterType::PLAYER) {
-        cout << "Initiate!" << endl << "Roll your initiative. " << endl;
+        cout << "Initiate!" << endl << "Roll your initiative. ";
     }
     int initiative = fighter->abilityCheck(Ability::DEXTERITY);
     fighters.push_back({initiative, fighter});

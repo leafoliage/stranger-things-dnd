@@ -140,6 +140,9 @@ void Player::listInventory() {
 
 void Player::setCurrentRoom(Room* room) {
     currentRoom = room;
+    if (room->getName().length() > 0) {
+        cout << "You arrived at " << room->getName() << endl;
+    }
 }
 
 void Player::setPreviousRoom(Room* room) {

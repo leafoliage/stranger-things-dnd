@@ -40,9 +40,10 @@ public:
     void setIsExit(bool);
     void setIndex(int);
     void setObjects(vector<Object*>);
-    bool getIsExit();
-    int getIndex();
-    vector<Object*> getObjects();
+    string getName() const;
+    bool getIsExit() const;
+    int getIndex() const;
+    vector<Object*> getObjects() const;
     Room* getUpRoom() const;
     Room* getDownRoom() const;
     Room* getLeftRoom() const;

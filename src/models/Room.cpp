@@ -72,6 +72,22 @@ void Room::setObjects(vector<Object*> objs) {
     objects = objs;
 }
 
+string Room::getName() const {
+    return name;
+}
+
+bool Room::getIsExit() const {
+    return isExit;
+}
+
+int Room::getIndex() const {
+    return index;
+}
+
+vector<Object*> Room::getObjects() const {
+    return objects;
+}
+
 Room* Room::getUpRoom() const {
     return upRoom;
 }
@@ -94,16 +110,4 @@ Room* Room::getInnerRoom() const {
 
 Room* Room::getOuterRoom() const {
     return outerRoom;
-}
-
-bool Room::getIsExit() {
-    return isExit;
-}
-
-int Room::getIndex() {
-    return index;
-}
-
-vector<Object*> Room::getObjects() {
-    return objects;
 }
