@@ -5,6 +5,10 @@ GameCharacter::GameCharacter() {}
 GameCharacter::GameCharacter(string name, int characterType, int maxHp, int currHp, int strength, int dexterity, int constitution, int wisdom): 
     Object(name, ObjectType::CHARACTER), characterType(characterType), maxHp(maxHp), currHp(currHp), strength(strength), dexterity(dexterity), constitution(constitution), wisdom(wisdom) {}
 
+int GameCharacter::getType() {
+    return getObjectType() * TYPE_BOUND +  characterType;
+}
+
 bool GameCharacter::checkIsDead() {
     return currHp <= 0;
 }

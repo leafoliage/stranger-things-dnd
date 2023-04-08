@@ -10,6 +10,10 @@ int Item::useQuality(GameCharacter* user) {
     return quality;
 }
 
+int Item::getType() {
+    return getObjectType() * TYPE_BOUND + itemType * SUBTYPE_BOUND;
+}
+
 void Item::setItemType(int itemType) {
     this->itemType = itemType;
 }

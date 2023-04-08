@@ -23,6 +23,8 @@ public:
     virtual int useQuality(GameCharacter* user) = 0;
     virtual void workOn(GameCharacter* target, GameCharacter* user) = 0;
 
+    int getType();
+
     /* Set & Get function*/
     void setItemType(int);
     void setQuality(int);

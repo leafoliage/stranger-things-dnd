@@ -20,6 +20,7 @@ public:
 
     /* pure virtual function */
     virtual bool triggerEvent(Object*) = 0;
+    virtual int getType();
 
     /* Set & Get function*/
     void setName(string);

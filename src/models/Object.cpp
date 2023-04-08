@@ -5,6 +5,10 @@ Object::Object() {}
 Object::Object(string name, int type):
     name(name), objectType(type) {}
 
+int Object::getType() {
+    return objectType * TYPE_BOUND;
+}
+
 string Object::getName() const {
     return name;
 }

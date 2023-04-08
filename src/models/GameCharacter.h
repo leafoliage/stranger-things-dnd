@@ -28,6 +28,8 @@ public:
     virtual int abilityCheck(int ability);
     virtual Item* getWeapon() = 0;
 
+    int getType();
+
     bool checkIsDead();
     int takeDamage(int);
     int hitCheck(Item* equipment);

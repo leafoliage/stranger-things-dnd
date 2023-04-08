@@ -7,6 +7,9 @@ const int MAX_INVENTORY = 6;
 
 const int ARMOR_CLASS_BASE = 10;
 
+const int TYPE_BOUND = 100;
+const int SUBTYPE_BOUND = 10;
+
 enum ObjectType { CHARACTER, ITEM };
 
 enum CharacterType { PLAYER, NEUTRAL, ALLY, ENEMY };
@@ -14,6 +17,8 @@ enum CharacterType { PLAYER, NEUTRAL, ALLY, ENEMY };
 enum ItemType { WEAPON, ARMOR, PROP };
 
 enum WeaponType { MELEE, RANGE };
+
+enum Type { tPLAYER = 0, tNEUTRAL=1, tALLY=2, tENEMY=3, tMELLE=100, tRANGE=101, tARMOR=110, tPROP=120};
 
 enum Ability { STRENGTH, DEXTERITY, CONSTITUTION, WISDOM };
 

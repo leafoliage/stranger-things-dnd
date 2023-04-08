@@ -28,6 +28,10 @@ bool Weapon::triggerEvent(Object* obj) {
     return true;
 }
 
+int Weapon::getType() {
+    return getObjectType() * TYPE_BOUND + getItemType() * SUBTYPE_BOUND + weaponType;
+}
+
 void Weapon::setWeaponType(int weaponType) {
     this->weaponType = weaponType;
 }

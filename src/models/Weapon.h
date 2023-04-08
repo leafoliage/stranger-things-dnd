@@ -17,6 +17,7 @@ class Weapon: public Item {
         int useQuality(GameCharacter* user);
         void workOn(GameCharacter* target, GameCharacter* user);
         bool triggerEvent(Object*);
+        int getType();
 
         void setWeaponType(int);
         int getWeaponType();
