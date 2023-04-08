@@ -17,7 +17,6 @@ using namespace std;
 class Dungeon{
 private:
     Player player;
-    Ally* ally;
     vector<Room> rooms;
     bool isUpsideDown;
 public:
@@ -58,8 +57,6 @@ public:
 
     /* Deal with the whole game process */
     void runDungeon();
-
-    void setAlly(Ally*);
 
     int inputNumPrompt(int lowbound, int upbound);
 };

@@ -36,6 +36,10 @@ bool Room::hasEnemy() const {
     return false;
 }
 
+void Room::add(Object* obj) {
+    objects.push_back(obj);
+}
+
 void Room::remove(Object* obj) {
     int size = objects.size();
     for (int i=0;i<size;i++) {

@@ -15,6 +15,8 @@ void Dungeon::createPlayer() {
 void Dungeon::createMap() {
     rooms.push_back(
         Room("Home", false, 0, vector<Object*>{
+            new Ally("Nancy Wheeler", new Weapon("gun",RANGE,16,15), 
+                vector<string>{"Hi!"}, 0, 4, 0, 3), 
             new Weapon("bat", WeaponType::MELEE, 20, 5)
         })
     );
@@ -60,6 +62,7 @@ void Dungeon::runBattle() {
     Battle battle(player.getCurrentRoom());
     player.getCurrentRoom()->callEnemy(&battle);
     battle.add(&player);
+    if (player.getAlly()!=NULL) battle.add(player.getAlly());
     battle.initiate();
     while (!battle.ended()) battle.run();
 }

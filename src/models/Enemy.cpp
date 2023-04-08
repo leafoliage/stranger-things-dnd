@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Player.h"
+#include "Ally.h"
 
 Enemy::Enemy() {}
 
@@ -12,6 +13,10 @@ bool Enemy::triggerEvent(Object* obj) {
 
     player->getCurrentRoom()->callEnemy(&battleground);
     battleground.add(player);
+    if (player->getAlly() != NULL) {
+        Ally *ally = player->getAlly();
+        battleground.add(ally);
+    }
     battleground.initiate();
     while (!battleground.ended()) battleground.run();
     return true;

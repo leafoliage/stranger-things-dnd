@@ -8,8 +8,11 @@
 #include "Room.h"
 #include "Item.h"
 #include "Armor.h"
+// #include "Ally.h"
 
 using namespace std;
+
+class Ally;
 
 class Item;
 
@@ -22,6 +25,7 @@ private:
     int job;
     vector<Item*> inventory;
     Armor* armor;
+    Ally* ally;
 public:
     Player();
     Player(string name, int job);
@@ -44,6 +48,7 @@ public:
     bool pay(int money);
     bool acquire(Item*);
     int inputNumPrompt(int lowbound, int upbound);
+    bool inputBoolPrompt();
     void listInventory();
 
     /* Set & Get function*/
@@ -51,12 +56,14 @@ public:
     void setPreviousRoom(Room*);
     void setInventory(vector<Item*>);
     void setMoney(int);
+    void setAlly(Ally*);
     Room* getCurrentRoom() const;
     Room* getPreviousRoom() const;
     vector<Item*> getInventory() const;
     Armor* getArmor() const;
     int getMoney() const;
     int getJob() const;
+    Ally* getAlly() const;
 };
 
 #endif // PLAYER_H_INCLUDED

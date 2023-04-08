@@ -1,22 +1,16 @@
 #include "Player.h"
 
-Player::Player() {
-    this->armor = NULL;
-}
+Player::Player(): armor(NULL), ally(NULL) {}
 
 Player::Player(string name, int job):
     GameCharacter(name,PLAYER,
     MAX_HEALTH+jobAilities[job][CONSTITUTION], MAX_HEALTH+jobAilities[job][CONSTITUTION],
     jobAilities[job][STRENGTH],jobAilities[job][DEXTERITY],
-    jobAilities[job][CONSTITUTION],jobAilities[job][WISDOM]) {
-        this->armor = NULL;
-    }
+    jobAilities[job][CONSTITUTION],jobAilities[job][WISDOM]), armor(NULL), ally(NULL) {}
 
 Player::Player(string name, int strength, int dexterity, int constitution, int wisdom):
     GameCharacter(name,PLAYER,MAX_HEALTH+constitution,MAX_HEALTH+constitution,
-    strength,dexterity,constitution,wisdom) {
-        this->armor = NULL;
-    }
+    strength,dexterity,constitution,wisdom), armor(NULL), ally(NULL) {}
 
 void Player::changeRoom(Room* newRoom) {
     previousRoom = currentRoom;
@@ -129,6 +123,15 @@ int Player::inputNumPrompt(int lowbound, int upbound) {
     return input;
 }
 
+bool Player::inputBoolPrompt() {
+    char c;
+    do {
+        cin >> c; 
+    } while (c!='Y'&&c!='y'&&c!='N'&&c!='n');
+    if (c=='Y'||c=='y') return true;
+    return false;
+}
+
 void Player::listInventory() {
     int i=0;
     cout << "------Inventory------" << endl;
@@ -157,6 +160,10 @@ void Player::setMoney(int money) {
     this->money = money;
 }
 
+void Player::setAlly(Ally* ally) {
+    this->ally = ally;
+}
+
 Room* Player::getCurrentRoom() const {
     return currentRoom;
 }
@@ -179,4 +186,8 @@ int Player::getMoney() const {
 
 int Player::getJob() const {
     return job;
+}
+
+Ally* Player::getAlly() const {
+    return ally;
 }
