@@ -1,5 +1,7 @@
 #include "Dungeon.h"
 
+Dungeon::Dungeon() {}
+
 void Dungeon::createPlayer() {
     string name;
     cout << "What's your name: ";
@@ -23,8 +25,8 @@ void Dungeon::createMap() {
     Enemy vecna("Vecna", new Weapon("Superpower", WeaponType::RANGE,20,0),2,0,4,4);
     Room r2("Lab", true, 2, vector<Object*>{&vecna});
 
-    r0.setUpRoom(&r1);
-    r1.setUpRoom(&r2);
+    r0.setNorthRoom(&r1);
+    r1.setNorthRoom(&r2);
 
     rooms = vector<Room>{r0,r1,r2};
 }

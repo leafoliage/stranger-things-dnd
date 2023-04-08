@@ -13,10 +13,10 @@ class Room
 {
 private:
     string name;
-    Room* upRoom;
-    Room* downRoom;
-    Room* leftRoom;
-    Room* rightRoom;
+    Room* northRoom;
+    Room* southRoom;
+    Room* westRoom;
+    Room* eastRoom;
     Room* innerRoom;
     Room* outerRoom;
     bool isExit;
@@ -30,10 +30,10 @@ public:
     void callEnemy(Battle*);
 
     /* Set & Get function*/
-    void setUpRoom(Room*);
-    void setDownRoom(Room*);
-    void setLeftRoom(Room*);
-    void setRightRoom(Room*);
+    void setNorthRoom(Room*);
+    void setSouthRoom(Room*);
+    void setWestRoom(Room*);
+    void setEastRoom(Room*);
     void setInnerRoom(Room*);
     void setOuterRoom(Room*);
     void setNeighborRoom(Room*, Room*, Room*, Room*, Room*, Room*);
@@ -44,10 +44,10 @@ public:
     bool getIsExit() const;
     int getIndex() const;
     vector<Object*> getObjects() const;
-    Room* getUpRoom() const;
-    Room* getDownRoom() const;
-    Room* getLeftRoom() const;
-    Room* getRightRoom() const;
+    Room* getNorthRoom() const;
+    Room* getSouthRoom() const;
+    Room* getWestRoom() const;
+    Room* getEastRoom() const;
     Room* getInnerRoom() const;
     Room* getOuterRoom() const;
 };

@@ -27,41 +27,37 @@ void Room::callEnemy(Battle* battle) {
     }
 }
 
-void Room::setUpRoom(Room* room) {
-    upRoom = room;
-    room->setDownRoom(this);
+void Room::setNorthRoom(Room* room) {
+    northRoom = room;
+    room->setSouthRoom(this);
 }
 
-void Room::setDownRoom(Room* room) {
-    downRoom = room;
-    room->setUpRoom(this);
+void Room::setSouthRoom(Room* room) {
+    southRoom = room;
 }
 
-void Room::setLeftRoom(Room* room) {
-    leftRoom = room;
-    room->setRightRoom(this);
+void Room::setWestRoom(Room* room) {
+    westRoom = room;
 }
 
-void Room::setRightRoom(Room* room) {
-    rightRoom = room;
-    room->setLeftRoom(this);
+void Room::setEastRoom(Room* room) {
+    eastRoom = room;
 }
 
 void Room::setInnerRoom(Room* room) {
     innerRoom = room;
-    room->setOuterRoom(this);
 }
 
 void Room::setOuterRoom(Room* room) {
     outerRoom = room;
 }
 
-void Room::setNeighborRoom(Room* up, Room* down, Room* left, Room* right, Room* inner, Room* outer) {
-    upRoom = up; up->setDownRoom(this);
-    downRoom = down; down->setUpRoom(this);
-    leftRoom = left; left->setRightRoom(this);
-    rightRoom = right; right->setLeftRoom(this);
-    innerRoom = inner; inner->setOuterRoom(this);
+void Room::setNeighborRoom(Room* north, Room* south, Room* west, Room* east, Room* inner, Room* outer) {
+    northRoom = north; 
+    southRoom = south; 
+    westRoom = west;
+    eastRoom = east;
+    innerRoom = inner;
     outerRoom = outer;
 }
 
@@ -93,20 +89,20 @@ vector<Object*> Room::getObjects() const {
     return objects;
 }
 
-Room* Room::getUpRoom() const {
-    return upRoom;
+Room* Room::getNorthRoom() const {
+    return northRoom;
 }
 
-Room* Room::getDownRoom() const {
-    return downRoom;
+Room* Room::getSouthRoom() const {
+    return southRoom;
 }
 
-Room* Room::getLeftRoom() const {
-    return leftRoom;
+Room* Room::getWestRoom() const {
+    return westRoom;
 }
 
-Room* Room::getRightRoom() const {
-    return rightRoom;
+Room* Room::getEastRoom() const {
+    return eastRoom;
 }
 
 Room* Room::getInnerRoom() const {
