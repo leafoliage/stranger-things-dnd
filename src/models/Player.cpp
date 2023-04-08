@@ -61,7 +61,8 @@ Item* Player::getWeapon() {
     int itemIndex;
     this->listInventory();
     cout << "Choose your weapon: ";
-    itemIndex = this->inputNumPrompt(0,this->getInventory().size());
+    itemIndex = this->inputNumPrompt(-1,this->getInventory().size());
+    if (itemIndex<0) return NULL;
     return this->getInventory()[itemIndex];
 }
 
@@ -135,6 +136,7 @@ bool Player::inputBoolPrompt() {
 void Player::listInventory() {
     int i=0;
     cout << "------Inventory------" << endl;
+    if (inventory.empty()) cout << "-1. bear hand" << endl;
     for (auto it=inventory.begin();it!=inventory.end();++it) {
         cout << i << "- " << (*it)->getName() << endl;
     }
