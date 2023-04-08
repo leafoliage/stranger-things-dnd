@@ -15,7 +15,7 @@ void Dungeon::createPlayer() {
 void Dungeon::createMap() {
     rooms.push_back(
         Room("Home", false, 0, vector<Object*>{
-            new Weapon("bat", WeaponType::MELEE, 12, 5)
+            new Weapon("bat", WeaponType::MELEE, 20, 5)
         })
     );
     
@@ -57,7 +57,7 @@ void Dungeon::startGame() {
 }
 
 void Dungeon::runBattle() {
-    Battle battle;
+    Battle battle(player.getCurrentRoom());
     player.getCurrentRoom()->callEnemy(&battle);
     battle.add(&player);
     battle.initiate();

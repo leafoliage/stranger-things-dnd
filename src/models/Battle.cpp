@@ -5,6 +5,10 @@ Battle::Battle(): end(false) {
     cout << "A battle begins..." << endl;
 }
 
+Battle::Battle(Room* room): end(false), room(room) {
+    cout << "A battle begins..." << endl;
+}
+
 void Battle::add(GameCharacter* fighter) {
     if (fighter->getCharacterType() == CharacterType::PLAYER) {
         cout << "Initiate!" << endl << "Roll your initiative. ";
@@ -56,7 +60,10 @@ void Battle::run() {
         }
         bool dead = attacker->attack(opponent, attacker->getWeapon());
         if (dead) removeFighter(opponent);
-        if (end) break;
+        if (end) {
+            cout << "The battle is over" << endl;
+            break;
+        }
     }
 }
 
@@ -84,6 +91,7 @@ void Battle::removeFighter(GameCharacter* fighter) {
     if (found) {
         cout << fighter->getName() << " died!" << endl;
         fighters.erase(target);
+        room->remove(fighter);
     }
     if (!goodCount || !badCount) end = true;
 }

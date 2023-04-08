@@ -29,6 +29,7 @@ public:
 
     void callEnemy(Battle*);
     bool hasEnemy() const;
+    void remove(Object* obj);
 
     /* Set & Get function*/
     void setNorthRoom(Room*);

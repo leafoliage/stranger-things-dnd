@@ -7,15 +7,19 @@
 #include "GameCharacter.h"
 using namespace std;
 
+class Room;
+
 class Battle {
     private:
         bool end;
         int fighterNumber;
+        Room* room;
         vector< pair<int,GameCharacter*> > fighters;
 
         GameCharacter* findOpponent(GameCharacter* fighter, int initiative);
     public:
         Battle();
+        Battle(Room*);
 
         void add(GameCharacter* fighter);
         void initiate();

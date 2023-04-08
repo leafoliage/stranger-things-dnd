@@ -36,6 +36,15 @@ bool Room::hasEnemy() const {
     return false;
 }
 
+void Room::remove(Object* obj) {
+    int size = objects.size();
+    for (int i=0;i<size;i++) {
+        if (objects[i]==obj) {
+            objects.erase(objects.begin() + i);
+        }
+    }
+}
+
 void Room::setNorthRoom(Room* room) {
     northRoom = room;
     room->setSouthRoom(this);
