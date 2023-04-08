@@ -30,13 +30,8 @@ void Room::callEnemy(Battle* battle) {
 }
 
 bool Room::hasEnemy() const {
-    for (auto it = objects.begin();it!=objects.end();++it) {
-        if ((*it)->getObjectType()==ObjectType::CHARACTER) {
-            GameCharacter* character = dynamic_cast<GameCharacter*>(*it);
-            if (character && character->getCharacterType()==CharacterType::ENEMY) {
-                return true;
-            }
-        }
+    for (int i=0;i<objects.size();i++) {
+        if (objects[i]->getType() == tENEMY) return true;
     }
     return false;
 }

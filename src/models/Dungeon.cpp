@@ -5,7 +5,7 @@ Dungeon::Dungeon() {}
 void Dungeon::createPlayer() {
     string name;
     cout << "What's your name: ";
-    cin >> name;
+    getline(cin, name);
     cout << "0. Basketball Player  1. Guitarist  2. Cheerleader  3. Reporter  4. Scoops Ahoy" << endl;
     cout << "Choose your job: ";
     int job = inputNumPrompt(0,5);
@@ -13,22 +13,31 @@ void Dungeon::createPlayer() {
 }
 
 void Dungeon::createMap() {
-    Weapon bat("bat", WeaponType::MELEE, 12, 5);
-    Room r0("Home", false, 0, vector<Object*>{&bat});
+    rooms.push_back(
+        Room("Home", false, 0, vector<Object*>{
+            new Weapon("bat", WeaponType::MELEE, 12, 5)
+        })
+    );
     
-    Armor gear("Gear", 16, 10);
-    Enemy demodog("Demodog", new Weapon("Claw and Teeth", WeaponType::MELEE, 16, 0), 4, 4, 2, -4);
-    Enemy demogorgon("Demogorgon", new Weapon("Claw", WeaponType::MELEE, 16, 0), 4, 2, 2, -4);
-    NPC jim("Jim Hopper", vector<string>{"Yo kid","wacha doin"}, vector<Item*>{new Weapon("gun",WeaponType::RANGE,16,15)});
-    Room r1("School", false, 1, vector<Object*>{&demodog, &demogorgon, &jim, &gear});
+    rooms.push_back(
+        Room("School", false, 1, vector<Object*>{
+            new Enemy("Demodog", new Weapon("Claw and Teeth", WeaponType::MELEE, 4, 0), 2, 2, 2, -4),
+            // new Enemy("Demogorgon", new Weapon("Claw", WeaponType::MELEE, 8, 0), 2, 1, 2, -4),
+            new NPC("Jim Hopper", vector<string>{"Yo kid","wacha doin"}, vector<Item*>{new Weapon("gun",WeaponType::RANGE,16,15)}),
+            new Armor("Gear", 16, 10),
+        })
+    );
+    
+    rooms.push_back(
+        Room("Lab", true, 2, vector<Object*>{
+            new Enemy("Vecna", new Weapon("Superpower", WeaponType::RANGE,20,0),2,0,4,4)
+        })
+    );
 
-    Enemy vecna("Vecna", new Weapon("Superpower", WeaponType::RANGE,20,0),2,0,4,4);
-    Room r2("Lab", true, 2, vector<Object*>{&vecna});
-
-    r0.setNorthRoom(&r1);
-    r1.setNorthRoom(&r2);
-
-    rooms = vector<Room>{r0,r1,r2};
+    rooms[0].setNorthRoom(&rooms[1]);
+    rooms[1].setSouthRoom(&rooms[0]);
+    rooms[1].setNorthRoom(&rooms[2]);
+    rooms[2].setSouthRoom(&rooms[1]);
 }
 
 void Dungeon::handleMoveTo(Room* nextRoom) {
@@ -56,8 +65,8 @@ void Dungeon::runBattle() {
 }
 
 void Dungeon::runRoom() {
-    while (player.getCurrentRoom()->hasEnemy()) {
-        cout << "Enemy detected! Fight(0) or run(1)? " << endl;
+    while (checkGameLogic() && player.getCurrentRoom()->hasEnemy()) {
+        cout << "Enemy detected! Fight(0) or run(1)? ";
         int run = inputNumPrompt(0,2);
         if (run) {
             handleMoveTo(player.getPreviousRoom());
@@ -65,6 +74,7 @@ void Dungeon::runRoom() {
         }
         runBattle();
     }
+    if (!checkGameLogic()) return;
     chooseAction();
 }
 
@@ -106,28 +116,15 @@ void Dungeon::chooseRoom() {
 
 void Dungeon::chooseAction() {
     Room* room = player.getCurrentRoom();
-    // vector<Object*> actions, objects=room->getObjects();
     vector<Object*> actions=room->getObjects();
-
-    // bool addEnemy = false;
-    // for (auto it=objects.begin();it!=objects.end();++it) {
-    //     if ((*it)->getObjectType()==ObjectType::CHARACTER) {
-    //         if (dynamic_cast<GameCharacter*>(*it)->getCharacterType()==CharacterType::ENEMY) {
-    //             if (!addEnemy) actions.push_back(*it);
-    //             addEnemy = true;
-    //         }
-    //         else actions.push_back(*it);
-    //     }
-    //     else actions.push_back(*it);
-    // }
 
     int i=0;
     cout << "------Actions------" << endl;
-    for (auto it=room->getObjects().begin();it!=room->getObjects().end();++it) {
-        if ((*it)->getObjectType()==ObjectType::CHARACTER) {
-            cout << i++ << ". Interact with " << (*it)->getName() << endl;
+    for (;i<room->getObjects().size();i++) {
+        if ((room->getObjects()[i])->getObjectType() ==ObjectType::CHARACTER) {
+        cout << i << ". Interact with " << (room->getObjects()[i])->getName() << endl;
         }
-        else cout << i++ << ". Pick up " << (*it)->getName() << endl;
+        else cout << i << ". Pick up " << (room->getObjects()[i])->getName() << endl;
     }
     cout << i << ". Move on to other place" << endl;
     cout << "-------------------" << endl;
@@ -148,6 +145,7 @@ void Dungeon::runDungeon() {
     while (checkGameLogic()) {
         runRoom();
     }
+    cout << "Gameover!" << endl;
 }
 
 int Dungeon::inputNumPrompt(int lowbound, int upbound) {

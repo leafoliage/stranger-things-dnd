@@ -64,7 +64,7 @@ void Battle::removeFighter(GameCharacter* fighter) {
     int goodCount = 0, badCount = 0;
     if (!fighter->checkIsDead()) return;
     if (fighter->getCharacterType() == CharacterType::PLAYER) {
-        cout << "You died! Game over" << endl;
+        cout << "You died!" << endl;
         end = true;
         return;
     }
