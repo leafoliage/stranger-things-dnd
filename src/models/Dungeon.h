@@ -51,6 +51,8 @@ public:
     void runDungeon();
 
     void setAlly(Ally*);
+
+    int inputNumPrompt(int lowbound, int upbound);
 };
 
 

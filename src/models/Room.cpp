@@ -29,22 +29,27 @@ void Room::callEnemy(Battle* battle) {
 
 void Room::setUpRoom(Room* room) {
     upRoom = room;
+    room->setDownRoom(this);
 }
 
 void Room::setDownRoom(Room* room) {
     downRoom = room;
+    room->setUpRoom(this);
 }
 
 void Room::setLeftRoom(Room* room) {
     leftRoom = room;
+    room->setRightRoom(this);
 }
 
 void Room::setRightRoom(Room* room) {
     rightRoom = room;
+    room->setLeftRoom(this);
 }
 
 void Room::setInnerRoom(Room* room) {
     innerRoom = room;
+    room->setOuterRoom(this);
 }
 
 void Room::setOuterRoom(Room* room) {
@@ -52,11 +57,11 @@ void Room::setOuterRoom(Room* room) {
 }
 
 void Room::setNeighborRoom(Room* up, Room* down, Room* left, Room* right, Room* inner, Room* outer) {
-    upRoom = up;
-    downRoom = down;
-    leftRoom = left;
-    rightRoom = right;
-    innerRoom = inner;
+    upRoom = up; up->setDownRoom(this);
+    downRoom = down; down->setUpRoom(this);
+    leftRoom = left; left->setRightRoom(this);
+    rightRoom = right; right->setLeftRoom(this);
+    innerRoom = inner; inner->setOuterRoom(this);
     outerRoom = outer;
 }
 
