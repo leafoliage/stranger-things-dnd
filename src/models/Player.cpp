@@ -6,11 +6,12 @@ Player::Player(string name, int job):
     GameCharacter(name,PLAYER,
     MAX_HEALTH+jobAilities[job][CONSTITUTION], MAX_HEALTH+jobAilities[job][CONSTITUTION],
     jobAilities[job][STRENGTH],jobAilities[job][DEXTERITY],
-    jobAilities[job][CONSTITUTION],jobAilities[job][WISDOM]), armor(NULL), ally(NULL) {}
+    jobAilities[job][CONSTITUTION],jobAilities[job][WISDOM]), 
+    armor(NULL), ally(NULL), money(INIT_MONEY) {}
 
 Player::Player(string name, int strength, int dexterity, int constitution, int wisdom):
     GameCharacter(name,PLAYER,MAX_HEALTH+constitution,MAX_HEALTH+constitution,
-    strength,dexterity,constitution,wisdom), armor(NULL), ally(NULL) {}
+    strength,dexterity,constitution,wisdom), armor(NULL), ally(NULL), money(INIT_MONEY) {}
 
 void Player::changeRoom(Room* newRoom) {
     previousRoom = currentRoom;
@@ -40,8 +41,11 @@ bool Player::attack(GameCharacter* rival, Item* equipment) {
     cout << "You hit " << rival->getName() << "!" << endl;
 
     cout << "Now roll the damage. ";
-    if (!equipment) int dam = rollDice(8, true);
-    equipment->workOn(rival, this);
+    if (!equipment) {
+        int dam = rollDice(8, true);
+        rival->takeDamage(dam);
+    }
+    else equipment->workOn(rival, this);
     return rival->checkIsDead();
 }
 

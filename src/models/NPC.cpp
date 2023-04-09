@@ -22,8 +22,8 @@ bool NPC::triggerEvent(Object* obj) {
     bool deal = false;
     while (!deal) {
         cout << "Anything you want to buy? " ;
-        cin >> choice;
-        if (choice < 0 || choice >= commodity.size()) return false;
+        choice = p->inputNumPrompt(0,commodity.size()+1);
+        if (choice >= commodity.size()) return false;
         deal = p->acquire(commodity[choice]);
         if (deal) commodity.erase(commodity.begin() + choice);
     }

@@ -72,6 +72,7 @@ void Dungeon::runRoom() {
         cout << "Enemy detected! Fight(0) or run(1)? ";
         int run = inputNumPrompt(0,2);
         if (run) {
+            cout << "Moving to previous place" << endl;
             handleMoveTo(player.getPreviousRoom());
             return;
         }
