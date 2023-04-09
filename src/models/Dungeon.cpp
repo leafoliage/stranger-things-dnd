@@ -97,6 +97,9 @@ void Dungeon::chooseRoom() {
         }
         cout << endl;
     }
+    if (room->hasSecretRoom()) {
+        cout << i++ << ". Wait, what's that?" << endl;
+    }
     cout << "-----------------------" << endl;
     cout << "Where to go? ";
     int dest = inputNumPrompt(0,i);

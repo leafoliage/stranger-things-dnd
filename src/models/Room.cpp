@@ -5,7 +5,7 @@ Room::Room() {}
 Room::Room(string name, bool isExit, int index, vector<Object*> objects)
     : name(name), isExit(isExit), index(index), objects(objects),
     northRoom(NULL), southRoom(NULL), eastRoom(NULL), westRoom(NULL), 
-    innerRoom(NULL), outerRoom(NULL) {}
+    innerRoom(NULL), outerRoom(NULL), secretRoom(NULL), revealSecret(false) {}
 
 bool Room::popObject(Object* obj) {
     for (auto it = objects.begin(); it != objects.end(); ++it) {
@@ -100,6 +100,10 @@ void Room::setIsExit(bool value) {
     isExit = value;
 }
 
+void Room::setRevealSecret(bool reveal) {
+    revealSecret = reveal;
+}
+
 void Room::setIndex(int value) {
     index = value;
 }
@@ -114,6 +118,10 @@ string Room::getName() const {
 
 bool Room::getIsExit() const {
     return isExit;
+}
+
+bool Room::hasSecretRoom() const {
+    return revealSecret && secretRoom != NULL;
 }
 
 int Room::getIndex() const {
@@ -146,4 +154,9 @@ Room* Room::getInnerRoom() const {
 
 Room* Room::getOuterRoom() const {
     return outerRoom;
+}
+
+Room* Room::getSecretRoom() const {
+    if (revealSecret) return secretRoom;
+    return NULL;
 }

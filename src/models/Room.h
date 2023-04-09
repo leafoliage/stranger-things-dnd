@@ -19,7 +19,9 @@ private:
     Room* westRoom;
     Room* innerRoom;
     Room* outerRoom;
+    Room* secretRoom;
     bool isExit;
+    bool revealSecret;
     int index;
     vector<Object*> objects; /*contain 1 or multiple objects, including monster, npc, etc*/
 public:
@@ -44,8 +46,10 @@ public:
     void setIsExit(bool);
     void setIndex(int);
     void setObjects(vector<Object*>);
+    void setRevealSecret(bool);
     string getName() const;
     bool getIsExit() const;
+    bool hasSecretRoom() const;
     int getIndex() const;
     vector<Object*> getObjects() const;
     Room* getNorthRoom() const;
@@ -54,6 +58,7 @@ public:
     Room* getEastRoom() const;
     Room* getInnerRoom() const;
     Room* getOuterRoom() const;
+    Room* getSecretRoom() const;
 };
 
 #endif // ROOM_H_INCLUDED
