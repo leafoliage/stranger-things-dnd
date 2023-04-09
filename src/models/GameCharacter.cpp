@@ -84,11 +84,7 @@ bool GameCharacter::hostile(GameCharacter* character) {
 }
 
 int GameCharacter::armorClass() {
-    int result = ARMOR_CLASS_BASE + dexterity;
-    if (this->hasEffect(ATTRACT_FIRE)) {
-        result += (result*this->getEffect(ATTRACT_FIRE))/4;
-    }
-    return result;
+    return ARMOR_CLASS_BASE + dexterity;
 }
 
 void GameCharacter::gotEffect(int effect, int time, int power) {

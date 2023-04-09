@@ -1,11 +1,11 @@
 #include "Battle.h"
 #include "Player.h"
 
-Battle::Battle(): end(false) {
+Battle::Battle(): end(false), attraction(NULL) {
     cout << "A battle begins..." << endl;
 }
 
-Battle::Battle(Room* room): end(false), room(room) {
+Battle::Battle(Room* room): end(false), room(room), attraction(NULL) {
     cout << "A battle begins..." << endl;
 }
 
@@ -59,10 +59,10 @@ void Battle::run() {
                 showFighters(false);
                 cout << "Choose your target (index): ";
                 int objectIndex = player->inputNumPrompt(-1,fighterNumber);
-                player->useSkillOn(fighters[objectIndex].second);
+                GameCharacter* target = fighters[objectIndex].second;
+                player->useSkillOn(target);
+                if (target->hasEffect(ATTRACT_FIRE)) attraction = target;
             }
-
-            if (attacker->hasEffect(ATTRACT_FIRE)) attraction = attacker;
 
             showFighters(false);
             cout << "Choose your target (index), or input -1 to retreat: ";
@@ -121,7 +121,7 @@ void Battle::terminate(bool lose) {
 }
 
 GameCharacter* Battle::findOpponent(GameCharacter* fighter, int initiative) {
-    // if has attraction, return attraction
+    if (attraction != NULL) return attraction;
     GameCharacter *opponent = NULL;
     int minScore=INT32_MAX;
     for (auto it=fighters.begin();it!=fighters.end();++it) {
