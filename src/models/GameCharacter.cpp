@@ -13,7 +13,8 @@ bool GameCharacter::checkIsDead() {
     return currHp <= 0;
 }
 
-int GameCharacter::takeDamage(int damage) {
+int GameCharacter::takeDamage(int damage, GameCharacter* attacker) {
+    if (attacker->hasEffect(DOUBLE_DAMAGE)) damage *= 2;
     currHp -= damage;
     if (currHp < 0) {
         currHp = 0;
@@ -29,16 +30,21 @@ bool GameCharacter::attack(GameCharacter* rival, Item* equipment) {
         return false;
     }
     if (!equipment) {
-        rival->takeDamage(rollDice(this->strength+this->dexterity, false));
+        rival->takeDamage(rollDice(this->strength+this->dexterity, false),this);
     }
     else equipment->workOn(rival, this);
     return rival->checkIsDead();
 }
 
 int GameCharacter::abilityCheck(int ability) {
-    if (ability < 0 || ability >= 4) return rollDice(20, false);
+    int res = rollDice(20, characterType==CharacterType::PLAYER);
+    if (this->hasEffect(BETTER_DICE)) {
+        int res2 = rollDice(20, characterType==CharacterType::PLAYER);
+        res = res2 > res ? res2: res;
+    }
+    if (ability < 0 || ability >= 4) return res;
     int abilities[4] = { strength, dexterity, constitution, wisdom };
-    return rollDice(20, false) + abilities[ability];
+    return res + abilities[ability];
 }
 
 int GameCharacter::hitCheck(Item* equipment) {
@@ -54,18 +60,35 @@ int GameCharacter::hitCheck(Item* equipment) {
 }
 
 bool GameCharacter::hostile(GameCharacter* character) {
+    bool reverse = this->hasEffect(PUPPETIZED);
     int type1 = this->getCharacterType(), type2 = character->getCharacterType();
-    // return (type1!=type2) && (type1*type2>=3);
-    if (type1 >= CharacterType::ENEMY) return type2 < CharacterType::ENEMY;
-    return type2 >= CharacterType::ENEMY;
+    bool result;
+    if (type1 >= CharacterType::ENEMY) result = type2 < CharacterType::ENEMY;
+    else result = type2 >= CharacterType::ENEMY;
+    return reverse ? !result: result;
 }
 
 int GameCharacter::armorClass() {
-    return ARMOR_CLASS_BASE + dexterity;
+    int result = ARMOR_CLASS_BASE + dexterity;
+    if (this->hasEffect(ATTRACT_FIRE)) {
+        result += (result*this->getEffect(ATTRACT_FIRE))/4;
+    }
+    return result;
 }
 
-void GameCharacter::setCharacterType(int characterType) {
-    this->characterType = characterType;
+void GameCharacter::gotEffect(int effect, int time, int power) {
+    return this->effect.add(effect,time,power);
+}
+
+bool GameCharacter::hasEffect(int effect) {
+    return this->effect.getTime(effect) > 0;
+}
+int GameCharacter::getEffect(int effect) {
+    if (effect==CLOCKED) return this->effect.getTime(effect);
+    return this->effect.getPower(effect);
+}
+void GameCharacter::effectElapse() {
+    return effect.elapse();
 }
 
 void GameCharacter::setMaxHp(int maxHp) {

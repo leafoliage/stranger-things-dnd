@@ -15,6 +15,8 @@ const int INIT_MONEY = 10;
 const int TYPE_BOUND = 100;
 const int SUBTYPE_BOUND = 10;
 
+const int EFFECT_AMOUNT = 7;
+
 enum ObjectType { CHARACTER, ITEM };
 
 enum CharacterType { PLAYER, NEUTRAL, ALLY, ENEMY };
@@ -33,7 +35,7 @@ const int jobAilities[5][4] = {
     {3,1,-2,-2}, {1,-2,3,-2}, {1,3,-2,-2}, {-2,-2,1,3}, {0,0,0,0}
 };
 
-enum Effect { CURE, REFRESH, SOLIDIFY, BURN, FREEZE, POISON };
+enum EffectType { DOUBLE_DAMAGE, ATTRACT_FIRE, DODGE, CURED, BETTER_DICE, PUPPETIZED, CLOCKED };
 
 enum Direction { NORTH, SOUTH, EAST, WEST, IN, OUT};
 

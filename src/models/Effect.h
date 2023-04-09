@@ -2,18 +2,20 @@
 #define EFFECT_H_INCLUDED
 
 #include <string>
+#include "enums.h"
 using namespace std;
 
 class Effect {
     private:
-        string name;
-        int effectType;
-        int level;
-        int time;
-
+        int time[EFFECT_AMOUNT];
+        int power[EFFECT_AMOUNT];
     public:
         Effect();
-        Effect(string name, int effectType, int level, int time);
+        void add(int effect, int time, int power);
+        int getTime(int effect);
+        int getPower(int effect);
+        void elapse();
+        void setZero();
 };
 
 #endif // EFFECT_H_INCLUDED

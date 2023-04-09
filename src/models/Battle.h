@@ -15,6 +15,7 @@ class Battle {
         int fighterNumber;
         Room* room;
         vector< pair<int,GameCharacter*> > fighters;
+        GameCharacter* attraction;
 
         GameCharacter* findOpponent(GameCharacter* fighter, int initiative);
     public:
@@ -26,7 +27,7 @@ class Battle {
         void showFighters(bool initiative);
         void run();
         void removeFighter(GameCharacter* fighter);
-        void terminate();
+        void terminate(bool lose);
 
         bool ended() const;
 };

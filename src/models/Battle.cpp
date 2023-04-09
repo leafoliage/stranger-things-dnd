@@ -42,24 +42,37 @@ void Battle::showFighters(bool initiative) {
 void Battle::run() {
     for (auto it=fighters.begin();it!=fighters.end();++it) {
         GameCharacter *attacker = it->second, *opponent;
+        if (attacker->hasEffect(CLOCKED) && attacker->getEffect(CLOCKED)==1) {
+            fighters.erase(it);
+            attacker = it->second;
+        }
+
+        if (attraction == attacker) attraction = NULL;
+        if (attacker->hasEffect(CURED)) attacker->setCurrHp(attacker->getCurrHp() + attacker->getEffect(CURED));
+        
         if (attacker->getCharacterType() == CharacterType::PLAYER) {
             cout << "Your turn!" << endl;
+
+            // ask if use skill
+
+            if (attacker->hasEffect(ATTRACT_FIRE)) attraction = attacker;
+
             showFighters(false);
             cout << "Choose your target (index), or input -1 to retreat: ";
             
             int objectIndex = dynamic_cast<Player*>(attacker)->inputNumPrompt(-1,fighterNumber);
-            if (objectIndex<0) {
-                cout << "Guys! Retreat!" << endl;
-                terminate();
-                break;
-            }
+            if (objectIndex<0) return terminate(false);
             opponent = fighters[objectIndex].second;
         } else {
             opponent = this->findOpponent(attacker, it->first);
             if (opponent == NULL) break;
         }
+        
         bool dead = attacker->attack(opponent, attacker->getWeapon());
         if (dead) removeFighter(opponent);
+
+        attacker->effectElapse();
+
         if (end) {
             cout << "The battle is over" << endl;
             break;
@@ -70,11 +83,7 @@ void Battle::run() {
 void Battle::removeFighter(GameCharacter* fighter) {
     int goodCount = 0, badCount = 0;
     if (!fighter->checkIsDead()) return;
-    if (fighter->getCharacterType() == CharacterType::PLAYER) {
-        cout << "You died!" << endl;
-        end = true;
-        return;
-    }
+    if (fighter->getCharacterType() == CharacterType::PLAYER) return terminate(true);
 
     bool found = false;
     auto it=fighters.begin(), target = fighters.begin();
@@ -96,11 +105,15 @@ void Battle::removeFighter(GameCharacter* fighter) {
     if (!goodCount || !badCount) end = true;
 }
 
-void Battle::terminate() {
+void Battle::terminate(bool lose) {
+    if (lose) cout << "You died!" << endl;
+    else cout << "Guys! Retreat!" << endl;
     end = true;
+    return;
 }
 
 GameCharacter* Battle::findOpponent(GameCharacter* fighter, int initiative) {
+    // if has attraction, return attraction
     GameCharacter *opponent = NULL;
     int minScore=INT32_MAX;
     for (auto it=fighters.begin();it!=fighters.end();++it) {

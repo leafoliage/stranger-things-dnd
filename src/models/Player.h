@@ -39,7 +39,6 @@ public:
     bool triggerEvent(Object*);
     bool attack(GameCharacter* rival, Item* equipment);
     int armorClass();
-    int abilityCheck(int ability);
     Item* getWeapon();
 
     void take(Item*);

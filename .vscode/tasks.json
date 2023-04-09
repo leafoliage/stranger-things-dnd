@@ -49,6 +49,7 @@
                 "models/Battle.cpp",
                 "models/Dice.cpp",
                 "models/Dungeon.cpp",
+                "models/Effect.cpp",
                 "models/Enemy.cpp",
                 "models/GameCharacter.cpp",
                 "models/Item.cpp",

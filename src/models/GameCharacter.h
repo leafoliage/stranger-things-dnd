@@ -7,6 +7,7 @@
 #include "Item.h"
 #include "Weapon.h"
 #include "Armor.h"
+#include "Effect.h"
 using namespace std;
 
 class GameCharacter: public Object
@@ -19,6 +20,7 @@ private:
     int dexterity;
     int constitution;
     int wisdom;
+    Effect effect;
 public:
     GameCharacter();
     GameCharacter(string name, int characterType, int maxHp, int currHp, int strength, int dexterity, int constitution, int wisdom);
@@ -27,16 +29,20 @@ public:
     virtual int armorClass();
     virtual int abilityCheck(int ability);
     virtual Item* getWeapon() = 0;
+    virtual int takeDamage(int,GameCharacter*);
 
     int getType();
 
     bool checkIsDead();
-    int takeDamage(int);
     int hitCheck(Item* equipment);
     bool hostile(GameCharacter*);
 
+    void gotEffect(int effect, int time, int power);
+    bool hasEffect(int);
+    int getEffect(int);
+    void effectElapse();
+
     /* Set & Get function*/
-    void setCharacterType(int);
     void setMaxHp(int);
     void setCurrHp(int);
     void setStrength(int);

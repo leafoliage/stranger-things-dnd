@@ -15,7 +15,7 @@ int Weapon::useQuality(GameCharacter* user) {
 
 void Weapon::workOn(GameCharacter* target, GameCharacter* user) {
     int damage = this->useQuality(user);
-    target->takeDamage(damage);
+    target->takeDamage(damage,user);
     cout << target->getName() << " lost " << damage << " hp!" << endl;
 }
 

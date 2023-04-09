@@ -43,22 +43,18 @@ bool Player::attack(GameCharacter* rival, Item* equipment) {
     cout << "Now roll the damage. ";
     if (!equipment) {
         int dam = rollDice(8, true);
-        rival->takeDamage(dam);
+        rival->takeDamage(dam,this);
     }
     else equipment->workOn(rival, this);
     return rival->checkIsDead();
 }
 
 int Player::armorClass() {
-    if (!armor) return ARMOR_CLASS_BASE + getDexterity();
-    return armor->useQuality(this);
-}
-
-int Player::abilityCheck(int ability) {
-    int rolled = rollDice(20, true);
-    if (ability < 0 || ability >= 4) return rolled;
-    int abilities[4] = { getStrength(), getDexterity(), getConstitution(), getWisdom() };
-    return rolled + abilities[ability];
+    int result = armor ? armor->useQuality(this) : ARMOR_CLASS_BASE + getDexterity();
+    if (this->hasEffect(ATTRACT_FIRE)) {
+        result += (result*this->getEffect(ATTRACT_FIRE))/4;
+    }
+    return result;
 }
 
 Item* Player::getWeapon() {
