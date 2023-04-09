@@ -6,7 +6,8 @@ Player::Player(string name, int job):
     GameCharacter(name,PLAYER,
     MAX_HEALTH+jobAilities[job][CONSTITUTION], MAX_HEALTH+jobAilities[job][CONSTITUTION],
     jobAilities[job][STRENGTH],jobAilities[job][DEXTERITY],
-    jobAilities[job][CONSTITUTION],jobAilities[job][WISDOM]), 
+    jobAilities[job][CONSTITUTION],jobAilities[job][WISDOM],
+    Skill(jobSkills[job][0],jobSkills[job][1],jobSkills[job][2])), 
     armor(NULL), ally(NULL), money(INIT_MONEY) {}
 
 Player::Player(string name, int strength, int dexterity, int constitution, int wisdom):
@@ -64,6 +65,12 @@ Item* Player::getWeapon() {
     itemIndex = this->inputNumPrompt(-1,this->getInventory().size());
     if (itemIndex<0) return NULL;
     return this->getInventory()[itemIndex];
+}
+
+bool Player::wantUseSkill() {
+    if (!skillAvailable()) return false;
+    cout << "Do you want to use your skill? (Y/n) ";
+    return inputBoolPrompt();
 }
 
 void Player::take(Item* item) {

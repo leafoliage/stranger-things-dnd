@@ -16,6 +16,7 @@ void Battle::add(GameCharacter* fighter) {
     int initiative = fighter->abilityCheck(Ability::DEXTERITY);
     fighters.push_back({initiative, fighter});
     fighterNumber++;
+    fighter->skillCoolDown();
 }
 
 bool cmp(pair<int,GameCharacter*> a, pair<int,GameCharacter*> b) {
@@ -51,23 +52,30 @@ void Battle::run() {
         if (attacker->hasEffect(CURED)) attacker->setCurrHp(attacker->getCurrHp() + attacker->getEffect(CURED));
         
         if (attacker->getCharacterType() == CharacterType::PLAYER) {
+            Player *player = dynamic_cast<Player*>(attacker);
             cout << "Your turn!" << endl;
 
-            // ask if use skill
+            if (player->wantUseSkill()) {
+                showFighters(false);
+                cout << "Choose your target (index): ";
+                int objectIndex = player->inputNumPrompt(-1,fighterNumber);
+                player->useSkillOn(fighters[objectIndex].second);
+            }
 
             if (attacker->hasEffect(ATTRACT_FIRE)) attraction = attacker;
 
             showFighters(false);
             cout << "Choose your target (index), or input -1 to retreat: ";
             
-            int objectIndex = dynamic_cast<Player*>(attacker)->inputNumPrompt(-1,fighterNumber);
+            int objectIndex = player->inputNumPrompt(-1,fighterNumber);
             if (objectIndex<0) return terminate(false);
             opponent = fighters[objectIndex].second;
         } else {
             opponent = this->findOpponent(attacker, it->first);
             if (opponent == NULL) break;
+            if (attacker->wantUseSkill()) attacker->useSkillOn(opponent);
         }
-        
+
         bool dead = attacker->attack(opponent, attacker->getWeapon());
         if (dead) removeFighter(opponent);
 

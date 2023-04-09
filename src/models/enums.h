@@ -37,6 +37,10 @@ const int jobAilities[5][4] = {
 
 enum EffectType { DOUBLE_DAMAGE, ATTRACT_FIRE, DODGE, CURED, BETTER_DICE, PUPPETIZED, CLOCKED };
 
+const int jobSkills[5][3] = {
+    {DOUBLE_DAMAGE,1,0}, {ATTRACT_FIRE,1,2}, {DODGE,1,0}, {CURED,2,3}, {BETTER_DICE,1,0}
+};
+
 enum Direction { NORTH, SOUTH, EAST, WEST, IN, OUT};
 
 const string Direct[6] = {"North", "South", "East", "West", "In", "Out"};

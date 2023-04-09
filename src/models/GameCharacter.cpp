@@ -2,8 +2,17 @@
 
 GameCharacter::GameCharacter() {}
 
-GameCharacter::GameCharacter(string name, int characterType, int maxHp, int currHp, int strength, int dexterity, int constitution, int wisdom): 
-    Object(name, ObjectType::CHARACTER), characterType(characterType), maxHp(maxHp), currHp(currHp), strength(strength), dexterity(dexterity), constitution(constitution), wisdom(wisdom) {}
+GameCharacter::GameCharacter(string name, int characterType, int maxHp, int currHp, int strength, 
+int dexterity, int constitution, int wisdom): 
+    Object(name, ObjectType::CHARACTER), characterType(characterType), maxHp(maxHp), 
+    currHp(currHp), strength(strength), dexterity(dexterity), constitution(constitution), 
+    wisdom(wisdom) {}
+
+GameCharacter::GameCharacter(string name, int characterType, int maxHp, int currHp, int strength, 
+int dexterity, int constitution, int wisdom, Skill skill): 
+    Object(name, ObjectType::CHARACTER), characterType(characterType), maxHp(maxHp), 
+    currHp(currHp), strength(strength), dexterity(dexterity), constitution(constitution), 
+    wisdom(wisdom), skill(skill) {}
 
 int GameCharacter::getType() {
     return getObjectType() * TYPE_BOUND +  characterType;
@@ -22,6 +31,10 @@ int GameCharacter::takeDamage(int damage, GameCharacter* attacker) {
         currHp = 0;
     }
     return currHp;
+}
+
+bool GameCharacter::wantUseSkill() {
+    return currHp <= maxHp/2;
 }
 
 bool GameCharacter::attack(GameCharacter* rival, Item* equipment) {
@@ -91,6 +104,22 @@ int GameCharacter::getEffect(int effect) {
 }
 void GameCharacter::effectElapse() {
     return effect.elapse();
+}
+
+void GameCharacter::useSkillOn(GameCharacter* character) {
+    skill.workOn(character);
+}
+
+bool GameCharacter::skillAvailable() {
+    return skill.available();
+}
+
+void GameCharacter::skillCoolDown() {
+    skill.coolDown();
+}
+
+void GameCharacter::upgradeSkill() {
+    skill.upgrade();
 }
 
 void GameCharacter::setMaxHp(int maxHp) {

@@ -40,6 +40,7 @@ public:
     bool attack(GameCharacter* rival, Item* equipment);
     int armorClass();
     Item* getWeapon();
+    bool wantUseSkill();
 
     void take(Item*);
     void wear(Armor*);

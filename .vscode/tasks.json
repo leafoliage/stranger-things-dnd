@@ -58,6 +58,7 @@
                 "models/Player.cpp",
                 "models/Record.cpp",
                 "models/Room.cpp",
+                "models/Skill.cpp",
                 "models/Weapon.cpp",
                 "-o",
                 "${fileWorkspaceFolder}/build/stdnd"
