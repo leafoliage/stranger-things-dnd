@@ -13,6 +13,13 @@ class Room
 {
 private:
     string name;
+    bool isExit;
+    bool revealSecret;
+    bool visited;
+    int index;
+    vector<Object*> objects;
+    vector<string> plots;
+
     Room* northRoom;
     Room* southRoom;
     Room* eastRoom;
@@ -20,13 +27,9 @@ private:
     Room* innerRoom;
     Room* outerRoom;
     Room* secretRoom;
-    bool isExit;
-    bool revealSecret;
-    int index;
-    vector<Object*> objects; /*contain 1 or multiple objects, including monster, npc, etc*/
 public:
     Room();
-    Room(string name, bool isExit, int index, vector<Object*> objects);
+    Room(string name, bool isExit, int index, vector<Object*> objects, vector<string> plots);
     bool popObject(Object*); /*pop out the specific object, used when the interaction is done*/
 
     void callEnemy(Battle*);
@@ -34,6 +37,7 @@ public:
     void add(Object* obj);
     void remove(Object* obj);
     Room* getRoom(int direction);
+    void readPlots();
 
     /* Set & Get function*/
     void setNorthRoom(Room*);

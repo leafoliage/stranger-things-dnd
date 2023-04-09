@@ -2,10 +2,10 @@
 
 Room::Room() {}
 
-Room::Room(string name, bool isExit, int index, vector<Object*> objects)
-    : name(name), isExit(isExit), index(index), objects(objects),
+Room::Room(string name, bool isExit, int index, vector<Object*> objects, vector<string> plots)
+    : name(name), isExit(isExit), index(index), objects(objects), plots(plots),
     northRoom(NULL), southRoom(NULL), eastRoom(NULL), westRoom(NULL), 
-    innerRoom(NULL), outerRoom(NULL), secretRoom(NULL), revealSecret(false) {}
+    innerRoom(NULL), outerRoom(NULL), secretRoom(NULL), revealSecret(false), visited(false) {}
 
 bool Room::popObject(Object* obj) {
     for (auto it = objects.begin(); it != objects.end(); ++it) {
@@ -59,6 +59,14 @@ Room* Room::getRoom(int direction) {
     case Direction::IN: return innerRoom;
     case Direction::OUT: return outerRoom;
     default: return NULL;
+    }
+}
+
+void Room::readPlots() {
+    if (visited || plots.empty()) return;
+    visited = true;
+    for (auto it=plots.begin();it!=plots.end();++it) {
+        cout << *it << endl;
     }
 }
 

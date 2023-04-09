@@ -18,6 +18,8 @@ void Dungeon::createMap() {
             new Ally("Nancy Wheeler", new Weapon("gun",RANGE,16,15), 
                 vector<string>{"Hi!"}, 0, 4, 0, 3), 
             new Weapon("bat", WeaponType::MELEE, 20, 5)
+        }, vector<string>{
+            "Welcome to Hawkins", "Please find out where Eleven is"
         })
     );
     
@@ -27,12 +29,18 @@ void Dungeon::createMap() {
             // new Enemy("Demogorgon", new Weapon("Claw", WeaponType::MELEE, 8, 0), 2, 1, 2, -4),
             new NPC("Jim Hopper", vector<string>{"Yo kid","wacha doin"}, vector<Item*>{new Weapon("gun",WeaponType::RANGE,16,15)}),
             new Armor("Gear", 16, 10),
+        }, vector<string>{
+            "Hawkins High is as busy as usual,", "You see your friend Jim coming from far",
+            "Jim: Yo man", "Jim: Wacha doin"
         })
     );
     
     rooms.push_back(
         Room("Lab", true, 2, vector<Object*>{
             new Enemy("Vecna", new Weapon("Superpower", WeaponType::RANGE,20,0),2,0,4,4)
+        }, vector<string>{
+            "You can feel it, the pressure from him",
+            "He looks at you with a grim face"
         })
     );
 
@@ -68,6 +76,7 @@ void Dungeon::runBattle() {
 }
 
 void Dungeon::runRoom() {
+    player.getCurrentRoom()->readPlots();
     while (checkGameLogic() && player.getCurrentRoom()->hasEnemy()) {
         cout << "Enemy detected! Fight(0) or run(1)? ";
         int run = inputNumPrompt(0,2);
