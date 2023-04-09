@@ -14,7 +14,9 @@ bool GameCharacter::checkIsDead() {
 }
 
 int GameCharacter::takeDamage(int damage, GameCharacter* attacker) {
+    if (this->hasEffect(DODGE)) return currHp;
     if (attacker->hasEffect(DOUBLE_DAMAGE)) damage *= 2;
+    cout << this->getName() << " lost " << damage << " hp!" << endl;
     currHp -= damage;
     if (currHp < 0) {
         currHp = 0;
