@@ -1,6 +1,9 @@
 #ifndef ENUM_H_INCLUDED
 #define ENUM_H_INCLUDED
 
+#include "string"
+using namespace std;
+
 const int MAX_HEALTH = 25;
 
 const int MAX_INVENTORY = 6;
@@ -31,5 +34,9 @@ const int jobAilities[5][4] = {
 };
 
 enum Effect { CURE, REFRESH, SOLIDIFY, BURN, FREEZE, POISON };
+
+enum Direction { NORTH, SOUTH, EAST, WEST, IN, OUT};
+
+const string Direct[6] = {"North", "South", "East", "West", "In", "Out"};
 
 #endif // ENUM_H_INCLUDED

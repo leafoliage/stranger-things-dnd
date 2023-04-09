@@ -15,8 +15,8 @@ private:
     string name;
     Room* northRoom;
     Room* southRoom;
-    Room* westRoom;
     Room* eastRoom;
+    Room* westRoom;
     Room* innerRoom;
     Room* outerRoom;
     bool isExit;
@@ -31,6 +31,7 @@ public:
     bool hasEnemy() const;
     void add(Object* obj);
     void remove(Object* obj);
+    Room* getRoom(int direction);
 
     /* Set & Get function*/
     void setNorthRoom(Room*);

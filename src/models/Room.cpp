@@ -49,6 +49,19 @@ void Room::remove(Object* obj) {
     }
 }
 
+Room* Room::getRoom(int direction) {
+    switch (direction)
+    {
+    case Direction::NORTH: return northRoom;
+    case Direction::SOUTH: return southRoom;
+    case Direction::EAST: return eastRoom;
+    case Direction::WEST: return westRoom;
+    case Direction::IN: return innerRoom;
+    case Direction::OUT: return outerRoom;
+    default: return NULL;
+    }
+}
+
 void Room::setNorthRoom(Room* room) {
     northRoom = room;
     room->setSouthRoom(this);

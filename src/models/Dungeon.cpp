@@ -88,29 +88,14 @@ void Dungeon::chooseRoom() {
 
     int i=0;
     cout << "------Direction------" << endl;
-    if (room->getNorthRoom()!=NULL) {
-        destination.push_back(room->getNorthRoom());
-        cout << i++ << ". Go North" << endl;
-    }
-    if (room->getSouthRoom()!=NULL) {
-        destination.push_back(room->getSouthRoom());
-        cout << i++ << ". Go South" << endl;
-    }
-    if (room->getEastRoom()!=NULL) {
-        destination.push_back(room->getEastRoom());
-        cout << i++ << ". Go East" << endl;
-    }
-    if (room->getWestRoom()!=NULL) {
-        destination.push_back(room->getWestRoom());
-        cout << i++ << ". Go West" << endl;
-    }
-    if (room->getInnerRoom()!=NULL) {
-        destination.push_back(room->getInnerRoom());
-        cout << i++ << ". Go Inner" << endl;
-    }
-    if (room->getOuterRoom()!=NULL) {
-        destination.push_back(room->getOuterRoom());
-        cout << i++ << ". Go Outer" << endl;
+    for (i=0;i<6;i++) {
+        if (room->getRoom(i)==NULL) continue;
+        destination.push_back(room->getRoom(i));
+        cout << i << ". Go " << Direct[i] << " "; 
+        if (room->getRoom(i)->getName().length()>0) {
+            cout << "(" << room->getRoom(i)->getName() <<")";
+        }
+        cout << endl;
     }
     cout << "-----------------------" << endl;
     cout << "Where to go? ";
