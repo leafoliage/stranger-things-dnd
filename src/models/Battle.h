@@ -15,9 +15,10 @@ class Battle {
         int fighterNumber;
         Room* room;
         vector< pair<int,GameCharacter*> > fighters;
-        GameCharacter* attraction;
 
+        int chooseAction(Player* player);
         GameCharacter* findOpponent(GameCharacter* fighter, int initiative);
+        GameCharacter* chooseTarget(Player* player);
     public:
         Battle();
         Battle(Room*);

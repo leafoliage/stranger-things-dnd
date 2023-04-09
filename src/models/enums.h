@@ -45,4 +45,8 @@ enum Direction { NORTH, SOUTH, EAST, WEST, IN, OUT};
 
 const string Direct[6] = {"North", "South", "East", "West", "In", "Out"};
 
+const int BATTLE_ACTIONS = 2;
+const string battleActions[BATTLE_ACTIONS] = { "Retreat", "Attack" };
+enum BATTLEACTION { RETREAT, ATTACK, USESKILL };
+
 #endif // ENUM_H_INCLUDED

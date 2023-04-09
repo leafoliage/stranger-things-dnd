@@ -1,11 +1,11 @@
 #include "Battle.h"
 #include "Player.h"
 
-Battle::Battle(): end(false), attraction(NULL) {
+Battle::Battle(): end(false) {
     cout << "A battle begins..." << endl;
 }
 
-Battle::Battle(Room* room): end(false), room(room), attraction(NULL) {
+Battle::Battle(Room* room): end(false), room(room) {
     cout << "A battle begins..." << endl;
 }
 
@@ -29,6 +29,7 @@ void Battle::initiate() {
 }
 
 void Battle::showFighters(bool initiative) {
+    cout << endl;
     if (initiative) cout << "------Initiative------" << endl;
     else cout << "------Fighter Hp------" << endl;
     int i=0;
@@ -42,42 +43,42 @@ void Battle::showFighters(bool initiative) {
 
 void Battle::run() {
     for (auto it=fighters.begin();it!=fighters.end();++it) {
-        GameCharacter *attacker = it->second, *opponent;
+        GameCharacter *attacker = it->second, *target;
         if (attacker->hasEffect(CLOCKED) && attacker->getEffect(CLOCKED)==1) {
             fighters.erase(it);
             attacker = it->second;
         }
 
-        if (attraction == attacker) attraction = NULL;
         if (attacker->hasEffect(CURED)) attacker->setCurrHp(attacker->getCurrHp() + attacker->getEffect(CURED));
-        
+
         if (attacker->getCharacterType() == CharacterType::PLAYER) {
+            bool roundEnd = false;
             Player *player = dynamic_cast<Player*>(attacker);
             cout << "Your turn!" << endl;
 
-            if (player->wantUseSkill()) {
-                showFighters(false);
-                cout << "Choose your target (index): ";
-                int objectIndex = player->inputNumPrompt(-1,fighterNumber);
-                GameCharacter* target = fighters[objectIndex].second;
-                player->useSkillOn(target);
-                if (target->hasEffect(ATTRACT_FIRE)) attraction = target;
+            while (!roundEnd) {
+                int action = chooseAction(player);
+
+                if (action==RETREAT) return terminate(false);
+
+                target = chooseTarget(player);
+
+                if (action==ATTACK) {
+                    bool dead = attacker->attack(target, attacker->getWeapon());
+                    if (dead) removeFighter(target);
+                    roundEnd = true;
+                }
+                else if (action==USESKILL) {
+                    player->useSkillOn(target);
+                }
             }
-
-            showFighters(false);
-            cout << "Choose your target (index), or input -1 to retreat: ";
-            
-            int objectIndex = player->inputNumPrompt(-1,fighterNumber);
-            if (objectIndex<0) return terminate(false);
-            opponent = fighters[objectIndex].second;
         } else {
-            opponent = this->findOpponent(attacker, it->first);
-            if (opponent == NULL) break;
-            if (attacker->wantUseSkill()) attacker->useSkillOn(opponent);
+            target = this->findOpponent(attacker, it->first);
+            if (target == NULL) break;
+            if (attacker->wantUseSkill()) attacker->useSkillOn(target);
+            bool dead = attacker->attack(target, attacker->getWeapon());
+            if (dead) removeFighter(target);
         }
-
-        bool dead = attacker->attack(opponent, attacker->getWeapon());
-        if (dead) removeFighter(opponent);
 
         attacker->effectElapse();
 
@@ -86,6 +87,26 @@ void Battle::run() {
             break;
         }
     }
+}
+
+int Battle::chooseAction(Player* player) {
+    cout << endl;
+    cout << "------Actions------" << endl;
+    int i=0;
+    for (;i<2;i++) {
+        cout << i << ". " << battleActions[i] << endl;
+    }
+    if (player->skillAvailable()) cout << i++ << ". Use skill" << endl;
+    cout << "-------------------" << endl;
+    cout << "Choose your action: ";
+    return player->inputNumPrompt(0,i);
+}
+
+GameCharacter* Battle::chooseTarget(Player* player) {
+    showFighters(false);
+    cout << "Choose your target (index): ";
+    int objectIndex = player->inputNumPrompt(0,fighterNumber);
+    return fighters[objectIndex].second;
 }
 
 void Battle::removeFighter(GameCharacter* fighter) {
@@ -121,20 +142,20 @@ void Battle::terminate(bool lose) {
 }
 
 GameCharacter* Battle::findOpponent(GameCharacter* fighter, int initiative) {
-    if (attraction != NULL) return attraction;
-    GameCharacter *opponent = NULL;
+    GameCharacter *target = NULL;
     int minScore=INT32_MAX;
     for (auto it=fighters.begin();it!=fighters.end();++it) {
         if (fighter->hostile(it->second)) {
+            if (it->second->hasEffect(ATTRACT_FIRE)) return it->second;
             int score = it->first-initiative;
             if (score<0) score = -score;
             if (score < minScore) {
-                opponent = it->second;
+                target = it->second;
                 minScore = score;
             }
         }
     }
-    return opponent;
+    return target;
 }
 
 bool Battle::ended() const {
