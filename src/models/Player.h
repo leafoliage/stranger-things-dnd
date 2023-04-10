@@ -64,6 +64,8 @@ public:
     int getMoney() const;
     int getJob() const;
     Ally* getAlly() const;
+
+    friend class Record;
 };
 
 #endif // PLAYER_H_INCLUDED

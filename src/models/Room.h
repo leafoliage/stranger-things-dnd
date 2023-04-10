@@ -63,6 +63,8 @@ public:
     Room* getInnerRoom() const;
     Room* getOuterRoom() const;
     Room* getSecretRoom() const;
+
+    friend class Record;
 };
 
 #endif // ROOM_H_INCLUDED

@@ -5,10 +5,12 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <limits>
 #include "Item.h"
 #include "Enemy.h"
 #include "NPC.h"
 #include "Player.h"
+#include "Ally.h"
 
 using namespace std;
 
