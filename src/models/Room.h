@@ -46,7 +46,7 @@ public:
     void setEastRoom(Room*);
     void setInnerRoom(Room*);
     void setOuterRoom(Room*);
-    void setNeighborRoom(Room*, Room*, Room*, Room*, Room*, Room*);
+    void setNeighborRoom(Room*, Room*, Room*, Room*, Room*, Room*, Room*);
     void setIsExit(bool);
     void setIndex(int);
     void setObjects(vector<Object*>);

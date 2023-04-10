@@ -95,13 +95,14 @@ void Room::setOuterRoom(Room* room) {
     outerRoom = room;
 }
 
-void Room::setNeighborRoom(Room* north, Room* south, Room* west, Room* east, Room* inner, Room* outer) {
+void Room::setNeighborRoom(Room* north, Room* south, Room* west, Room* east, Room* inner, Room* outer, Room* secret) {
     northRoom = north; 
     southRoom = south; 
     westRoom = west;
     eastRoom = east;
     innerRoom = inner;
     outerRoom = outer;
+    secretRoom = secret;
 }
 
 void Room::setIsExit(bool value) {
