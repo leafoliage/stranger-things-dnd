@@ -56,6 +56,7 @@
                 "models/NPC.cpp",
                 "models/Object.cpp",
                 "models/Player.cpp",
+                "models/Prop.cpp",
                 "models/Record.cpp",
                 "models/Room.cpp",
                 "models/Skill.cpp",
