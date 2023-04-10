@@ -162,10 +162,25 @@ struct ItemRecord {
 
 const map<int,ItemRecord> itemMap = {
     {0,{"Triple Basketball", tRANGE, 14, 10}},
-    {1,{"Crackled Red 1983 BC Rich NJ Warlock", tMELEE, 16, 20}},
+    {1,{"Crackled Red 1983 BC Rich NJ Warlock", tMELEE, 18, 20}},
     {2,{"Bat", tMELEE, 8, 3}},
-    {3,{"Bat2", tMELEE, 8, 3}},
-    {4,{"Bat3", tMELEE, 8, 3}},
+    {3,{"Mace", tMELEE, 12, 5}},
+    {4,{"Torch", tMELEE, 20, 5}},
+    {5,{"Pistol", tRANGE, 16, 15}},
+    {6,{"Shotgun", tRANGE, 18, 20}},
+    {7,{"Molotov", tRANGE, 20, 20}},
+    {8,{"Javelin", tRANGE, 12, 10}},
+    {9,{"Basketball", tRANGE, 4, 5}},
+    {10,{"Swim Suit", tARMOR, 4, 2}},
+    {11,{"Wizard Robe", tARMOR, 8, 4}},
+    {12,{"Handmade Armor", tARMOR, 10, 6}},
+    {13,{"Police Uniform", tARMOR, 12, 12}},
+    {14,{"Football Uniform", tARMOR, 14, 15}},
+    {15,{"Army Uniform", tARMOR, 16, 30}},
+    {16,{"Brenner's Weapon",tRANGE, 14, 20}},
+    {17,{"Rifle", tRANGE, 16, 20}},
+    {18,{"Spider Monster's Claw", tMELEE, 16, 100}},
+    {19,{"Demogorgon's Claw", tMELEE, 12, 100}},
 };
 
 struct CharaterRecord {
@@ -177,14 +192,44 @@ struct CharaterRecord {
     int constitution;
     int wisdom;
     int skill[3];
-    int weaponId;
+    int weaponId; // type, elapse time, power
     vector<int> commodity;
 };
 
 const map<int,CharaterRecord> characterMap = {
     {0, {"Lucas Sinclair", ALLY, MAX_HEALTH, jobAilities[BASKETBALL_PLAYER][0]+1, jobAilities[BASKETBALL_PLAYER][1]+1, jobAilities[BASKETBALL_PLAYER][2]-1, jobAilities[BASKETBALL_PLAYER][3]-1, {jobSkills[BASKETBALL_PLAYER][0], jobSkills[BASKETBALL_PLAYER][1], jobSkills[BASKETBALL_PLAYER][2]}, 0}},
     {1, {"Eddie Munson", ALLY, MAX_HEALTH, jobAilities[GUITARIST][0]+1, jobAilities[GUITARIST][1]-1, jobAilities[GUITARIST][2]+1, jobAilities[GUITARIST][3]-1, {jobSkills[GUITARIST][0], jobSkills[GUITARIST][1], jobSkills[GUITARIST][2]}, 1}},
-    {2, {"Mom", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{3,4}}}
+    {2, {"Mom", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {3, {"Joyce Byers", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {4, {"Will Byers", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {5, {"Dustin Henderson", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {6, {"Max Mayfield", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {7, {"Robin Buckley", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {8, {"Mike Wheeler", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {9, {"Vecna", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {10, {"Mews", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {11, {"Eleven", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {12, {"Scott Clarke", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {13, {"Erica Sinclair", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {14, {"Jonathan Byers", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {15, {"Bob Newby", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {16, {"Billy Hargrove", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {17, {"Heather Holloway", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {18, {"Tom Holloway", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {19, {"Bruce Lowe", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {20, {"Jim Hopper", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{}}},
+    {21, {"Nancy Wheeler", ALLY, MAX_HEALTH, jobAilities[REPORTER][0]+1, jobAilities[REPORTER][1]+1, jobAilities[REPORTER][2]-1, jobAilities[REPORTER][3]-1, {jobSkills[REPORTER][0], jobSkills[REPORTER][1], jobSkills[REPORTER][2]}, 0}},
+    {22, {"Chrissy Cunningham", ALLY, MAX_HEALTH, jobAilities[CHEERLEADER][0]+1, jobAilities[CHEERLEADER][1]+1, jobAilities[CHEERLEADER][2]-1, jobAilities[CHEERLEADER][3]-1, {jobSkills[CHEERLEADER][0], jobSkills[CHEERLEADER][1], jobSkills[CHEERLEADER][2]}, 0}},
+    {23, {"Steve Harrington", ALLY, MAX_HEALTH, jobAilities[SCOOPS_AHOY][0]+1, jobAilities[SCOOPS_AHOY][1]+1, jobAilities[SCOOPS_AHOY][2]-1, jobAilities[SCOOPS_AHOY][3]-1, {jobSkills[SCOOPS_AHOY][0], jobSkills[SCOOPS_AHOY][1], jobSkills[SCOOPS_AHOY][2]}, 0}},
+    {24, {"Martin Brenner", ENEMY, MAX_HEALTH,2,2,2,2,{-1,-1,-1},16}},
+    {25, {"Lab Guard", ENEMY, MAX_HEALTH,1,1,1,1,{-1,-1,-1},17}},
+    {26, {"Vecna", ENEMY, MAX_HEALTH,5,5,5,0,{CLOCKED,7,10},-1}},
+    {27, {"Mind Flayer", ENEMY, MAX_HEALTH,4,4,0,1,{PUPPETIZED,1,7},-1}},
+    {28, {"The Spider Monster", ENEMY, MAX_HEALTH,5,5,0,0,{-1,-1,-1},18}},
+    {29, {"Demogorgon", ENEMY, MAX_HEALTH,3,1,0,0,{-1,-1,-1},19}},
+    {30, {"Demodog", ENEMY, MAX_HEALTH,3,1,0,0,{-1,-1,-1},19}},
+    {31, {"Demobat", ENEMY, MAX_HEALTH,0,6,0,0,{-1,-1,-1},-1}},
+    {32, {"Vine", ENEMY, MAX_HEALTH,2,-2,0,0,{-1,-1,-1},-1}},
 };
 
 const map<int,vector<string>> scriptMap = {
