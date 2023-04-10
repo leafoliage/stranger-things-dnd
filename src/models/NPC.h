@@ -17,6 +17,7 @@ private:
     vector<Item*> commodity;
 public:
     NPC();
+    NPC(string name, vector<string> script);
     NPC(string name, vector<string> script, vector<Item*> commodity);
     void listCommodity(); /*print all the Item in this NPC*/
 
@@ -25,6 +26,7 @@ public:
     /* transaction in easy implementation           */
     bool triggerEvent(Object*);
     Item* getWeapon();
+    void add(Item*);
 
     /* Set & Get function*/
     void setScript(vector<string>);

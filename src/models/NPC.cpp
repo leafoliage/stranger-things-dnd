@@ -2,6 +2,9 @@
 
 NPC::NPC() {}
 
+NPC::NPC(string name, vector<string> script):
+    GameCharacter(name,NEUTRAL,25,25,0,0,0,0), script(script) {}
+
 NPC::NPC(string name, vector<string> script, vector<Item*> commodity):
     GameCharacter(name,NEUTRAL,25,25,0,0,0,0), script(script), commodity(commodity) {}
 
@@ -14,6 +17,7 @@ bool NPC::triggerEvent(Object* obj) {
     }
 
     int i = 0, choice;
+    cout << "Commodity size: " << commodity.size() << endl;
     for (auto it = commodity.begin(); it != commodity.end(); ++it) {
         cout << i++ << ": " << (*it)->getName() << " - $" << (*it)->getPrice() << endl;
     } 
@@ -32,6 +36,11 @@ bool NPC::triggerEvent(Object* obj) {
 
 Item* NPC::getWeapon() {
     return NULL;
+}
+
+void NPC::add(Item* item) {
+    commodity.push_back(item);
+    cout << "commodity added " << item->getName() << endl;
 }
 
 void NPC::listCommodity() {

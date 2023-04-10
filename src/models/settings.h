@@ -19,7 +19,7 @@ const map<int,RoomRecord> roomMap = {
     {20,{"", false, vector<int>{}, vector<int>{}}},
     {30,{"The Wheeler's", false, vector<int>{}, vector<int>{}}},
     {70,{"Starcourt", false, vector<int>{}, vector<int>{}}},
-    {100,{"Your Home", false, vector<int>{2}, vector<int>{}}},
+    {100,{"Your Home", false, vector<int>{2}, vector<int>{2}}},
     {110,{"The Sinclair's", false, vector<int>{}, vector<int>{}}},
     {120,{"", false, vector<int>{}, vector<int>{}}},
     {130,{"", false, vector<int>{}, vector<int>{}}},
@@ -79,9 +79,11 @@ struct ItemRecord {
 };
 
 const map<int,ItemRecord> itemMap = {
-    {0,{"Triple Basketball", RANGE, 14, 10}},
-    {1,{"Crackled Red 1983 BC Rich NJ Warlock", MELEE, 16, 20}},
-    {2,{"Bat", MELEE, 8, 3}},
+    {0,{"Triple Basketball", tRANGE, 14, 10}},
+    {1,{"Crackled Red 1983 BC Rich NJ Warlock", tMELLE, 16, 20}},
+    {2,{"Bat", tMELLE, 8, 3}},
+    {3,{"Bat2", tMELLE, 8, 3}},
+    {4,{"Bat3", tMELLE, 8, 3}},
 };
 
 struct CharaterRecord {
@@ -99,7 +101,8 @@ struct CharaterRecord {
 
 const map<int,CharaterRecord> characterMap = {
     {0, {"Lucas Sinclair", ALLY, MAX_HEALTH, jobAilities[BASKETBALL_PLAYER][0]+1, jobAilities[BASKETBALL_PLAYER][1]+1, jobAilities[BASKETBALL_PLAYER][2]-1, jobAilities[BASKETBALL_PLAYER][3]-1, {jobSkills[BASKETBALL_PLAYER][0], jobSkills[BASKETBALL_PLAYER][1], jobSkills[BASKETBALL_PLAYER][2]}, 0}},
-    {1, {"Eddie Munson", ALLY, MAX_HEALTH, jobAilities[GUITARIST][0]+1, jobAilities[GUITARIST][1]-1, jobAilities[GUITARIST][2]+1, jobAilities[GUITARIST][3]-1, {jobSkills[GUITARIST][0], jobSkills[GUITARIST][1], jobSkills[GUITARIST][2]}, 1}}
+    {1, {"Eddie Munson", ALLY, MAX_HEALTH, jobAilities[GUITARIST][0]+1, jobAilities[GUITARIST][1]-1, jobAilities[GUITARIST][2]+1, jobAilities[GUITARIST][3]-1, {jobSkills[GUITARIST][0], jobSkills[GUITARIST][1], jobSkills[GUITARIST][2]}, 1}},
+    {2, {"Mom", NEUTRAL, MAX_HEALTH,-1,-1,-1,-1,{-1,-1,-1},-1,vector<int>{3,4}}}
 };
 
 const map<int,vector<string>> scriptMap = {

@@ -11,6 +11,7 @@
 #include "NPC.h"
 #include "Player.h"
 #include "Ally.h"
+#include "NPC.h"
 #include "Prop.h"
 #include "settings.h"
 
@@ -31,7 +32,7 @@ private:
 
     vector<string> loadPlotFromSetting(int id);
     vector<string> loadScriptFromSetting(int id);
-    vector<Item*> loadCommodityFromSetting(int id);
+    void loadCommodityFromSetting(NPC *npc, int id);
 
 public:
     Record();
@@ -39,6 +40,7 @@ public:
     void loadFromFile(Player*, vector<Room>&);
     void loadRoomFromSetting(map<int,Room> &rooms, int id);
     void loadItemFromSetting(Room *room, int id);
+    // void loadItemFromSetting(Ga, int id);
     void loadCharacterFromSetting(Room *room, int id);
 
 };

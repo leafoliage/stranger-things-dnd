@@ -182,10 +182,13 @@ void Record::loadCharacterFromSetting(Room *room, int id) {
     switch(cr.characterType) {
         case ALLY:
             return room->add(new Ally(cr.name,NULL,loadScriptFromSetting(id),cr.strength,cr.dexterity,cr.constitution,cr.wisdom));
-        case NEUTRAL: 
-            return room->add(new NPC(cr.name,loadScriptFromSetting(id),loadCommodityFromSetting(id)));
         case ENEMY: 
             return room->add(new Enemy(cr.name,NULL,cr.strength,cr.dexterity,cr.constitution,cr.wisdom));
+        case NEUTRAL:
+            NPC *npc = new NPC(cr.name,loadScriptFromSetting(id));
+            loadCommodityFromSetting(npc,id);
+            room->add(npc);
+            return;
     }
 }
 
@@ -209,15 +212,24 @@ vector<string> Record::loadScriptFromSetting(int id) {
     return it->second;
 }
 
-vector<Item*> Record::loadCommodityFromSetting(int id) {
+void Record::loadCommodityFromSetting(NPC *npc, int id) {
     auto it = characterMap.find(id);
-    if (it==characterMap.end()) return vector<Item*>{};
+    if (it==characterMap.end()) return;
     CharaterRecord cr = it->second;
-    vector<Item*> com;
-    // for (auto i=cr.commodity.begin();i!=cr.commodity.end();++i) {
-    //     com.push_back(loadItemFromSetting(*i));
-    // }
-    return com;
+    for (auto i=cr.commodity.begin();i!=cr.commodity.end();++i) {
+        ItemRecord ir = itemMap.at(*i);
+        switch(ir.type) {
+            case tMELLE: npc->add(new Weapon(ir.name,MELEE,ir.quality,ir.price));
+            break;
+            case tRANGE: npc->add(new Weapon(ir.name,RANGE,ir.quality,ir.price));
+            break;
+            case tARMOR: npc->add(new Armor(ir.name,ir.quality,ir.price));
+            break;
+            case tPROP: npc->add(new Prop(ir.name,ir.quality,ir.price));
+            break;
+        }
+    }
+    return;
 }
 
 void Record::saveToFile(Player* player, vector<Room>& rooms) {
