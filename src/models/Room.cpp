@@ -2,6 +2,11 @@
 
 Room::Room() {}
 
+Room::Room(string name, bool isExit, int index,  vector<string> plots)
+    : name(name), isExit(isExit), index(index), plots(plots),
+    northRoom(NULL), southRoom(NULL), eastRoom(NULL), westRoom(NULL), 
+    innerRoom(NULL), outerRoom(NULL), secretRoom(NULL), revealSecret(false), visited(false) {}
+
 Room::Room(string name, bool isExit, int index, vector<Object*> objects, vector<string> plots)
     : name(name), isExit(isExit), index(index), objects(objects), plots(plots),
     northRoom(NULL), southRoom(NULL), eastRoom(NULL), westRoom(NULL), 

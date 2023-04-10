@@ -29,6 +29,7 @@ private:
     Room* secretRoom;
 public:
     Room();
+    Room(string name, bool isExit, int index, vector<string> plots);
     Room(string name, bool isExit, int index, vector<Object*> objects, vector<string> plots);
     bool popObject(Object*); /*pop out the specific object, used when the interaction is done*/
 

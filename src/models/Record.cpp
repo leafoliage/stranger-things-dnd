@@ -193,17 +193,7 @@ void Record::loadRoomFromSetting(map<int,Room> &rooms, int id) {
     auto it = roomMap.find(id);
     if (it==roomMap.end()) return ;
     RoomRecord rr = it->second;
-    rooms.insert({id, Room(
-        rr.name, rr.isExit, it->first,
-        vector<Object*>{}, 
-        loadPlotFromSetting(id)
-    )});
-    // for (auto i = rr.characterIds.begin();i!=rr.characterIds.end();++i) {
-    //     rooms.at(id).add(loadCharacterFromSetting(*i));
-    // }
-    // for (auto i = rr.itemIds.begin();i!=rr.itemIds.end();++i) {
-    //     rooms.at(id).add(loadItemFromSetting(*i));
-    // }
+    rooms.insert({id, Room(rr.name, rr.isExit, it->first,loadPlotFromSetting(id))});
     return;
 }
 
