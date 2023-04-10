@@ -163,7 +163,7 @@ void Record::loadItemFromSetting(Room *room, int id) {
     if (it==itemMap.end()) return;
     ItemRecord ir = it->second;
     switch(ir.type) {
-        case tMELLE: 
+        case tMELEE: 
             return room->add(new Weapon(ir.name,MELEE,ir.quality,ir.price));
         case tRANGE: 
             return room->add(new Weapon(ir.name,RANGE,ir.quality,ir.price));
@@ -219,7 +219,7 @@ void Record::loadCommodityFromSetting(NPC *npc, int id) {
     for (auto i=cr.commodity.begin();i!=cr.commodity.end();++i) {
         ItemRecord ir = itemMap.at(*i);
         switch(ir.type) {
-            case tMELLE: npc->add(new Weapon(ir.name,MELEE,ir.quality,ir.price));
+            case tMELEE: npc->add(new Weapon(ir.name,MELEE,ir.quality,ir.price));
             break;
             case tRANGE: npc->add(new Weapon(ir.name,RANGE,ir.quality,ir.price));
             break;

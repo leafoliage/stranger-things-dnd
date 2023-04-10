@@ -80,10 +80,10 @@ struct ItemRecord {
 
 const map<int,ItemRecord> itemMap = {
     {0,{"Triple Basketball", tRANGE, 14, 10}},
-    {1,{"Crackled Red 1983 BC Rich NJ Warlock", tMELLE, 16, 20}},
-    {2,{"Bat", tMELLE, 8, 3}},
-    {3,{"Bat2", tMELLE, 8, 3}},
-    {4,{"Bat3", tMELLE, 8, 3}},
+    {1,{"Crackled Red 1983 BC Rich NJ Warlock", tMELEE, 16, 20}},
+    {2,{"Bat", tMELEE, 8, 3}},
+    {3,{"Bat2", tMELEE, 8, 3}},
+    {4,{"Bat3", tMELEE, 8, 3}},
 };
 
 struct CharaterRecord {
