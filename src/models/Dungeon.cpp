@@ -13,6 +13,31 @@ void Dungeon::createPlayer() {
 }
 
 void Dungeon::createMap() {
+    Record recorder;
+    for (auto it=roomMap.begin();it!=roomMap.end();++it) {
+        recorder.loadRoomFromSetting(rooms, it->first);
+        RoomRecord rr = it->second;
+        for (auto i = rr.characterIds.begin();i!=rr.characterIds.end();++i) {
+            recorder.loadCharacterFromSetting(&rooms.at(it->first), *i);
+        }
+        for (auto i = rr.itemIds.begin();i!=rr.itemIds.end();++i) {
+            recorder.loadItemFromSetting(&rooms.at(it->first), *i);
+        }
+    }
+    for (auto it=roomRelations.begin();it!=roomRelations.end();++it) {
+        int id = (*it).id;
+        rooms.at(id).setNeighborRoom(
+            (*it).northId > 0 ? &rooms[(*it).northId] : NULL,
+            (*it).southId > 0 ? &rooms[(*it).southId] : NULL,
+            (*it).eastId > 0 ? &rooms[(*it).eastId] : NULL,
+            (*it).westId > 0 ? &rooms[(*it).westId] : NULL,
+            (*it).inId > 0 ? &rooms[(*it).inId] : NULL,
+            (*it).outId > 0 ? &rooms[(*it).outId] : NULL,
+            (*it).secretId > 0 ? &rooms[(*it).secretId] : NULL
+        );
+    }
+
+    /*
     rooms.push_back(
         Room("Home", false, 0, vector<Object*>{
             new Ally("Nancy Wheeler", new Weapon("gun",RANGE,16,15), 
@@ -48,6 +73,7 @@ void Dungeon::createMap() {
     rooms[1].setSouthRoom(&rooms[0]);
     rooms[1].setNorthRoom(&rooms[2]);
     rooms[2].setSouthRoom(&rooms[1]);
+    */
 }
 
 void Dungeon::handleMoveTo(Room* nextRoom) {
@@ -62,8 +88,8 @@ void Dungeon::handleEvent(Object* obj) {
 void Dungeon::startGame() {
     createPlayer();
     createMap();
-    player.setCurrentRoom(&rooms[0]);
-    player.setPreviousRoom(&rooms[0]);
+    player.setCurrentRoom(&rooms[100]);
+    player.setPreviousRoom(&rooms[100]);
 }
 
 void Dungeon::runBattle() {
@@ -76,6 +102,9 @@ void Dungeon::runBattle() {
 }
 
 void Dungeon::runRoom() {
+    if (player.getCurrentRoom()->getName().length() > 0) {
+        cout << "Current location: " << player.getCurrentRoom()->getName() << endl;
+    }
     player.getCurrentRoom()->readPlots();
     while (checkGameLogic() && player.getCurrentRoom()->hasEnemy()) {
         cout << "Enemy detected! Fight(0) or run(1)? ";
@@ -95,23 +124,23 @@ void Dungeon::chooseRoom() {
     Room* room = player.getCurrentRoom();
     vector<Room*> destination;
 
-    int i=0;
+    int i=0, index=0;
     cout << "------Direction------" << endl;
     for (i=0;i<6;i++) {
         if (room->getRoom(i)==NULL) continue;
         destination.push_back(room->getRoom(i));
-        cout << i << ". Go " << Direct[i] << " "; 
+        cout << index++ << ". Go " << Direct[i] << " "; 
         if (room->getRoom(i)->getName().length()>0) {
             cout << "(" << room->getRoom(i)->getName() <<")";
         }
         cout << endl;
     }
     if (room->hasSecretRoom()) {
-        cout << i++ << ". Wait, what's that?" << endl;
+        cout << index++ << ". Wait, what's that?" << endl;
     }
     cout << "-----------------------" << endl;
     cout << "Where to go? ";
-    int dest = inputNumPrompt(0,i);
+    int dest = inputNumPrompt(0,index);
     handleMoveTo(destination[dest]);
 }
 

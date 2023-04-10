@@ -11,6 +11,8 @@
 #include "NPC.h"
 #include "Player.h"
 #include "Ally.h"
+#include "Prop.h"
+#include "settings.h"
 
 using namespace std;
 
@@ -27,10 +29,17 @@ private:
     void loadPlayer(Player*, ifstream&);
     void loadRooms(vector<Room>&, ifstream&);
 
+    vector<string> loadPlotFromSetting(int id);
+    vector<string> loadScriptFromSetting(int id);
+    vector<Item*> loadCommodityFromSetting(int id);
+
 public:
     Record();
     void saveToFile(Player*, vector<Room>&);
     void loadFromFile(Player*, vector<Room>&);
+    void loadRoomFromSetting(map<int,Room> &rooms, int id);
+    void loadItemFromSetting(Room *room, int id);
+    void loadCharacterFromSetting(Room *room, int id);
 
 };
 

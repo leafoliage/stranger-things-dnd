@@ -1,5 +1,7 @@
 #include "Record.h"
 
+Record::Record(){}
+
 void Record::savePlayer(Player* player, ofstream& file) {
     // Save player information to file
     file << player->getName() << endl;
@@ -154,6 +156,78 @@ void Record::loadRooms(vector<Room>& rooms, ifstream& inFile) {
 
         rooms.push_back(room);
     }
+}
+
+void Record::loadItemFromSetting(Room *room, int id) {
+    auto it = itemMap.find(id);
+    if (it==itemMap.end()) return;
+    ItemRecord ir = it->second;
+    switch(ir.type) {
+        case tMELLE: 
+            return room->add(new Weapon(ir.name,MELEE,ir.quality,ir.price));
+        case tRANGE: 
+            return room->add(new Weapon(ir.name,RANGE,ir.quality,ir.price));
+        case tARMOR: 
+            return room->add(new Armor(ir.name,ir.quality,ir.price));
+        case tPROP: 
+            return room->add(new Prop(ir.name,ir.quality,ir.price));
+    }
+}
+
+void Record::loadCharacterFromSetting(Room *room, int id) {
+    auto it = characterMap.find(id);
+    if (it==characterMap.end()) return;
+    CharaterRecord cr = it->second;
+    // Weapon *weap = dynamic_cast<Weapon*>(loadItemFromSetting(cr.weaponId));
+    switch(cr.characterType) {
+        case ALLY:
+            return room->add(new Ally(cr.name,NULL,loadScriptFromSetting(id),cr.strength,cr.dexterity,cr.constitution,cr.wisdom));
+        case NEUTRAL: 
+            return room->add(new NPC(cr.name,loadScriptFromSetting(id),loadCommodityFromSetting(id)));
+        case ENEMY: 
+            return room->add(new Enemy(cr.name,NULL,cr.strength,cr.dexterity,cr.constitution,cr.wisdom));
+    }
+}
+
+void Record::loadRoomFromSetting(map<int,Room> &rooms, int id) {
+    auto it = roomMap.find(id);
+    if (it==roomMap.end()) return ;
+    RoomRecord rr = it->second;
+    rooms.insert({id, Room(
+        rr.name, rr.isExit, it->first,
+        vector<Object*>{}, 
+        loadPlotFromSetting(id)
+    )});
+    // for (auto i = rr.characterIds.begin();i!=rr.characterIds.end();++i) {
+    //     rooms.at(id).add(loadCharacterFromSetting(*i));
+    // }
+    // for (auto i = rr.itemIds.begin();i!=rr.itemIds.end();++i) {
+    //     rooms.at(id).add(loadItemFromSetting(*i));
+    // }
+    return;
+}
+
+vector<string> Record::loadPlotFromSetting(int id) {
+    auto it = plotMap.find(id);
+    if (it==plotMap.end()) return vector<string>{};
+    return it->second;
+}
+
+vector<string> Record::loadScriptFromSetting(int id) {
+    auto it = scriptMap.find(id);
+    if (it==scriptMap.end()) return vector<string>{};
+    return it->second;
+}
+
+vector<Item*> Record::loadCommodityFromSetting(int id) {
+    auto it = characterMap.find(id);
+    if (it==characterMap.end()) return vector<Item*>{};
+    CharaterRecord cr = it->second;
+    vector<Item*> com;
+    // for (auto i=cr.commodity.begin();i!=cr.commodity.end();++i) {
+    //     com.push_back(loadItemFromSetting(*i));
+    // }
+    return com;
 }
 
 void Record::saveToFile(Player* player, vector<Room>& rooms) {

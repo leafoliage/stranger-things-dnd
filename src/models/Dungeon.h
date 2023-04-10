@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <exception>
+#include <map>
 #include "Player.h"
 #include "NPC.h"
 #include "Room.h"
@@ -17,7 +18,8 @@ using namespace std;
 class Dungeon{
 private:
     Player player;
-    vector<Room> rooms;
+    // vector<Room> rooms;
+    map<int,Room> rooms;
     bool isUpsideDown;
 public:
     Dungeon();

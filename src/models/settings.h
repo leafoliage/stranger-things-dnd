@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "enums.h"
 using namespace std;
 
 struct RoomRecord {
@@ -18,8 +19,8 @@ const map<int,RoomRecord> roomMap = {
     {20,{"", false, vector<int>{}, vector<int>{}}},
     {30,{"The Wheeler's", false, vector<int>{}, vector<int>{}}},
     {70,{"Starcourt", false, vector<int>{}, vector<int>{}}},
-    {100,{"Your Home", false, vector<int>{}, vector<int>{}}},
-    {110,{"", false, vector<int>{}, vector<int>{}}},
+    {100,{"Your Home", false, vector<int>{2}, vector<int>{}}},
+    {110,{"The Sinclair's", false, vector<int>{}, vector<int>{}}},
     {120,{"", false, vector<int>{}, vector<int>{}}},
     {130,{"", false, vector<int>{}, vector<int>{}}},
     {140,{"", false, vector<int>{}, vector<int>{}}},
@@ -44,6 +45,65 @@ const map<int,vector<string>> plotMap = {
     // {"", false, vector<int>{}, vector<int>{}}, // 20
     // {"", false, vector<int>{}, vector<int>{}},
     // {"The Creel's", false, vector<int>{}, vector<int>{}},
+};
+
+struct RoomRelation {
+    int id;
+    int northId;
+    int southId;
+    int eastId;
+    int westId;
+    int inId;
+    int outId;
+    int secretId;
+};
+
+const vector<RoomRelation> roomRelations{
+    {10,110,-1,20,-1,-1,-1,-1},
+    {20,120,-1,30,10,-1,-1,-1},
+    {30,130,-1,40,20,-1,-1,-1},
+    {70,-1,-1,-1,-1,-1,-1,-1},
+    {100,-1,-1,110,-1,-1,-1,-1},
+    {110,-1,10,120,100,-1,-1,-1},
+    {120,-1,20,130,110,-1,-1,-1},
+    {130,-1,30,140,120,-1,-1,-1},
+    {140,-1,-1,150,130,-1,-1,-1},
+    {150,-1,-1,-1,140,-1,-1,-1}
+};
+
+struct ItemRecord {
+    string name;
+    int type;
+    int quality;
+    int price;
+};
+
+const map<int,ItemRecord> itemMap = {
+    {0,{"Triple Basketball", RANGE, 14, 10}},
+    {1,{"Crackled Red 1983 BC Rich NJ Warlock", MELEE, 16, 20}},
+    {2,{"Bat", MELEE, 8, 3}},
+};
+
+struct CharaterRecord {
+    string name;
+    int characterType;
+    int hp;
+    int strength;
+    int dexterity;
+    int constitution;
+    int wisdom;
+    int skill[3];
+    int weaponId;
+    vector<int> commodity;
+};
+
+const map<int,CharaterRecord> characterMap = {
+    {0, {"Lucas Sinclair", ALLY, MAX_HEALTH, jobAilities[BASKETBALL_PLAYER][0]+1, jobAilities[BASKETBALL_PLAYER][1]+1, jobAilities[BASKETBALL_PLAYER][2]-1, jobAilities[BASKETBALL_PLAYER][3]-1, {jobSkills[BASKETBALL_PLAYER][0], jobSkills[BASKETBALL_PLAYER][1], jobSkills[BASKETBALL_PLAYER][2]}, 0}},
+    {1, {"Eddie Munson", ALLY, MAX_HEALTH, jobAilities[GUITARIST][0]+1, jobAilities[GUITARIST][1]-1, jobAilities[GUITARIST][2]+1, jobAilities[GUITARIST][3]-1, {jobSkills[GUITARIST][0], jobSkills[GUITARIST][1], jobSkills[GUITARIST][2]}, 1}}
+};
+
+const map<int,vector<string>> scriptMap = {
+    {0, vector<string>{"Hi"}}
 };
 
 #endif // SETTINGS_H_INCLUDED
