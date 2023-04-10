@@ -8,7 +8,7 @@ const int MAX_HEALTH = 25;
 
 const int MAX_INVENTORY = 6;
 
-const int ARMOR_CLASS_BASE = 10;
+const int ARMOR_CLASS_BASE = 8;
 
 const int INIT_MONEY = 10;
 
