@@ -16,7 +16,7 @@ private:
     vector<string> script;
 public:
     Ally();
-    Ally(string name, vector<string> script, int hp, int abilities[4], Skill skill);
+    Ally(string name, vector<string> script, int hp, const int abilities[4], Skill skill);
     Ally(string name, Weapon* weapon, vector<string> script, int strength, int dexterity, int constitution, int wisdom);
 
     /* Virtual function that you need to complete   */
