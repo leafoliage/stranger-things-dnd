@@ -161,7 +161,7 @@ void Record::loadRooms(vector<Room>& rooms, ifstream& inFile) {
 void Record::loadItemFromSetting(Room *room, int id) {
     auto it = itemMap.find(id);
     if (it==itemMap.end()) return;
-    ItemRecord ir = it->second;
+    const ItemRecord &ir = it->second;
     switch(ir.type) {
         case tMELEE: 
             return room->add(new Weapon(ir.name,MELEE,ir.quality,ir.price));
@@ -177,25 +177,30 @@ void Record::loadItemFromSetting(Room *room, int id) {
 void Record::loadCharacterFromSetting(Room *room, int id) {
     auto it = characterMap.find(id);
     if (it==characterMap.end()) return;
-    CharaterRecord cr = it->second;
-    // Weapon *weap = dynamic_cast<Weapon*>(loadItemFromSetting(cr.weaponId));
+    const CharaterRecord &cr = it->second;
     switch(cr.characterType) {
-        case ALLY:
-            return room->add(new Ally(cr.name,NULL,loadScriptFromSetting(id),cr.strength,cr.dexterity,cr.constitution,cr.wisdom));
-        case ENEMY: 
-            return room->add(new Enemy(cr.name,NULL,cr.strength,cr.dexterity,cr.constitution,cr.wisdom));
-        case NEUTRAL:
+        case ALLY:{
+            Ally *ally = new Ally(cr.name,loadScriptFromSetting(id),cr.hp,cr.abilities,Skill(cr.skill));
+            loadWeaponForAlly(ally,cr.weaponId);
+            return room->add(ally);
+        }
+        case ENEMY: {
+            Enemy *enemy = new Enemy(cr.name,loadScriptFromSetting(id),cr.hp,cr.abilities,Skill(cr.skill));
+            loadWeaponForEnemy(enemy, cr.weaponId);
+            return room->add(enemy);
+        }
+        case NEUTRAL:{
             NPC *npc = new NPC(cr.name,loadScriptFromSetting(id));
             loadCommodityFromSetting(npc,id);
-            room->add(npc);
-            return;
+            return room->add(npc);
+        }
     }
 }
 
 void Record::loadRoomFromSetting(map<int,Room> &rooms, int id) {
     auto it = roomMap.find(id);
     if (it==roomMap.end()) return ;
-    RoomRecord rr = it->second;
+    const RoomRecord &rr = it->second;
     rooms.insert({id, Room(rr.name, rr.isExit, it->first,loadPlotFromSetting(id))});
     return;
 }
@@ -215,9 +220,9 @@ vector<string> Record::loadScriptFromSetting(int id) {
 void Record::loadCommodityFromSetting(NPC *npc, int id) {
     auto it = characterMap.find(id);
     if (it==characterMap.end()) return;
-    CharaterRecord cr = it->second;
+    const CharaterRecord &cr = it->second;
     for (auto i=cr.commodity.begin();i!=cr.commodity.end();++i) {
-        ItemRecord ir = itemMap.at(*i);
+        const ItemRecord &ir = itemMap.at(*i);
         switch(ir.type) {
             case tMELEE: npc->add(new Weapon(ir.name,MELEE,ir.quality,ir.price));
             break;
@@ -230,6 +235,24 @@ void Record::loadCommodityFromSetting(NPC *npc, int id) {
         }
     }
     return;
+}
+
+void Record::loadWeaponForAlly(Ally* ally, int weapId) {
+    auto it = itemMap.find(weapId);
+    if (it==itemMap.end()) return;
+    const ItemRecord &ir = it->second;
+    ally->setWeapon(
+        new Weapon(ir.name,MELEE,ir.quality,ir.price)
+    );
+}
+
+void Record::loadWeaponForEnemy(Enemy* enemy, int weapId) {
+    auto it = itemMap.find(weapId);
+    if (it==itemMap.end()) return;
+    const ItemRecord &ir = it->second;
+    enemy->setWeapon(
+        new Weapon(ir.name,MELEE,ir.quality,ir.price)
+    );
 }
 
 void Record::saveToFile(Player* player, vector<Room>& rooms) {

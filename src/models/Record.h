@@ -13,6 +13,7 @@
 #include "Ally.h"
 #include "NPC.h"
 #include "Prop.h"
+#include "Skill.h"
 #include "settings.h"
 
 using namespace std;
@@ -32,7 +33,9 @@ private:
 
     vector<string> loadPlotFromSetting(int id);
     vector<string> loadScriptFromSetting(int id);
-    void loadCommodityFromSetting(NPC *npc, int id);
+    void loadCommodityFromSetting(NPC *npc, int npcId);
+    void loadWeaponForAlly(Ally* ally, int weapId);
+    void loadWeaponForEnemy(Enemy* enemy, int weapId);
 
 public:
     Record();
@@ -40,7 +43,6 @@ public:
     void loadFromFile(Player*, vector<Room>&);
     void loadRoomFromSetting(map<int,Room> &rooms, int id);
     void loadItemFromSetting(Room *room, int id);
-    // void loadItemFromSetting(Ga, int id);
     void loadCharacterFromSetting(Room *room, int id);
 
 };
