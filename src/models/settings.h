@@ -249,8 +249,8 @@ const map<int,CharaterRecord> characterMap = {
 };
 
 const map<int,vector<string>> scriptMap = {
-    {0, {"You: I'm looking for Eleven. Did you see her?", "Lucas: I didn't. But I think I should help you find her."}},
-    {1, {"You: I'm looking for a girl called Eleven. Did you see her?", "Eddie: No. Want me to help you?"}},
+    {0, {"Lucas: If there is something out there, I'm gonna shoot it in the eyes.", "You: I'm looking for Eleven. Did you see her?", "Lucas: I didn't. But I think I should help you find her."}},
+    {1, {"Eddie: So uh, this place is like Hawkins with monsters and nasty shit?", "You: I'm looking for a girl called Eleven. Did you see her?", "Eddie: No. Want me to help you?"}},
     {2, {"Mom: Hurry up, you gotta go to school"}},
     {3, {"Joyce: This is not yours to fix alone. You act like you're all alone out there in the world, but you're not!"}},
     {4, {"Will: I've tried to calm him down, but it doesn't work.", "Mike's thinking about her all day long.", "Can you help us?"}},
@@ -265,9 +265,9 @@ const map<int,vector<string>> scriptMap = {
     {15, {"Mr. Mom! Whoo, perfect"}},
     {18, {"Welcome to the War Zone. Buy any weapon you want and battle."}},
     {19, {"Welcome to the Melvald's General. May I help you?"}},
-    {21, {"Nancy: What?! Eleven is gone?", "You: (Nodded)", "Nancy: I'm helping!"}},
-    {22, {"You: Hey, I'm looking for my friend Eleven. Did you see her?", "Chrissy: I'm sorry... I didn't see anyone. But let me help you."}},
-    {23, {"Steve: Wanna go find that girl?", "I'll help"}},
+    {21, {"Nancy: I wanna finish what we started.", "Nancy: What?! Eleven is gone?", "You: (Nodded)", "Nancy: I'm helping!"}},
+    {22, {"Chrissy: Yeah!", "You: Hey, I'm looking for my friend Eleven. Did you see her?", "Chrissy: I'm sorry... I didn't see anyone. But let me help you."}},
+    {23, {"Steve: I'm stealthy. Like a ninja.", "Steve: Wanna go find that girl?", "I'll help"}},
     {33, {"Hello"}},
     {34, {"Hello"}},
     {36, {"May I help you?"}},
