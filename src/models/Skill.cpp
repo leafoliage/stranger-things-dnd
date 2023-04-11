@@ -3,6 +3,9 @@
 
 Skill::Skill(): effectType(-1), elapseTime(0), power(0), needCoolDown(false) {}
 
+Skill::Skill(const int settings[3]):
+    effectType(settings[0]), elapseTime(settings[1]), power(settings[2]), needCoolDown(false) {}
+
 Skill::Skill(int effectType,int elapseTime,int power):
     effectType(effectType),elapseTime(elapseTime),power(power), needCoolDown(false) {}
 
