@@ -4,6 +4,8 @@
 #include "string"
 using namespace std;
 
+const int STARTING_ROOM = 32;
+
 const int MAX_HEALTH = 25;
 
 const int MAX_INVENTORY = 6;

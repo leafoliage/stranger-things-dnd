@@ -15,21 +15,21 @@ struct RoomRecord {
 };
 
 const map<int,RoomRecord> roomMap = {
-    {10,{"The Byers", false, {}, {}}},
-    {11,{"", false, {}, {3}}},
-    {20,{"", false, {}, {}}},
-    {30,{"The Wheeler's", false, {}, {}}},
-    {31,{"", false, {}, {14,21}}},
+    {10,{"Wheelers House", false, {}, {}}},
+    {11,{"", false, {}, {14,21}}},
+    {20,{"Sinclairs House", false, {}, {}}},
+    {21,{"", false, {}, {13}}},
+    {30,{"Your Home", false, {}, {}}},
+    {31,{"", false, {}, {2}}},
+    {32,{"Your Room", false, {2}, {}}},
     {70,{"Starcourt", false, {}, {}}},
     {71,{"", false, {7}, {}}},
     {72,{"Scoop Ahoy", false, {}, {7,13}}},
-    {100,{"Your Home", false, {}, {}}},
-    {101,{"", false, {}, {2}}},
-    {102,{"Your Room", false, {2}, {}}},
-    {110,{"The Sinclair's", false, {}, {}}},
-    {111,{"", false, {}, {}}},
-    {120,{"", false, {}, {}}},
-    {130,{"", false, {}, {}}},
+    {100,{"Byers House", false, {}, {}}},
+    {101,{"", false, {}, {3}}},
+    {110,{"Maple Street", false, {}, {}}},
+    {120,{"Maple Street", false, {}, {}}},
+    {130,{"Maple Street", false, {}, {}}},
     {140,{"", false, {}, {}}},
     {150,{"Hawkins Community Pool", false, {}, {}}},
     {151,{"", false, {}, {16,17}}},
@@ -126,10 +126,9 @@ const map<int,RoomRecord> roomMap = {
 };
 
 const map<int,vector<string>> plotMap = {
-    {10,{"You: Knock knock! Will! You there?", "Will is not at home", "Neither is his brother Jonathan"}},
-    {30,{"You knocked on the door of the Wheeler's", "Mike's mom opened the door", "Mrs. Wheeler: Those kids have gone to school. Catch up!"}},
-    {100,{"You woke up, feeling awkwardly cold", "Somethings not right...", "But what is it?", "Anyways, you have to go to school today"}},
-    {110,{"You walked by Will's house", "Should you check him out?"}},
+    {100,{"You: Knock knock! Will! You there?", "Will is not at home", "Neither is his brother Jonathan"}},
+    {20,{"You knocked on the door of the Wheeler's", "Nancy: Oh hey! Mike isn't here. Come on in."}},
+    {32,{"You woke up, feeling awkwardly cold", "Somethings not right...", "But what is it?", "Anyways, you have to go to school first"}},
 };
 
 struct RoomRelation {

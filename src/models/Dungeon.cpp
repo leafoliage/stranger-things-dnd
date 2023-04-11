@@ -88,8 +88,8 @@ void Dungeon::handleEvent(Object* obj) {
 void Dungeon::startGame() {
     createPlayer();
     createMap();
-    player.setCurrentRoom(&rooms[102]);
-    player.setPreviousRoom(&rooms[102]);
+    player.setCurrentRoom(&rooms[STARTING_ROOM]);
+    player.setPreviousRoom(&rooms[STARTING_ROOM]);
 }
 
 void Dungeon::runBattle() {
