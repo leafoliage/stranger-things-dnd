@@ -34,7 +34,7 @@ const map<int,RoomRecord> roomMap = {
     {150,{"Hawkins Community Pool", false, {}, {}}},
     {151,{"", false, {}, {16,17}}},
     {160,{"", false, {}, {}}},
-    {170,{"", false, {}, {}}},
+    {170,{"", false, {}, {10}}},
     {220,{"Hawkins Police Station", false, {}, {}}},
     {221,{"", false, {}, {36}}},
     {230,{"", false, {}, {}}},
@@ -49,8 +49,8 @@ const map<int,RoomRecord> roomMap = {
     {320,{"Melvald's General", false, {}, {}}},
     {321,{"", false, {}, {19}}},
     {330,{"Hawkins High", false, {}, {}}},
-    {331,{"", false, {}, {5,23}}},
-    {332,{"", false, {}, {4,8}}},
+    {331,{"", false, {}, {4,8}}},
+    {332,{"", false, {}, {5,23}}},
     {340,{"", false, {9}, {}}},
     {350,{"", false, {}, {22}}},
     {360,{"", false, {}, {}}},
@@ -78,7 +78,7 @@ const map<int,RoomRecord> roomMap = {
     {650,{"", false, {}, {}}},
     {660,{"", false, {}, {}}},
     {720,{"Hopper's Cabin", false, {}, {}}},
-    {721,{"", false, {}, {20}}},
+    {721,{"", false, {}, {}}},
     {722,{"", false, {}, {}}},
     {723,{"", false, {4}, {}}},
     {760,{"Hawkins National Laboratory", false, {}, {}}},
@@ -123,12 +123,20 @@ const map<int,RoomRecord> roomMap = {
     {1660,{"", false, {}, {27,30}}},
     {1720,{"Hopper's Cabin", false, {}, {}}},
     {1760,{"Hawkins National Laboratory", false, {}, {26,27,24,25,25,11}}},
+    {2023,{"You WON", true, {}, {}}},
 };
 
 const map<int,vector<string>> plotMap = {
-    {100,{"You: Knock knock! Will! You there?", "Will is not at home", "Neither is his brother Jonathan"}},
     {20,{"You knocked on the door of the Wheeler's", "Nancy: Oh hey! Mike isn't here. Come on in."}},
-    {32,{"You woke up, feeling awkwardly cold", "Somethings not right...", "But what is it?", "Anyways, you have to go to school first"}},
+    {30,{"Hint: Go north to the school"}},
+    {32,{"You woke up, feeling awkwardly cold", "Somethings not right...", "But what is it?", "Looking at the clock, you noticed that you're already late for school", "Anyways, you have to go to school first"}},
+    {220,{"You: Hello Mr. Powell. Is Chief Hopper here?", "Powell: Hello!", "Unfortunately, he isn\'t here.", "We were looking for Eleven for the whole day, he's probably still out there searching.", "Why don't you check out his cabin first?"}},
+    {331,{"You see Will and Mike walking by. Seems like they're talking about something.", "Will: You sure you didn't see her?", "Mike: Not at all, I've searched through every corner but there's no sign of her", "Will: Well, maybe she slept over.", "Mike: Impossible, El never comes to school late", "You: Hi! What's the matter?", "Mike: Eleven's didn't come to school today!", "\"No wonder,\" You think.", "(Several hours later)", "You waited for the whole day, but Eleven didn't show up."}},
+    {332,{"Dustin and Steve are in the classroom.", "Hint: Steve is a ally of yours, who can help find Eleven with you.", "You would meet several other potential allies on the exploring of this world.", "Talk to Steve to invite him."}},
+    {420,{"Max and Lucas are playing DigDug."}},
+    {720,{"Jim Hopper is pacing back and forth in front of his cabin, but no signs of Eleven", "You: Mr. Hopper! Did you find El?", "Hopper: (A long sigh) No. I don't know where she is. Where the hell could she be...", "You: Could she be at the lab? The National Hawkins Lab?", "Hopper: I've just gone there. I tried to break in, but then I was expelled.", "You're right, something's not right with that place.", "You: Thank you, Mr. Hopper!", "Jim Hopper hop on his jeep and drove away."}},
+    {760,{"You saw a man wearing lab coat running out of the lab.", "You: Hey sir, what happened?", "The scientist: People are disappearing! Everyone is gone!", "You: Why are they gone?", "The scientist: It must be Vecna! He has come after us! Kid, don't get close!", "The scientist ran away.", "You: Wait!", "He did not come back. Seems that the only way now is to find the Upside Down and Vecna."}},
+    {1760,{"There are several figures stading in front of the vine-covered Hawkins Lab. You recognized the one in the center with grim, ferocious face.", "It's Vecna", "Aside of him is Dr. Martin Brenner.", "You: What have you done to him?", "Vecna: He's become my puppet.", "And so will you.", "You: Hmph!"}}
 };
 
 struct RoomRelation {
@@ -241,7 +249,18 @@ const map<int,CharaterRecord> characterMap = {
 };
 
 const map<int,vector<string>> scriptMap = {
-    {0, {"Hi"}}
+    {0, {"You: I'm looking for Eleven. Did you see her?", "Lucas: I didn't. But I think I should help you find her."}},
+    {1, {"You: I'm looking for a girl called Eleven. Did you see her?", "Eddie: No. Want me to help you?"}},
+    {2, {"Mom: Hurry up, you gotta go to school"}},
+    {4, {"Will: I've tried to calm him down, but it doesn't work.", "Mike's thinking about her all day long.", "Can you help us?"}},
+    {5, {"Dustin: You know that Eleven is gone, right?", "My mews was gone too. Just last night."}},
+    {6, {"Ha! I beated my record!"}},
+    {8, {"Mike: We gotta find where El is.", "You should help too!"}},
+    {11, {"After defeating all the enemies, you see Eleven lying on the ground.", "You: Eleven!", "You tried to wake her up, but she seems severely unconscious.", "Anyways, it's time to take her back..."}},
+    {21, {"Nancy: What?! Eleven is gone?", "You: (Nodded)", "Nancy: I'm helping!"}},
+    {22, {"You: Hey, I'm looking for my friend Eleven. Did you see her?", "Chrissy: I'm sorry... I didn't see anyone. But let me help you."}},
+    {23, {"Steve: Wanna go find that girl?", "I'll help"}},
+    {36, {"May I help you?"}},
 };
 
 #endif // SETTINGS_H_INCLUDED
