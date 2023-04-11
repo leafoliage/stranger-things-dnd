@@ -15,13 +15,13 @@ struct RoomRecord {
 };
 
 const map<int,RoomRecord> roomMap = {
-    {10,{"The Byer's", false, {}, {}}},
+    {10,{"The Byers", false, {}, {}}},
     {11,{"", false, {}, {3}}},
     {20,{"", false, {}, {}}},
     {30,{"The Wheeler's", false, {}, {}}},
     {31,{"", false, {}, {14,21}}},
     {70,{"Starcourt", false, {}, {}}},
-    {71,{"", false, {}, {}}},
+    {71,{"", false, {7}, {}}},
     {72,{"Scoop Ahoy", false, {}, {7,13}}},
     {100,{"Your Home", false, {}, {}}},
     {101,{"", false, {}, {2}}},
@@ -36,7 +36,7 @@ const map<int,RoomRecord> roomMap = {
     {160,{"", false, {}, {}}},
     {170,{"", false, {}, {}}},
     {220,{"Hawkins Police Station", false, {}, {}}},
-    {221,{"", false, {}, {20}}},
+    {221,{"", false, {}, {36}}},
     {230,{"", false, {}, {}}},
     {240,{"The War Zone", false, {}, {}}},
     {241,{"", false, {}, {18}}},
@@ -51,7 +51,7 @@ const map<int,RoomRecord> roomMap = {
     {330,{"Hawkins High", false, {}, {}}},
     {331,{"", false, {}, {5,23}}},
     {332,{"", false, {}, {4,8}}},
-    {340,{"", false, {}, {}}},
+    {340,{"", false, {9}, {}}},
     {350,{"", false, {}, {22}}},
     {360,{"", false, {}, {}}},
     {370,{"The Creel's", false, {}, {}}},
@@ -78,7 +78,9 @@ const map<int,RoomRecord> roomMap = {
     {650,{"", false, {}, {}}},
     {660,{"", false, {}, {}}},
     {720,{"Hopper's Cabin", false, {}, {}}},
-    {721,{"", false, {}, {}}},
+    {721,{"", false, {}, {20}}},
+    {722,{"", false, {}, {}}},
+    {723,{"", false, {4}, {}}},
     {760,{"Hawkins National Laboratory", false, {}, {}}},
     // {1010,{"The Byer's", false, {}, {}}},
     // {1020,{"", false, {}, {}}},
@@ -167,10 +169,10 @@ const map<int,ItemRecord> itemMap = {
     {2,{"Bat", tMELEE, 8, 3}},
     {3,{"Mace", tMELEE, 12, 5}},
     {4,{"Torch", tMELEE, 20, 5}},
-    {5,{"Pistol", tRANGE, 16, 15}},
-    {6,{"Shotgun", tRANGE, 18, 20}},
+    {5,{"Pistol", tRANGE, 14, 15}},
+    {6,{"Nancy Drew Never-Miss Shotgun", tRANGE, 18, 20}},
     {7,{"Molotov", tRANGE, 20, 20}},
-    {8,{"Javelin", tRANGE, 12, 10}},
+    {8,{"Spears", tRANGE, 12, 10}},
     {9,{"Basketball", tRANGE, 4, 5}},
     {10,{"Swim Suit", tARMOR, 4, 2}},
     {11,{"Wizard Robe", tARMOR, 8, 4}},
@@ -178,10 +180,15 @@ const map<int,ItemRecord> itemMap = {
     {13,{"Police Uniform", tARMOR, 12, 12}},
     {14,{"Football Uniform", tARMOR, 14, 15}},
     {15,{"Army Uniform", tARMOR, 16, 30}},
-    {16,{"Brenner's Weapon",tRANGE, 14, 20}},
+    {16,{"Brenner's Brain",tRANGE, 14, 20}},
     {17,{"Rifle", tRANGE, 16, 20}},
     {18,{"Spider Monster's Claw", tMELEE, 16, 100}},
     {19,{"Demogorgon's Claw", tMELEE, 12, 100}},
+    {20,{"King Steve Dingus Mace", tMELEE, 16, 20}},
+    {21,{"Chrissy's Alarm Clock", tRANGE, 14, 20}},
+    {22,{"Spiked Trash Can Cover", tMELEE, 10,6}},
+    {23,{"Shotgun", tRANGE, 16, 20}},
+    {24,{"Thick Jacket", tARMOR, 12, 10}},
 };
 
 struct CharaterRecord {
@@ -189,8 +196,8 @@ struct CharaterRecord {
     int characterType;
     int hp;
     int abilities[4];
-    int skill[3];
-    int weaponId; // type, elapse time, power
+    int skill[3]; // type, elapse time, power
+    int weaponId;
     vector<int> commodity;
 };
 
@@ -198,7 +205,7 @@ const map<int,CharaterRecord> characterMap = {
     {0, {"Lucas Sinclair", ALLY, MAX_HEALTH, {jobAilities[BASKETBALL_PLAYER][0]+1, jobAilities[BASKETBALL_PLAYER][1]+1, jobAilities[BASKETBALL_PLAYER][2]-1, jobAilities[BASKETBALL_PLAYER][3]-1}, {jobSkills[BASKETBALL_PLAYER][0], jobSkills[BASKETBALL_PLAYER][1], jobSkills[BASKETBALL_PLAYER][2]}, 0}},
     {1, {"Eddie Munson", ALLY, MAX_HEALTH, {jobAilities[GUITARIST][0]+1, jobAilities[GUITARIST][1]-1, jobAilities[GUITARIST][2]+1, jobAilities[GUITARIST][3]-1}, {jobSkills[GUITARIST][0], jobSkills[GUITARIST][1], jobSkills[GUITARIST][2]}, 1}},
     {2, {"Mom", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
-    {3, {"Joyce Byers", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
+    {3, {"Joyce Byers", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{11}}},
     {4, {"Will Byers", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
     {5, {"Dustin Henderson", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
     {6, {"Max Mayfield", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
@@ -211,14 +218,14 @@ const map<int,CharaterRecord> characterMap = {
     {13, {"Erica Sinclair", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
     {14, {"Jonathan Byers", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
     {15, {"Bob Newby", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
-    {16, {"Billy Hargrove", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
+    {16, {"Billy Hargrove", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{10}}},
     {17, {"Heather Holloway", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
-    {18, {"Clerk Jason", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
-    {19, {"Clerk Jeffery", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
+    {18, {"Clerk Jason", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{3,8,12,15,22,23}}},
+    {19, {"Clerk Jeffery", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{14,24}}},
     {20, {"Jim Hopper", NEUTRAL, MAX_HEALTH,{-1,-1,-1,-1},{-1,-1,-1},-1,{}}},
-    {21, {"Nancy Wheeler", ALLY, MAX_HEALTH, {jobAilities[REPORTER][0]+1, jobAilities[REPORTER][1]+1, jobAilities[REPORTER][2]-1, jobAilities[REPORTER][3]-1}, {jobSkills[REPORTER][0], jobSkills[REPORTER][1], jobSkills[REPORTER][2]}, 0}},
+    {21, {"Nancy Wheeler", ALLY, MAX_HEALTH, {jobAilities[REPORTER][0]+1, jobAilities[REPORTER][1]+1, jobAilities[REPORTER][2]-1, jobAilities[REPORTER][3]-1}, {jobSkills[REPORTER][0], jobSkills[REPORTER][1], jobSkills[REPORTER][2]}, 6}},
     {22, {"Chrissy Cunningham", ALLY, MAX_HEALTH, {jobAilities[CHEERLEADER][0]+1, jobAilities[CHEERLEADER][1]+1, jobAilities[CHEERLEADER][2]-1, jobAilities[CHEERLEADER][3]-1}, {jobSkills[CHEERLEADER][0], jobSkills[CHEERLEADER][1], jobSkills[CHEERLEADER][2]}, 0}},
-    {23, {"Steve Harrington", ALLY, MAX_HEALTH, {jobAilities[SCOOPS_AHOY][0]+1, jobAilities[SCOOPS_AHOY][1]+1, jobAilities[SCOOPS_AHOY][2]-1, jobAilities[SCOOPS_AHOY][3]-1}, {jobSkills[SCOOPS_AHOY][0], jobSkills[SCOOPS_AHOY][1], jobSkills[SCOOPS_AHOY][2]}, 0}},
+    {23, {"Steve Harrington", ALLY, MAX_HEALTH, {jobAilities[SCOOPS_AHOY][0]+1, jobAilities[SCOOPS_AHOY][1]+1, jobAilities[SCOOPS_AHOY][2]-1, jobAilities[SCOOPS_AHOY][3]-1}, {jobSkills[SCOOPS_AHOY][0], jobSkills[SCOOPS_AHOY][1], jobSkills[SCOOPS_AHOY][2]}, 20}},
     {24, {"Martin Brenner", ENEMY, MAX_HEALTH, {2,2,2,2}, {-1,-1,-1},16}},
     {25, {"Lab Guard", ENEMY, MAX_HEALTH, {1,1,1,1}, {-1,-1,-1},17}},
     {26, {"Vecna", ENEMY, MAX_HEALTH*2, {5,5,5,0}, {CLOCKED,7,10},-1}},
@@ -231,6 +238,7 @@ const map<int,CharaterRecord> characterMap = {
     {33, {"Doctor", NEUTRAL, MAX_HEALTH, {-1,-1,-1,-1},{-1,-1,-1},-1}},
     {34, {"Nurse", NEUTRAL, MAX_HEALTH, {-1,-1,-1,-1},{-1,-1,-1},-1}},
     {35, {"Lab Scientist", NEUTRAL, MAX_HEALTH, {-1,-1,-1,-1},{-1,-1,-1},-1}},
+    {36, {"Calvin Powell", NEUTRAL, MAX_HEALTH, {-1,-1,-1,-1},{-1,-1,-1},-1,{5,13}}},
 };
 
 const map<int,vector<string>> scriptMap = {
