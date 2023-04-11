@@ -14,6 +14,7 @@ private:
     Weapon* weapon;
 public:
     Enemy();
+    Enemy(string name, vector<string> script, int hp, int abilities[4], Skill skill);
     Enemy(string name, Weapon* weapon, int strength, int dexterity, int constitution, int wisdom);
 
     /* Virtual function that you need to complete   */
@@ -21,6 +22,7 @@ public:
     /* the combat system.                           */
     bool triggerEvent(Object*);
     Item* getWeapon();
+    void setWeapon(Weapon*);
 };
 
 
