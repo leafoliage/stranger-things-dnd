@@ -13,7 +13,7 @@ void Skill::workOn(GameCharacter* character) {
 }
 
 bool Skill::available() {
-    return !needCoolDown;
+    return effectType > 0 && !needCoolDown;
 }
 
 void Skill::coolDown() {
