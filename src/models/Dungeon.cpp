@@ -115,6 +115,7 @@ void Dungeon::runRoom() {
             return;
         }
         runBattle();
+        if (player.getAlly()->checkIsDead()) player.setAlly(NULL);
     }
     if (!checkGameLogic()) return;
     chooseAction();

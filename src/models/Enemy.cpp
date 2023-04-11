@@ -22,6 +22,7 @@ bool Enemy::triggerEvent(Object* obj) {
     }
     battleground.initiate();
     while (!battleground.ended()) battleground.run();
+    if (player->getAlly()->checkIsDead()) player->setAlly(NULL);
     return true;
 }
 
