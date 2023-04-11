@@ -17,7 +17,6 @@ bool NPC::triggerEvent(Object* obj) {
     }
 
     int i = 0, choice;
-    cout << "Commodity size: " << commodity.size() << endl;
     for (auto it = commodity.begin(); it != commodity.end(); ++it) {
         cout << i++ << ": " << (*it)->getName() << " - $" << (*it)->getPrice() << endl;
     } 
