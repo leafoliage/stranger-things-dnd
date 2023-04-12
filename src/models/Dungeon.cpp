@@ -4,11 +4,14 @@ Dungeon::Dungeon() {}
 
 void Dungeon::createPlayer() {
     string name;
-    cout << "What's your name: ";
+    cout << endl;
+    cout << "------Profile------" << endl;
+    cout << "Your name: ";
     getline(cin, name);
     cout << "0. Basketball Player  1. Guitarist  2. Cheerleader  3. Reporter  4. Scoops Ahoy" << endl;
-    cout << "Choose your job: ";
+    cout << "Your job: ";
     int job = inputNumPrompt(0,5);
+    cout << "-------------------" << endl;
     player = Player(name, job);
 }
 
@@ -107,6 +110,9 @@ void Dungeon::handleEvent(Object* obj) {
 void Dungeon::startGame() {
     srand(time(NULL));
     createPlayer();
+    logf("\nHi, %s", player.getName().c_str());
+    log("Welcome...");
+    log("to Hawkins");
     createMap();
     player.setCurrentRoom(&rooms[STARTING_ROOM]);
     player.setPreviousRoom(&rooms[STARTING_ROOM]);
@@ -194,7 +200,14 @@ bool Dungeon::checkGameLogic() {
 }
 
 void Dungeon::runDungeon() {
+    log(" _______ _________ ______   _        ______  \n(  ____ \\__   __/(  __  \\ ( (    /|(  __  \\ \n| (    \\/   ) (   | (  \\  )|  \\  ( || (  \\  )\n| (_____    | |   | |   ) ||   \\ | || |   ) |\n(_____  )   | |   | |   | || (\\ \\) || |   | |\n      ) |   | |   | |   ) || | \\   || |   ) |\n/\\____) |   | |   | (__/  )| )  \\  || (__/  )\n\\_______)   )_(   (______/ |/    )_)(______/ \n");
+    log("A fangame for the Stranger Things Series");
+    log("\nAlso a DSOOP midterm project");
+    pause(1000);
+    system("clear");
     startGame();
+    system("clear");
+    pause(1000);
     while (checkGameLogic()) {
         runRoom();
     }
