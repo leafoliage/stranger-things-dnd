@@ -55,44 +55,6 @@ void Dungeon::createMap() {
             (*it).secretId > 0 ? &rooms[(*it).secretId] : room.getSecretRoom()
         );
     }
-
-    /*
-    rooms.push_back(
-        Room("Home", false, 0, vector<Object*>{
-            new Ally("Nancy Wheeler", new Weapon("gun",RANGE,16,15), 
-                vector<string>{"Hi!"}, 0, 4, 0, 3), 
-            new Weapon("bat", WeaponType::MELEE, 20, 5)
-        }, vector<string>{
-            "Welcome to Hawkins", "Please find out where Eleven is"
-        })
-    );
-    
-    rooms.push_back(
-        Room("School", false, 1, vector<Object*>{
-            new Enemy("Demodog", new Weapon("Claw and Teeth", WeaponType::MELEE, 4, 0), 2, 2, 2, -4),
-            // new Enemy("Demogorgon", new Weapon("Claw", WeaponType::MELEE, 8, 0), 2, 1, 2, -4),
-            new NPC("Jim Hopper", vector<string>{"Yo kid","wacha doin"}, vector<Item*>{new Weapon("gun",WeaponType::RANGE,16,15)}),
-            new Armor("Gear", 16, 10),
-        }, vector<string>{
-            "Hawkins High is as busy as usual,", "You see your friend Jim coming from far",
-            "Jim: Yo man", "Jim: Wacha doin"
-        })
-    );
-    
-    rooms.push_back(
-        Room("Lab", true, 2, vector<Object*>{
-            new Enemy("Vecna", new Weapon("Superpower", WeaponType::RANGE,20,0),2,0,4,4)
-        }, vector<string>{
-            "You can feel it, the pressure from him",
-            "He looks at you with a grim face"
-        })
-    );
-
-    rooms[0].setNorthRoom(&rooms[1]);
-    rooms[1].setSouthRoom(&rooms[0]);
-    rooms[1].setNorthRoom(&rooms[2]);
-    rooms[2].setSouthRoom(&rooms[1]);
-    */
 }
 
 void Dungeon::handleMoveTo(Room* nextRoom) {
@@ -174,6 +136,7 @@ void Dungeon::chooseAction() {
     vector<Object*> objects = player.getCurrentRoom()->getObjects();
 
     int actionNumber=0, objectsSize = objects.size();
+    cout << endl;
     cout << "------Actions------" << endl;
     for (;actionNumber<objects.size();actionNumber++) {
         if (objects[actionNumber]->getObjectType()==ObjectType::CHARACTER) {
