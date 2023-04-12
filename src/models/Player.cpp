@@ -20,7 +20,6 @@ void Player::changeRoom(Room* newRoom) {
 }
 
 bool Player::triggerEvent(Object* obj) {
-    // Show the status of the player
     cout << "Player status:" << endl;
     cout << "----------------" << endl;
     cout << "Current HP: " << getCurrHp() << endl;
@@ -29,6 +28,7 @@ bool Player::triggerEvent(Object* obj) {
     cout << "Constitution: " << getConstitution() << endl;
     cout << "Wisdom: " << getWisdom() << endl;
     cout << "Money: " << money << endl;
+    cout << "Armor Class: " << armorClass() << endl;
     return true;
 }
 
@@ -143,7 +143,7 @@ bool Player::inputBoolPrompt() {
 void Player::listInventory() {
     int i=0;
     cout << "------Inventory------" << endl;
-    if (inventory.empty()) cout << "-1. bear hand" << endl;
+    if (inventory.empty()) cout << "Empty!" << endl;
     for (auto it=inventory.begin();it!=inventory.end();++it) {
         cout << i << "- " << (*it)->getName() << endl;
     }

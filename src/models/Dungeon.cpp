@@ -162,24 +162,27 @@ void Dungeon::chooseRoom() {
 }
 
 void Dungeon::chooseAction() {
-    Room* room = player.getCurrentRoom();
-    vector<Object*> actions=room->getObjects();
+    vector<Object*> objects = player.getCurrentRoom()->getObjects();
 
-    int i=0;
+    int actionNumber=0, objectsSize = objects.size();
     cout << "------Actions------" << endl;
-    for (;i<room->getObjects().size();i++) {
-        if ((room->getObjects()[i])->getObjectType() ==ObjectType::CHARACTER) {
-        cout << i << ". Talk to " << (room->getObjects()[i])->getName() << endl;
+    for (;actionNumber<objects.size();actionNumber++) {
+        if (objects[actionNumber]->getObjectType()==ObjectType::CHARACTER) {
+        cout << actionNumber << ". Talk to " << objects[actionNumber]->getName() << endl;
         }
-        else cout << i << ". Pick up " << (room->getObjects()[i])->getName() << endl;
+        else cout << actionNumber << ". Pick up " << objects[actionNumber]->getName() << endl;
     }
-    cout << i << ". Move" << endl;
+    cout << actionNumber++ << ". Move" << endl;
+    cout << actionNumber++ << ". Show Status" << endl;
+    cout << actionNumber++ << ". Open Backpack" << endl;
     cout << "-------------------" << endl;
     cout << "Choose action: ";
 
-    int action = player.inputNumPrompt(0,actions.size()+1);
-    if (action>=actions.size()) chooseRoom();
-    else handleEvent(actions[action]);
+    int action = player.inputNumPrompt(0,actionNumber);
+    if (action==objectsSize) chooseRoom();
+    else if (action==objectsSize+1) player.triggerEvent(NULL);
+    else if (action==objectsSize+2) player.listInventory();
+    else handleEvent(objects[action]);
 }
 
 bool Dungeon::checkGameLogic() {
