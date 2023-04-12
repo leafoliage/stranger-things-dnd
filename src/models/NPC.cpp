@@ -13,7 +13,7 @@ bool NPC::triggerEvent(Object* obj) {
     if (!p) return false;
 
     for (auto it = script.begin(); it != script.end(); ++it) {
-        cout << *it << endl;
+        log(*it);
     }
 
     if (commodity.size()<=0) return false;

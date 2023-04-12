@@ -19,6 +19,6 @@ bool Prop::triggerEvent(Object* obj) {
     if (player == nullptr) return false;
     player->take(this);
     bool popped = player->getCurrentRoom()->popObject(this);
-    if (popped) cout << "You picked up " << this->getName() << endl;
+    if (popped) logf("You picked up %s", getName().c_str());
     return true;
 }

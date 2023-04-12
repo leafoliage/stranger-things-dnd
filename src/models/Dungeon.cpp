@@ -127,7 +127,7 @@ void Dungeon::runRoom() {
         cout << "Enemy detected! Fight(0) or run(1)? ";
         int run = inputNumPrompt(0,2);
         if (run) {
-            cout << "Moving to previous place" << endl;
+            log("Moving to previous place");
             handleMoveTo(player.getPreviousRoom());
             return;
         }
@@ -143,6 +143,7 @@ void Dungeon::chooseRoom() {
     vector<Room*> destination;
 
     int i=0, index=0;
+    cout << endl;
     cout << "------Direction------" << endl;
     for (i=0;i<6;i++) {
         if (room->getRoom(i)==NULL) continue;
@@ -196,7 +197,7 @@ void Dungeon::runDungeon() {
     while (checkGameLogic()) {
         runRoom();
     }
-    cout << "Gameover!" << endl;
+    log("Gameover!");
 }
 
 int Dungeon::inputNumPrompt(int lowbound, int upbound) {

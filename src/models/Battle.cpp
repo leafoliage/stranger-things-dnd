@@ -2,11 +2,11 @@
 #include "Player.h"
 
 Battle::Battle(): end(false) {
-    cout << "A battle begins..." << endl;
+    log("A battle begins...");
 }
 
 Battle::Battle(Room* room): end(false), room(room) {
-    cout << "A battle begins..." << endl;
+    log("A battle begins...");
 }
 
 void Battle::add(GameCharacter* fighter) {
@@ -54,7 +54,7 @@ void Battle::run() {
         if (attacker->getCharacterType() == CharacterType::PLAYER) {
             bool roundEnd = false;
             Player *player = dynamic_cast<Player*>(attacker);
-            cout << "Your turn!" << endl;
+            log("Your turn!", 1000);
 
             while (!roundEnd) {
                 int action = chooseAction(player);
@@ -83,7 +83,7 @@ void Battle::run() {
         attacker->effectElapse();
 
         if (end) {
-            cout << "The battle is over" << endl;
+            log("The battle is over", 1000);
             break;
         }
     }
@@ -126,8 +126,8 @@ void Battle::removeFighter(GameCharacter* fighter) {
             else goodCount++;
         }
     }
-    if (found) {
-        cout << fighter->getName() << " died!" << endl;
+    if (found) {\
+        logf("%s died!", fighter->getName().c_str());
         fighters.erase(target);
         room->remove(fighter);
     }
@@ -135,8 +135,8 @@ void Battle::removeFighter(GameCharacter* fighter) {
 }
 
 void Battle::terminate(bool lose) {
-    if (lose) cout << "You died!" << endl;
-    else cout << "Guys! Retreat!" << endl;
+    if (lose) log("You died!");
+    else log("Guys! Retreat!");
     end = true;
     return;
 }

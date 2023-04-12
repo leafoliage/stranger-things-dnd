@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include "Logger.h"
 
 using namespace std;
 

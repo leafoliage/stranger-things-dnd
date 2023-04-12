@@ -9,6 +9,7 @@
 #include "Armor.h"
 #include "Effect.h"
 #include "Skill.h"
+#include "Logger.h"
 using namespace std;
 
 class GameCharacter: public Object

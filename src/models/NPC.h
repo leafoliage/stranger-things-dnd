@@ -7,6 +7,7 @@
 #include "GameCharacter.h"
 #include "Player.h"
 #include "Item.h"
+#include "Logger.h"
 
 using namespace std;
 

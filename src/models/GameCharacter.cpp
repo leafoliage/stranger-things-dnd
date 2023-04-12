@@ -25,7 +25,7 @@ bool GameCharacter::checkIsDead() {
 int GameCharacter::takeDamage(int damage, GameCharacter* attacker) {
     if (this->hasEffect(DODGE)) return currHp;
     if (attacker->hasEffect(DOUBLE_DAMAGE)) damage *= 2;
-    cout << this->getName() << " lost " << damage << " hp!" << endl;
+    logf("%s lost %d hp", getName().c_str(), damage);
     currHp -= damage;
     if (currHp < 0) {
         currHp = 0;
@@ -38,10 +38,10 @@ bool GameCharacter::wantUseSkill() {
 }
 
 bool GameCharacter::attack(GameCharacter* rival, Item* equipment) {
-    cout << getName() << " attacked " << rival->getName() << "!" << endl;
+    logf("%s attacked %s!", getName().c_str(), rival->getName().c_str());
     int hit = hitCheck(equipment);
     if (hit <= rival->armorClass() && hit < 20) {
-        cout << getName() << " missed!" << endl;
+        logf("%s missed", getName().c_str());
         return false;
     }
     if (!equipment) {

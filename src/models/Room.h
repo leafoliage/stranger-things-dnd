@@ -6,6 +6,7 @@
 #include <vector>
 #include "Object.h"
 #include "Battle.h"
+#include "Logger.h"
 
 using namespace std;
 

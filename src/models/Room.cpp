@@ -71,7 +71,7 @@ void Room::readPlots() {
     if (visited || plots.empty()) return;
     visited = true;
     for (auto it=plots.begin();it!=plots.end();++it) {
-        cout << *it << endl;
+        log(*it);
     }
 }
 

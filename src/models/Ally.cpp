@@ -16,7 +16,7 @@ bool Ally::triggerEvent(Object* obj) {
     if (!p) return false;
 
     for (auto it = script.begin()+1; it != script.end(); ++it) {
-        cout << *it << endl;
+        log(*it);
     }
     cout << "Wanna team up with me? ($10) (Y/n) ";
     bool teamUp = p->inputBoolPrompt();
@@ -24,9 +24,9 @@ bool Ally::triggerEvent(Object* obj) {
         if (p->getAlly() != NULL) p->getCurrentRoom()->add(p->getAlly());
         p->setAlly(this);
         p->getCurrentRoom()->remove(this);
-        cout << script[0] << endl;
+        log(script[0]);
     } else {
-        cout << "Alright. Bye" << endl;
+        log("Alright. Bye");
     }
     return true;
 }

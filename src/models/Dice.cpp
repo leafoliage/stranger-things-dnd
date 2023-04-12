@@ -8,6 +8,6 @@ int rollDice(int face, bool output) {
         while ((c = getchar()) != '\n') {}
     }
     int res = rand() % face + 1;
-    if (output) cout << "You rolled " << res << "! (D" << face << ")" << endl;
+    if (output) logf("You rolled %d! (D%d)", res, face);    
     return res;
 }
