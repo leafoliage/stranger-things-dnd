@@ -21,8 +21,7 @@ void Player::changeRoom(Room* newRoom) {
 
 bool Player::triggerEvent(Object* obj) {
     cout << endl;
-    cout << "Player status:" << endl;
-    cout << "----------------" << endl;
+    cout << "------Player Status------" << endl;
     cout << "Current HP: " << getCurrHp() << endl;
     cout << "Strength: " << getStrength() << endl;
     cout << "Dexterity: " << getDexterity() << endl;
@@ -32,6 +31,7 @@ bool Player::triggerEvent(Object* obj) {
     cout << "Armor Class: " << armorClass() << endl;
     cout << "Skill: " << getSkillName() << endl;
     cout << "Skill Description: " << getSkillDescription() << endl;
+    cout << "-------------------------" << endl;
     cout << endl;
     return true;
 }
