@@ -17,11 +17,9 @@ bool NPC::triggerEvent(Object* obj) {
     }
 
     if (commodity.size()<=0) return false;
-    int i = 0, choice;
-    for (auto it = commodity.begin(); it != commodity.end(); ++it) {
-        cout << i++ << ": " << (*it)->getName() << " - $" << (*it)->getPrice() << endl;
-    } 
-    cout << i << ": leave" << endl;
+    int choice;
+
+    listCommodity();
 
     bool deal = false;
     while (!deal) {
@@ -43,9 +41,14 @@ void NPC::add(Item* item) {
 }
 
 void NPC::listCommodity() {
-    for (Item *i : commodity) {
-        cout << i->getName() << endl;
-    }
+    int i = 0;
+    cout << endl;
+    cout << "------Commodities------" << endl;
+    for (auto it = commodity.begin(); it != commodity.end(); ++it) {
+        cout << i++ << ". " << (*it)->getName() << " - $" << (*it)->getPrice() << endl;
+    } 
+    cout << i << ": leave" << endl;
+    cout << "-----------------------" << endl;
 }
 
 void NPC::setScript(vector<string> script) {
