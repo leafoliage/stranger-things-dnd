@@ -30,6 +30,8 @@ bool Player::triggerEvent(Object* obj) {
     cout << "Wisdom: " << getWisdom() << endl;
     cout << "Money: " << money << endl;
     cout << "Armor Class: " << armorClass() << endl;
+    cout << "Skill: " << getSkillName() << endl;
+    cout << "Skill Description: " << getSkillDescription() << endl;
     cout << endl;
     return true;
 }

@@ -26,3 +26,13 @@ void Skill::coolDown() {
 void Skill::upgrade() {
     power++;
 }
+
+string Skill::name() {
+    if (effectType<0) return "";
+    return effectName[effectType];
+}
+
+string Skill::description() {
+    if (effectType<0) return "";
+    return effectDescription[effectType];
+}

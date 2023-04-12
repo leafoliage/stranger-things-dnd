@@ -96,7 +96,7 @@ int Battle::chooseAction(Player* player) {
     for (;i<2;i++) {
         cout << i << ". " << battleActions[i] << endl;
     }
-    if (player->skillAvailable()) cout << i++ << ". Use skill" << endl;
+    if (player->skillAvailable()) cout << i++ << ". Use skill: " << player->getSkillName() << endl;
     cout << "-------------------" << endl;
     cout << "Choose your action: ";
     return player->inputNumPrompt(0,i);

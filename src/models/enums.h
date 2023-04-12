@@ -43,6 +43,16 @@ const int jobSkills[5][3] = {
     {DOUBLE_DAMAGE,1,0}, {ATTRACT_FIRE,1,2}, {DODGE,1,0}, {CURED,2,3}, {BETTER_DICE,1,0}
 };
 
+const string effectName[7] = {"Double Damage", "Attract Fire", "Dodge", "Cure", "Lucky Dice", "Puppetized", "Clock"};
+
+const string effectDescription[7] = {
+    "Your target can pose double damage on their enemy",
+    "Your target will be attacked by all of their enemy in one round. If used on your self, your armor class will increase",
+    "Your target avoids all attacks in one round",
+    "Your target's HP will increase",
+    "Your target gets a second chance to roll the dice, and chooses the higher score",
+};
+
 enum Direction { NORTH, SOUTH, EAST, WEST, IN, OUT};
 
 const string Direct[6] = {"North", "South", "East", "West", "In", "Out"};

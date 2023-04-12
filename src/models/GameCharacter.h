@@ -52,6 +52,8 @@ public:
     bool skillAvailable();
     void skillCoolDown();
     void upgradeSkill();
+    string getSkillName();
+    string getSkillDescription();
 
     /* Set & Get function*/
     void setMaxHp(int);

@@ -22,6 +22,8 @@ class Skill {
         bool available();
         void coolDown();
         void upgrade();
+        string name();
+        string description();
 };
 
 #endif // SKILL_H_INCLUDED

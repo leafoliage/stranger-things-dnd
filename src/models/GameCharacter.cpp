@@ -119,6 +119,14 @@ void GameCharacter::upgradeSkill() {
     skill.upgrade();
 }
 
+string GameCharacter::getSkillName() {
+    return skill.name();
+}
+
+string GameCharacter::getSkillDescription() {
+    return skill.description();
+}
+
 void GameCharacter::setMaxHp(int maxHp) {
     this->maxHp = maxHp;
 }
