@@ -116,9 +116,9 @@ const map<int,RoomRecord> roomMap = {
 const map<int,vector<string>> plotMap = {
     {20,{"You knocked on the door of the Wheeler's", "Nancy: Oh hey! Mike isn't here. Come on in."}},
     {30,{"Hint: Go north to the school"}},
-    {32,{"You woke up, feeling awkwardly cold", "Somethings not right...", "But what is it?", "Looking at the clock, you noticed that you're already late for school", "Anyways, you have to go to school first"}},
+    {32,{"You woke up in your bedroom, feeling awkwardly cold", "Somethings not right...", "But what is it?", "Looking at the clock, you noticed that you're already late for school", "Anyways, you have to go to school first"}},
     {221,{"You: Hello Mr. Powell. Is Chief Hopper here?", "Powell: Hello!", "Unfortunately, he isn\'t here.", "We were looking for Eleven for the whole day, he's probably still out there searching.", "Why don't you check out his cabin first?"}},
-    {331,{"You see Will and Mike walking by. Seems like they're talking about something.", "Will: You sure you didn't see her?", "Mike: Not at all, I've searched through every corner but there's no sign of her", "Will: Well, maybe she slept over.", "Mike: Impossible, El never comes to school late", "You: Hi! What's the matter?", "Mike: Eleven's didn't come to school today!", "\"No wonder,\" You think.", "(Several hours later)", "You waited for the whole day, but Eleven didn't show up."}},
+    {331,{"You see Will and Mike walking by. Seems like they're talking about something.", "Will: You sure you didn't see her?", "Mike: Not at all, I've searched through every corner but there's no sign of her", "Will: Well, maybe she slept over.", "Mike: Impossible, El never comes to school late", "You: Hi! What's the matter?", "Mike: Eleven's didn't come to school today!", "Will: Let's wait for her, alight. Easy", "Mike can't but sit at his desk unwillingly", "", "***", "", "Will, Mike and You waited for the whole day, but Eleven didn't show up.", "After school, Mike has decided to go find her"}},
     {332,{"Dustin and Steve are in the classroom.", "Hint: Steve is a ally of yours, who can help find Eleven with you.", "You would meet several other potential allies on the exploring of this world.", "Talk to Steve to invite him."}},
     {421,{"Max and Lucas are playing DigDug."}},
     {720,{"Jim Hopper is pacing back and forth in front of his cabin, but no signs of Eleven", "You: Mr. Hopper! Did you find El?", "Hopper: (A long sigh) No. I don't know where she is. Where the hell could she be...", "You: Could she be at the lab? The National Hawkins Lab?", "Hopper: I've just gone there. I tried to break in, but then I was expelled.", "You're right, something's not right with that place.", "You: Thank you, Mr. Hopper!", "Jim Hopper hop on his jeep and drove away."}},
@@ -154,16 +154,6 @@ const vector<RoomRelation> roomRelations{
     {600,-1,-1,610,-1,-1,-1,1600},
     {1600,-1,-1,1610,-1,-1,-1,600},
     {1370,1470,-1,-1,1360,-1,-1,370},
-    // {10,110,-1,20,-1,-1,-1,-1},
-    // {20,120,-1,30,10,-1,-1,-1},
-    // {30,130,-1,40,20,-1,-1,-1},
-    // {70,-1,-1,-1,-1,-1,-1,-1},
-    // {100,-1,-1,110,-1,-1,-1,-1},
-    // {110,-1,10,120,100,-1,-1,-1},
-    // {120,220,20,130,110,-1,-1,-1},
-    // {130,-1,30,140,120,-1,-1,-1},
-    // {140,-1,-1,150,130,-1,-1,-1},
-    // {150,-1,-1,-1,140,-1,-1,-1}
 };
 
 struct ItemRecord {
@@ -256,7 +246,7 @@ const map<int,vector<string>> scriptMap = {
     {1, {"Eddie: So uh, this place is like Hawkins with monsters and nasty shit?", "You: I'm looking for a girl called Eleven. Did you see her?", "Eddie: No. Want me to help you?"}},
     {2, {"Mom: Hurry up, you gotta go to school"}},
     {3, {"Joyce: This is not yours to fix alone. You act like you're all alone out there in the world, but you're not!"}},
-    {4, {"Will: I've tried to calm him down, but it doesn't work.", "Mike's thinking about her all day long.", "Can you help us?"}},
+    {4, {"Will: I've tried to calm him down, but it didn't work.", "Mike's thinking about her all day long.", "Can you help us?"}},
     {5, {"Dustin: You know that Eleven is gone, right?", "My mews was gone too. Just last night."}},
     {6, {"Max: Ha! I beated my record!"}},
     {7, {"Robin: Hey dingus! Your children are here."}},
