@@ -22,7 +22,6 @@ private:
     Player player;
     // vector<Room> rooms;
     map<int,Room> rooms;
-    bool isUpsideDown;
 public:
     Dungeon();
     /* Create a new player, and give him/her basic status */
