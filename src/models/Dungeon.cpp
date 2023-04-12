@@ -105,6 +105,7 @@ void Dungeon::handleEvent(Object* obj) {
 }
 
 void Dungeon::startGame() {
+    srand(time(NULL));
     createPlayer();
     createMap();
     player.setCurrentRoom(&rooms[STARTING_ROOM]);

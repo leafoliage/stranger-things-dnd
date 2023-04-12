@@ -2,7 +2,7 @@
 #define DICE_H_INCLUDED
 
 #include <iostream>
-#include "cstdlib"
+#include <cstdlib>
 
 using namespace std;
 

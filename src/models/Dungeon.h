@@ -6,6 +6,8 @@
 #include <vector>
 #include <exception>
 #include <map>
+#include <cstdlib>
+#include <ctime>
 #include "Player.h"
 #include "NPC.h"
 #include "Room.h"
