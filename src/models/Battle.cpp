@@ -130,6 +130,7 @@ void Battle::removeFighter(GameCharacter* fighter) {
         logf("%s died!", fighter->getName().c_str());
         fighters.erase(target);
         room->remove(fighter);
+        if (fighter->getType() == tALLY) room->add(fighter->getWeapon());
     }
     if (!goodCount || !badCount) end = true;
 }
