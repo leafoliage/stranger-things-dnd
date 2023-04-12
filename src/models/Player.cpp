@@ -59,6 +59,7 @@ int Player::armorClass() {
     if (this->hasEffect(ATTRACT_FIRE)) {
         result += (result*this->getEffect(ATTRACT_FIRE))/4;
     }
+    if (job == GUITARIST) result += 1;
     return result;
 }
 
