@@ -61,6 +61,7 @@ void Dungeon::handleMoveTo(Room* nextRoom) {
     player.setPreviousRoom(player.getCurrentRoom());
     player.setCurrentRoom(nextRoom);
     if (nextRoom->getName().length() > 0) {
+        cout << endl;
         cout << "Current location: " << nextRoom->getName() << endl;
     }
 }
@@ -144,6 +145,9 @@ void Dungeon::chooseAction() {
         }
         else cout << actionNumber << ". Pick up " << objects[actionNumber]->getName() << endl;
     }
+
+    Room* innerRoom = player.getCurrentRoom()->getInnerRoom();
+    if (innerRoom != NULL) cout << actionNumber++ << ". Go in" << endl;
     cout << actionNumber++ << ". Move" << endl;
     cout << actionNumber++ << ". Show Status" << endl;
     cout << actionNumber++ << ". Open Backpack" << endl;
@@ -151,9 +155,11 @@ void Dungeon::chooseAction() {
     cout << "Choose action: ";
 
     int action = player.inputNumPrompt(0,actionNumber);
-    if (action==objectsSize) chooseRoom();
-    else if (action==objectsSize+1) player.triggerEvent(NULL);
-    else if (action==objectsSize+2) player.listInventory();
+    int otherChoiceStart = objectsSize + (innerRoom == NULL ? 0 : 1);
+    if (innerRoom != NULL && action==objectsSize) handleMoveTo(innerRoom);
+    else if (action==otherChoiceStart) chooseRoom();
+    else if (action==otherChoiceStart+1) player.triggerEvent(NULL);
+    else if (action==otherChoiceStart+2) player.listInventory();
     else handleEvent(objects[action]);
 }
 
