@@ -24,16 +24,32 @@ void Dungeon::createMap() {
             recorder.loadItemFromSetting(&rooms.at(it->first), *i);
         }
     }
+
+    for (auto it=rooms.begin();it!=rooms.end();++it) {
+        int id = it->first;
+        Room& room = it->second;
+        if (id%10!=0) continue;
+        if (rooms.find(id+100)!=rooms.end()) room.setNorthRoom(&rooms[id+100]);
+        if (rooms.find(id-100)!=rooms.end()) room.setSouthRoom(&rooms[id-100]);
+        if (rooms.find(id+10)!=rooms.end()) room.setEastRoom(&rooms[id+10]);
+        if (rooms.find(id-10)!=rooms.end()) room.setWestRoom(&rooms[id-10]);
+        if (rooms.find(id+1)!=rooms.end()) {
+            room.setInnerRoom(&rooms[id+1]); 
+            rooms[id+1].setOuterRoom(&room);
+        }
+    }
+
     for (auto it=roomRelations.begin();it!=roomRelations.end();++it) {
         int id = (*it).id;
-        rooms.at(id).setNeighborRoom(
-            (*it).northId > 0 ? &rooms[(*it).northId] : NULL,
-            (*it).southId > 0 ? &rooms[(*it).southId] : NULL,
-            (*it).eastId > 0 ? &rooms[(*it).eastId] : NULL,
-            (*it).westId > 0 ? &rooms[(*it).westId] : NULL,
-            (*it).inId > 0 ? &rooms[(*it).inId] : NULL,
-            (*it).outId > 0 ? &rooms[(*it).outId] : NULL,
-            (*it).secretId > 0 ? &rooms[(*it).secretId] : NULL
+        Room &room = rooms.at(id);
+        room.setNeighborRoom(
+            (*it).northId > 0 ? &rooms[(*it).northId] : room.getNorthRoom(),
+            (*it).southId > 0 ? &rooms[(*it).southId] : room.getSouthRoom(),
+            (*it).eastId > 0 ? &rooms[(*it).eastId] : room.getEastRoom(),
+            (*it).westId > 0 ? &rooms[(*it).westId] : room.getWestRoom(),
+            (*it).inId > 0 ? &rooms[(*it).inId] : room.getInnerRoom(),
+            (*it).outId > 0 ? &rooms[(*it).outId] : room.getOuterRoom(),
+            (*it).secretId > 0 ? &rooms[(*it).secretId] : room.getSecretRoom()
         );
     }
 
@@ -115,7 +131,7 @@ void Dungeon::runRoom() {
             return;
         }
         runBattle();
-        if (player.getAlly()->checkIsDead()) player.setAlly(NULL);
+        if (player.getAlly() && player.getAlly()->checkIsDead()) player.setAlly(NULL);
     }
     if (!checkGameLogic()) return;
     chooseAction();
@@ -153,11 +169,11 @@ void Dungeon::chooseAction() {
     cout << "------Actions------" << endl;
     for (;i<room->getObjects().size();i++) {
         if ((room->getObjects()[i])->getObjectType() ==ObjectType::CHARACTER) {
-        cout << i << ". Interact with " << (room->getObjects()[i])->getName() << endl;
+        cout << i << ". Talk to " << (room->getObjects()[i])->getName() << endl;
         }
         else cout << i << ". Pick up " << (room->getObjects()[i])->getName() << endl;
     }
-    cout << i << ". Move on to other place" << endl;
+    cout << i << ". Move" << endl;
     cout << "-------------------" << endl;
     cout << "Choose action: ";
 
