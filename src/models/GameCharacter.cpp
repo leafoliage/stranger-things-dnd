@@ -45,7 +45,8 @@ bool GameCharacter::attack(GameCharacter* rival, Item* equipment) {
         return false;
     }
     if (!equipment) {
-        rival->takeDamage(rollDice(this->strength+this->dexterity, false),this);
+        int dice = this->strength+this->dexterity;
+        rival->takeDamage(rollDice(dice > 4 ? dice : 4, false),this);
     }
     else equipment->workOn(rival, this);
     return rival->checkIsDead();

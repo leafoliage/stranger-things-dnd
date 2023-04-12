@@ -43,7 +43,7 @@ bool Player::attack(GameCharacter* rival, Item* equipment) {
 
     cout << "Now roll the damage. ";
     if (!equipment) {
-        int dam = rollDice(8, true);
+        int dam = rollDice(4, true);
         rival->takeDamage(dam,this);
     }
     else equipment->workOn(rival, this);
@@ -94,17 +94,17 @@ void Player::discard(int index) {
 }
 
 bool Player::pay(int money) {
-    if (this->money < money) return false;
+    if (this->money < money) {
+        cout << "Not enough money to buy that fancy toy!" << endl;
+        return false;
+    }
     this->money -= money;
-    cout << "You have " << this->money << " galleons left" << endl;
+    cout << "You have " << this->money << " bucks left" << endl;
     return true;
 }
 
 bool Player::acquire(Item* item) {
-    if (!pay(item->getPrice())) {
-        cout << "Not enough galleons to buy that fancy toy!" << endl;
-        return false;
-    }
+    if (!pay(item->getPrice())) return false;
     switch (item->getItemType()) {
         case ItemType::ARMOR: 
             this->wear(dynamic_cast<Armor*>(item));
