@@ -53,6 +53,7 @@
                 "models/Enemy.cpp",
                 "models/GameCharacter.cpp",
                 "models/Item.cpp",
+                "models/Logger.cpp",
                 "models/NPC.cpp",
                 "models/Object.cpp",
                 "models/Player.cpp",
