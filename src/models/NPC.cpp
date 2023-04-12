@@ -40,7 +40,6 @@ Item* NPC::getWeapon() {
 
 void NPC::add(Item* item) {
     commodity.push_back(item);
-    cout << "commodity added " << item->getName() << endl;
 }
 
 void NPC::listCommodity() {

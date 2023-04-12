@@ -79,6 +79,9 @@ void Dungeon::createMap() {
 void Dungeon::handleMoveTo(Room* nextRoom) {
     player.setPreviousRoom(player.getCurrentRoom());
     player.setCurrentRoom(nextRoom);
+    if (nextRoom->getName().length() > 0) {
+        cout << "Current location: " << nextRoom->getName() << endl;
+    }
 }
 
 void Dungeon::handleEvent(Object* obj) {
@@ -102,9 +105,6 @@ void Dungeon::runBattle() {
 }
 
 void Dungeon::runRoom() {
-    if (player.getCurrentRoom()->getName().length() > 0) {
-        cout << "Current location: " << player.getCurrentRoom()->getName() << endl;
-    }
     player.getCurrentRoom()->readPlots();
     while (checkGameLogic() && player.getCurrentRoom()->hasEnemy()) {
         cout << "Enemy detected! Fight(0) or run(1)? ";
