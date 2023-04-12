@@ -156,6 +156,7 @@ void Dungeon::chooseRoom() {
     }
     if (room->hasSecretRoom()) {
         cout << index++ << ". Wait, what's that?" << endl;
+        destination.push_back(room->getSecretRoom());
     }
     cout << "-----------------------" << endl;
     cout << "Where to go? ";
@@ -198,6 +199,7 @@ void Dungeon::runDungeon() {
         runRoom();
     }
     log("Gameover!");
+    whiteText();
 }
 
 int Dungeon::inputNumPrompt(int lowbound, int upbound) {

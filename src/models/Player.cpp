@@ -159,6 +159,8 @@ void Player::listInventory() {
 
 void Player::setCurrentRoom(Room* room) {
     currentRoom = room;
+    if (room->getIndex() >= 1000) redText();
+    else whiteText();
 }
 
 void Player::setPreviousRoom(Room* room) {
