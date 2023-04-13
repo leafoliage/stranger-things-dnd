@@ -120,7 +120,7 @@ const map<int,vector<string>> plotMap = {
     {221,{"You: Hello Mr. Powell. Is Chief Hopper here?", "Powell: Hello!", "Unfortunately, he isn\'t here.", "We were looking for Eleven for the whole day, he's probably still out there searching.", "Why don't you check out his cabin first?"}},
     {331,{"You see Will and Mike walking by. Seems like they're talking about something.", "Will: You sure you didn't see her?", "Mike: Not at all, I've searched through every corner but there's no sign of her", "Will: Well, maybe she slept over.", "Mike: Impossible, El never comes to school late", "You: Hi! What's the matter?", "Mike: Eleven's didn't come to school today!", "Will: Let's wait for her, alight. Easy", "Mike can't but sit at his desk unwillingly", "", "***", "", "Will, Mike and You waited for the whole day, but Eleven didn't show up.", "After school, Mike has decided to go find her"}},
     {332,{"Dustin and Steve are in the classroom.", "Hint: Steve is a ally of yours, who can help find Eleven with you.", "You would meet several other potential allies on the exploring of this world.", "Talk to Steve to invite him."}},
-    {421,{"Max and Lucas are playing DigDug."}},
+    {421,{"Max is playing DigDug, and Lucas is by her side", "You: Hey Lucas, Max. Is El here? She's gone all day.", "Lucas: I know, I know. But, I didn't see her in this arcade. Max, did you s-", "Max: Shhh, not now", "Lucas: alright", "He shrouded"}},
     {720,{"Jim Hopper is pacing back and forth in front of his cabin, but no signs of Eleven", "You: Mr. Hopper! Did you find El?", "Hopper: (A long sigh) No. I don't know where she is. Where the hell could she be...", "You: Could she be at the lab? The National Hawkins Lab?", "Hopper: I've just gone there. I tried to break in, but then I was expelled.", "You're right, something's not right with that place.", "You: Thank you, Mr. Hopper!", "Jim Hopper hop on his jeep and drove away."}},
     {760,{"You saw a man wearing lab coat running out of the lab.", "You: Hey sir, what happened?", "The scientist: People are disappearing! Everyone is gone!", "You: Why are they gone?", "The scientist: It must be Vecna! He has come after us! Kid, don't get close!", "The scientist ran away.", "You: Wait!", "He did not come back. Seems that the only way now is to find the Upside Down and Vecna."}},
     {1600,{"\"This is it. The Upside Down.\" You think.", "It's dark and creepy here, and you feel pretty cold."}},
@@ -243,13 +243,13 @@ const map<int,CharaterRecord> characterMap = {
 };
 
 const map<int,vector<string>> scriptMap = {
-    {0, {"Lucas: If there is something out there, I'm gonna shoot it in the eyes.", "You: I'm looking for Eleven. Did you see her?", "Lucas: I didn't. But I think I should help you find her."}},
+    {0, {"Lucas: Bye Max! \nMax: WHAT?!", "You: I'm gonna go find her", "Lucas: I think I should help. Want me to come with you?"}},
     {1, {"Eddie: So uh, this place is like Hawkins with monsters and nasty shit?", "You: I'm looking for a girl called Eleven. Did you see her?", "Eddie: No. Want me to help you?"}},
     {2, {"Mom: Hurry up, you gotta go to school"}},
     {3, {"Joyce: This is not yours to fix alone. You act like you're all alone out there in the world, but you're not!"}},
     {4, {"Will: I've tried to calm him down, but it didn't work.", "Mike's thinking about her all day long.", "Can you help us?"}},
     {5, {"Dustin: You know that Eleven is gone, right?", "My mews was gone too. Just last night."}},
-    {6, {"Max: Ha! I beated my record!"}},
+    {6, {"Max: Ha! I broke my record!", "You: Max, we're talking about El.", "Max: Sorry.", "I didn't see her either. Maybe she's hurt?", "You: Oh? Sounds possible.", "Max: You can checkout the hospital on the west", "Lucas: I can help too!", "Max: No. You stay.", "Lucas: Oh come on"}},
     {7, {"Robin: Hey dingus! Your children are here."}},
     {8, {"Mike: We gotta find where El is.", "You should help too!"}},
     {10, {"Mews: Meow", "You: Meow meow?", "Mews: Meow"}},
@@ -262,9 +262,9 @@ const map<int,vector<string>> scriptMap = {
     {21, {"Nancy: I wanna finish what we started.", "Nancy: What?! Eleven is gone?", "You: (Nodded)", "Nancy: I'm helping!"}},
     {22, {"Chrissy: Yeah!", "You: Hey, I'm looking for my friend Eleven. Did you see her?", "Chrissy: I'm sorry... I didn't see anyone. But let me help you."}},
     {23, {"Steve: I'm stealthy. Like a ninja.", "Steve: Wanna go find that girl?", "I'll help"}},
-    {33, {"Doctor: Hello"}},
-    {34, {"Nurse: Hello"}},
-    {36, {"May I help you?"}},
+    {33, {"Doctor: Do you have an appointment?"}},
+    {34, {"You: Hi, is a girl called Eleven here?", "Nurse: Let me check.", "Hmm... There's no record of her registraion. She isn't likely here.", "You: Oh... I thought she would be injured... or something.", "Nurse: Well, that doesn't seem to be the case. It's pretty nice of you though."}},
+    {36, {"Powell: May I help you?"}},
     {37, {"Barbara remained silence", "You see vine crawling out of her mouth", "R.I.P, Barbara"}},
 };
 
