@@ -111,6 +111,10 @@ int Battle::chooseAction(Player* player) {
 }
 
 GameCharacter* Battle::chooseTarget(Player* player) {
+    if (player->hasEffect(PUPPETIZED)) {
+        log("You got puppetized. You can only attack yourself!");
+        return player;
+    }
     showFighters(false);
     cout << "Choose your target (index): ";
     int objectIndex = player->inputNumPrompt(0,fighterNumber);
