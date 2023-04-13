@@ -158,6 +158,7 @@ GameCharacter* Battle::findOpponent(GameCharacter* fighter, int initiative) {
     GameCharacter *target = NULL;
     int minScore=INT32_MAX;
     for (auto it=fighters.begin();it!=fighters.end();++it) {
+        if (fighter == it->second) continue;
         if (fighter->hostile(it->second)) {
             if (it->second->hasEffect(ATTRACT_FIRE)) return it->second;
             int score = it->first-initiative;

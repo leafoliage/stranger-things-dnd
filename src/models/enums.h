@@ -40,7 +40,7 @@ const int jobAilities[5][4] = {
 enum EffectType { DOUBLE_DAMAGE, ATTRACT_FIRE, DODGE, CURED, BETTER_DICE, PUPPETIZED, CLOCKED };
 
 const int jobSkills[5][3] = {
-    {DOUBLE_DAMAGE,1,0}, {ATTRACT_FIRE,1,2}, {DODGE,1,0}, {CURED,2,3}, {BETTER_DICE,1,0}
+    {DOUBLE_DAMAGE,1,0}, {ATTRACT_FIRE,2,2}, {DODGE,2,0}, {CURED,2,3}, {BETTER_DICE,1,0}
 };
 
 const string effectName[7] = {"Double Damage", "Attract Fire", "Dodge", "Cure", "Lucky Dice", "Puppetized", "Clock"};
