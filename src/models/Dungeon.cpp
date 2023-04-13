@@ -71,7 +71,6 @@ void Dungeon::handleEvent(Object* obj) {
 }
 
 void Dungeon::startGame() {
-    srand(time(NULL));
     createPlayer();
     logf("\nHi, %s", player.getName().c_str());
     log("Welcome...");

@@ -11,8 +11,9 @@
 using namespace std;
 
 int main(){
+    srand(time(NULL));
     Dungeon dungeon = Dungeon();
-    // dungeon.runDungeon();
-    dungeon.testDungeon(1760,1,23);
+    dungeon.runDungeon();
+    // dungeon.testDungeon(1760,0,23);
     return 0;
 }
