@@ -12,7 +12,7 @@ const int MAX_INVENTORY = 6;
 
 const int ARMOR_CLASS_BASE = 8;
 
-const int INIT_MONEY = 10;
+const int INIT_MONEY = 25;
 
 const int TYPE_BOUND = 100;
 const int SUBTYPE_BOUND = 10;
