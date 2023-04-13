@@ -106,10 +106,14 @@ void GameCharacter::effectElapse() {
 }
 
 void GameCharacter::useSkillOn(GameCharacter* character) {
-    if (characterType == PLAYER) {
-        if (this == character) logf("You posed %s effect on yourself!", skill.name().c_str());
-        else logf("You posed %s effect on %s!", skill.name().c_str(), character->getName().c_str());
-    }
+    string user, target;
+
+    if (characterType == PLAYER) user = "You";
+    else user = getName();
+    if (characterType == PLAYER && this == character) target = "youself";
+    else target = character->getName();
+
+    logf("%s posed %s effect on %s!", user.c_str(), skill.name().c_str(), target.c_str());
     skill.workOn(character);
 }
 
