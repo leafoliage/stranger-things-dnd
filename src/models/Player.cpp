@@ -152,7 +152,7 @@ void Player::listInventory() {
     cout << "------Inventory------" << endl;
     if (inventory.empty()) cout << "Empty!" << endl;
     for (auto it=inventory.begin();it!=inventory.end();++it) {
-        cout << i << "- " << (*it)->getName() << endl;
+        cout << i++ << "- " << (*it)->getName() << endl;
     }
     cout << "---------------------" << endl;
     cout << endl;
