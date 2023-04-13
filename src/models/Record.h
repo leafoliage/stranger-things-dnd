@@ -31,12 +31,6 @@ private:
     void loadPlayer(Player*, ifstream&);
     void loadRooms(vector<Room>&, ifstream&);
 
-    vector<string> loadPlotFromSetting(int id);
-    vector<string> loadScriptFromSetting(int id);
-    void loadCommodityFromSetting(NPC *npc, int npcId);
-    void loadWeaponForAlly(Ally* ally, int weapId);
-    void loadWeaponForEnemy(Enemy* enemy, int weapId);
-
 public:
     Record();
     void saveToFile(Player*, vector<Room>&);
@@ -44,6 +38,11 @@ public:
     void loadRoomFromSetting(map<int,Room> &rooms, int id);
     void loadItemFromSetting(Room *room, int id);
     void loadCharacterFromSetting(Room *room, int id);
+    vector<string> loadPlotFromSetting(int id);
+    vector<string> loadScriptFromSetting(int id);
+    void loadCommodityFromSetting(NPC *npc, int npcId);
+    void loadWeaponForAlly(Ally* ally, int weapId);
+    void loadWeaponForEnemy(Enemy* enemy, int weapId);
 
 };
 

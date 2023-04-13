@@ -203,6 +203,7 @@ void Dungeon::testDungeon(int roomNumber, int allyNumber, int weaponNumber) {
     if (ait==characterMap.end()) return;
     const CharaterRecord &cr = ait->second;
     player.setAlly(new Ally(cr.name,{},cr.hp,cr.abilities,Skill(cr.skill)));
+    recorder.loadWeaponForAlly(player.getAlly(),cr.weaponId);
 
     auto wit = itemMap.find(weaponNumber);
     if (wit==itemMap.end()) return;
