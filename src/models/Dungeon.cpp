@@ -184,6 +184,39 @@ void Dungeon::runDungeon() {
     whiteText();
 }
 
+void Dungeon::testDungeon(int roomNumber, int allyNumber, int weaponNumber) {
+    Record recorder;
+    createPlayer();
+
+    auto rit = roomMap.find(roomNumber);
+    if (rit==roomMap.end()) return;
+    const RoomRecord &rr = rit->second;
+    recorder.loadRoomFromSetting(rooms, rit->first);
+    for (auto i = rr.characterIds.begin();i!=rr.characterIds.end();++i) {
+        recorder.loadCharacterFromSetting(&rooms.at(rit->first), *i);
+    }
+    for (auto i = rr.itemIds.begin();i!=rr.itemIds.end();++i) {
+        recorder.loadItemFromSetting(&rooms.at(rit->first), *i);
+    }
+
+    auto ait = characterMap.find(allyNumber);
+    if (ait==characterMap.end()) return;
+    const CharaterRecord &cr = ait->second;
+    player.setAlly(new Ally(cr.name,{},cr.hp,cr.abilities,Skill(cr.skill)));
+
+    auto wit = itemMap.find(weaponNumber);
+    if (wit==itemMap.end()) return;
+    const ItemRecord &ir = wit->second;
+    player.take(new Weapon(ir.name,ir.type-ITEM*TYPE_BOUND,ir.quality,ir.price));
+    
+    player.setCurrentRoom(&rooms[roomNumber]);
+    player.setPreviousRoom(&rooms[roomNumber]);
+    while (checkGameLogic()) {
+        runRoom();
+    }
+    whiteText();
+}
+
 int Dungeon::inputNumPrompt(int lowbound, int upbound) {
     int input;
     cin >> input;

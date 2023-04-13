@@ -12,6 +12,7 @@ using namespace std;
 
 int main(){
     Dungeon dungeon = Dungeon();
-    dungeon.runDungeon();
+    // dungeon.runDungeon();
+    dungeon.testDungeon(1760,1,23);
     return 0;
 }

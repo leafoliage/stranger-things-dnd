@@ -61,6 +61,8 @@ public:
     /* Deal with the whole game process */
     void runDungeon();
 
+    void testDungeon(int roomNumber, int allyNumber, int weaponNumber);
+
     int inputNumPrompt(int lowbound, int upbound);
 };
 
