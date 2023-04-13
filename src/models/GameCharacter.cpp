@@ -91,6 +91,7 @@ int GameCharacter::armorClass() {
 }
 
 void GameCharacter::gotEffect(int effect, int time, int power) {
+    if (effect == CURED) currHp += power;
     return this->effect.add(effect,time,power);
 }
 
