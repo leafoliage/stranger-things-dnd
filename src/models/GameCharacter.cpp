@@ -40,7 +40,7 @@ bool GameCharacter::wantUseSkill() {
 bool GameCharacter::attack(GameCharacter* rival, Item* equipment) {
     logf("%s attacked %s!", getName().c_str(), rival->getName().c_str());
     int hit = hitCheck(equipment);
-    if (hit <= rival->armorClass() && hit < 20) {
+    if ((hit <= rival->armorClass() && hit < 20) || hit<=0) {
         logf("%s missed", getName().c_str());
         return false;
     }
@@ -59,6 +59,8 @@ int GameCharacter::abilityCheck(int ability) {
         res = res2 > res ? res2: res;
     }
     if (ability < 0 || ability >= 4) return res;
+    if (res >= 20) return 20;
+    if (res <= 0) return 0;
     int abilities[4] = { strength, dexterity, constitution, wisdom };
     return res + abilities[ability];
 }
