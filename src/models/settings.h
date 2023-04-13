@@ -90,7 +90,7 @@ const map<int,RoomRecord> roomMap = {
     {1320,{"Melvald's General", false, {}, {30,32}}},
     {1330,{"Hawkins High", false, {}, {}}},
     {1340,{"", false, {}, {29,29}}},
-    {1350,{"", false, {}, {30,31,31}}},
+    {1350,{"", false, {}, {}}},
     {1360,{"", false, {}, {}}},
     {1370,{"The Creel's", false, {}, {31}}},
     {1410,{"Hawkins Middle", false, {}, {30,30,31,31}}},
@@ -100,7 +100,7 @@ const map<int,RoomRecord> roomMap = {
     {1450,{"Forest Hills Trailer Park", false, {}, {28}}},
     {1460,{"", false, {}, {29,30}}},
     {1470,{"", false, {}, {}}},
-    {1520,{"", false, {}, {29,31}}},
+    {1520,{"", false, {}, {37}}},
     {1550,{"", false, {}, {}}},
     {1560,{"", false, {}, {}}},
     {1600,{"The Upside Down", false, {}, {}}},
@@ -239,6 +239,7 @@ const map<int,CharaterRecord> characterMap = {
     {34, {"Nurse", NEUTRAL, MAX_HEALTH, {-1,-1,-1,-1},{-1,-1,-1},-1}},
     {35, {"Lab Scientist", NEUTRAL, MAX_HEALTH, {-1,-1,-1,-1},{-1,-1,-1},-1}},
     {36, {"Calvin Powell", NEUTRAL, MAX_HEALTH, {-1,-1,-1,-1},{-1,-1,-1},-1,{5,13}}},
+    {37, {"Barbara Holland", NEUTRAL, MAX_HEALTH, {-1,-1,-1,-1},{-1,-1,-1},-1}},
 };
 
 const map<int,vector<string>> scriptMap = {
@@ -264,6 +265,7 @@ const map<int,vector<string>> scriptMap = {
     {33, {"Doctor: Hello"}},
     {34, {"Nurse: Hello"}},
     {36, {"May I help you?"}},
+    {37, {"Barbara remained silence", "You see vine crawling out of her mouth", "R.I.P, Barbara"}},
 };
 
 #endif // SETTINGS_H_INCLUDED
