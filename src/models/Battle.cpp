@@ -75,10 +75,13 @@ void Battle::run() {
                 }
             }
         } else {
-            target = this->findOpponent(attacker, it->first);
+            target = this->findOpponent(attacker, it->first, false);
             if (target == NULL) break;
             if (attacker->wantUseSkill()) {
-                if (attacker->getCharacterType() == ENEMY) attacker->useSkillOn(target);
+                if (attacker->getCharacterType() == ENEMY)  {
+                    if (attacker->hasSkill(PUPPETIZED)) attacker->useSkillOn(findOpponent(attacker, it->first, true));
+                    else attacker->useSkillOn(target);
+                }
                 else if (attacker->hasSkill(ATTRACT_FIRE)) attacker->useSkillOn(attacker);
                 else attacker->useSkillOn(findPlayer());
             }
@@ -150,10 +153,11 @@ void Battle::terminate(bool lose) {
     return;
 }
 
-GameCharacter* Battle::findOpponent(GameCharacter* fighter, int initiative) {
+GameCharacter* Battle::findOpponent(GameCharacter* fighter, int initiative, bool ignorePlayer) {
     GameCharacter *target = NULL;
     int minScore=INT32_MAX;
     for (auto it=fighters.begin();it!=fighters.end();++it) {
+        if (ignorePlayer && it->second->getCharacterType() == PLAYER) continue;
         if (fighter->hostile(it->second)) {
             if (it->second->hasEffect(ATTRACT_FIRE)) return it->second;
             int score = it->first-initiative;

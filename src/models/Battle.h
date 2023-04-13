@@ -17,7 +17,7 @@ class Battle {
         vector< pair<int,GameCharacter*> > fighters;
 
         int chooseAction(Player* player);
-        GameCharacter* findOpponent(GameCharacter* fighter, int initiative);
+        GameCharacter* findOpponent(GameCharacter* fighter, int initiative, bool ignorePlayer);
         GameCharacter* findPlayer();
         GameCharacter* chooseTarget(Player* player);
     public:
