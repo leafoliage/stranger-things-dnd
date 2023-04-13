@@ -46,9 +46,13 @@ void Battle::showFighters(bool initiative) {
 void Battle::run() {
     for (auto it=fighters.begin();it!=fighters.end();++it) {
         GameCharacter *attacker = it->second, *target;
-        if (attacker->hasEffect(CLOCKED) && attacker->getEffect(CLOCKED)==1) {
-            fighters.erase(it);
-            attacker = it->second;
+        if (attacker->hasEffect(CLOCKED)) {
+            int remain = attacker->getEffect(CLOCKED);
+            logf("%s's clock: %d round left", attacker->getName().c_str(), remain-1);
+            if (remain==1) {
+                fighters.erase(it);
+                attacker = it->second;
+            }
         }
 
         if (attacker->hasEffect(CURED)) attacker->setCurrHp(attacker->getCurrHp() + attacker->getEffect(CURED));
@@ -57,6 +61,8 @@ void Battle::run() {
             bool roundEnd = false;
             Player *player = dynamic_cast<Player*>(attacker);
             log("Your turn!", 1000);
+
+            showFighters(false);
 
             while (!roundEnd) {
                 int action = chooseAction(player);
@@ -115,7 +121,7 @@ GameCharacter* Battle::chooseTarget(Player* player) {
         log("You got puppetized. You can only attack yourself!");
         return player;
     }
-    showFighters(false);
+    // showFighters(false);
     cout << "Choose your target (index): ";
     int objectIndex = player->inputNumPrompt(0,fighterNumber);
     return fighters[objectIndex].second;
