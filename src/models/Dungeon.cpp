@@ -88,6 +88,8 @@ void Dungeon::runBattle() {
     if (player.getAlly()!=NULL) battle.add(player.getAlly());
     battle.initiate();
     while (!battle.ended()) battle.run();
+    player.skillCoolDown();
+    if (player.getAlly()) player.getAlly()->skillCoolDown();
 }
 
 void Dungeon::runRoom() {
