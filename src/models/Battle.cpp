@@ -77,7 +77,11 @@ void Battle::run() {
         } else {
             target = this->findOpponent(attacker, it->first);
             if (target == NULL) break;
-            if (attacker->wantUseSkill()) attacker->useSkillOn(target);
+            if (attacker->wantUseSkill()) {
+                if (attacker->getCharacterType() == ENEMY) attacker->useSkillOn(target);
+                else if (attacker->hasSkill(ATTRACT_FIRE)) attacker->useSkillOn(attacker);
+                else attacker->useSkillOn(findPlayer());
+            }
             bool dead = attacker->attack(target, attacker->getWeapon());
             if (dead) removeFighter(target);
         }
@@ -161,6 +165,15 @@ GameCharacter* Battle::findOpponent(GameCharacter* fighter, int initiative) {
         }
     }
     return target;
+}
+
+GameCharacter* Battle::findPlayer() {
+    for (pair<int,GameCharacter*> it : fighters) {
+        if (it.second->getCharacterType() == PLAYER) {
+            return it.second;
+        }
+    }
+    return NULL;
 }
 
 bool Battle::ended() const {

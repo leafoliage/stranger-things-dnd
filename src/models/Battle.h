@@ -18,6 +18,7 @@ class Battle {
 
         int chooseAction(Player* player);
         GameCharacter* findOpponent(GameCharacter* fighter, int initiative);
+        GameCharacter* findPlayer();
         GameCharacter* chooseTarget(Player* player);
     public:
         Battle();

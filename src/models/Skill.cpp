@@ -36,3 +36,7 @@ string Skill::description() {
     if (effectType<0) return "";
     return effectDescription[effectType];
 }
+
+bool Skill::equal(int effectType) {
+    return this->effectType == effectType;
+}

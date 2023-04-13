@@ -24,6 +24,7 @@ class Skill {
         void upgrade();
         string name();
         string description();
+        bool equal(int);
 };
 
 #endif // SKILL_H_INCLUDED

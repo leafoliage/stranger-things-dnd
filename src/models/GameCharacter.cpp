@@ -107,7 +107,7 @@ void GameCharacter::effectElapse() {
 
 void GameCharacter::useSkillOn(GameCharacter* character) {
     string user, target;
-
+    if (character == NULL) return;
     if (characterType == PLAYER) user = "You";
     else user = getName();
     if (characterType == PLAYER && this == character) target = "youself";
@@ -135,6 +135,10 @@ string GameCharacter::getSkillName() {
 
 string GameCharacter::getSkillDescription() {
     return skill.description();
+}
+
+bool GameCharacter::hasSkill(int effectType) {
+    return skill.equal(effectType);
 }
 
 void GameCharacter::setMaxHp(int maxHp) {

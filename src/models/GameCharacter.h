@@ -55,6 +55,7 @@ public:
     void upgradeSkill();
     string getSkillName();
     string getSkillDescription();
+    bool hasSkill(int);
 
     /* Set & Get function*/
     void setMaxHp(int);
