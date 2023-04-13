@@ -26,6 +26,8 @@ bool cmp(pair<int,GameCharacter*> a, pair<int,GameCharacter*> b) {
 void Battle::initiate() {
     sort(fighters.begin(), fighters.end(), cmp);
     showFighters(true);
+    pause(1000);
+    log("Battle starts!");
 }
 
 void Battle::showFighters(bool initiative) {
@@ -86,6 +88,8 @@ void Battle::run() {
             log("The battle is over", 1000);
             break;
         }
+
+        log("");
     }
 }
 
