@@ -4,7 +4,7 @@ Player::Player(): armor(NULL), ally(NULL) {}
 
 Player::Player(string name, int job):
     GameCharacter(name,PLAYER,
-    MAX_HEALTH+jobAilities[job][CONSTITUTION], MAX_HEALTH+jobAilities[job][CONSTITUTION],
+    MAX_HEALTH+20+jobAilities[job][CONSTITUTION], MAX_HEALTH+20+jobAilities[job][CONSTITUTION],
     jobAilities[job][STRENGTH],jobAilities[job][DEXTERITY],
     jobAilities[job][CONSTITUTION],jobAilities[job][WISDOM],
     Skill(jobSkills[job][0],jobSkills[job][1],jobSkills[job][2])), 

@@ -6,7 +6,7 @@ using namespace std;
 
 const int STARTING_ROOM = 32;
 
-const int MAX_HEALTH = 40;
+const int MAX_HEALTH = 60;
 
 const int MAX_INVENTORY = 6;
 
