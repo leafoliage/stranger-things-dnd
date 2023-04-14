@@ -101,7 +101,7 @@ void Player::discard(int index) {
 
 bool Player::pay(int money) {
     if (this->money < money) {
-        cout << "Not enough money to buy that fancy toy!" << endl;
+        cout << "Oops. You're too poor to afford it." << endl;
         return false;
     }
     this->money -= money;
