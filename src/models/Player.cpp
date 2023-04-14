@@ -66,11 +66,11 @@ int Player::armorClass() {
 Item* Player::getWeapon() {
     int itemIndex;
     if (inventory.size() == 0) return NULL;
-    this->listInventory();
+    this->listInventory(true);
     cout << "Choose your weapon: ";
-    itemIndex = this->inputNumPrompt(-1,this->getInventory().size());
-    if (itemIndex<0) return NULL;
-    return this->getInventory()[itemIndex];
+    itemIndex = this->inputNumPrompt(0,this->getInventory().size()+1);
+    if (itemIndex<=0) return NULL;
+    return this->getInventory()[itemIndex-1];
 }
 
 bool Player::wantUseSkill() {
@@ -146,13 +146,14 @@ bool Player::inputBoolPrompt() {
     return false;
 }
 
-void Player::listInventory() {
+void Player::listInventory(bool battle) {
     int i=0;
     cout << endl;
     cout << "------Inventory------" << endl;
-    if (inventory.empty()) cout << "Empty!" << endl;
+    if (battle) cout << i++ << ". Punch" << endl;
+    else if (inventory.empty()) cout << "Empty!" << endl;
     for (auto it=inventory.begin();it!=inventory.end();++it) {
-        cout << i++ << "- " << (*it)->getName() << endl;
+        cout << i++ << ". " << (*it)->getName() << endl;
     }
     cout << "---------------------" << endl;
     cout << endl;
