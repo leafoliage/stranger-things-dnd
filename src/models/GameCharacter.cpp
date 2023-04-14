@@ -34,7 +34,7 @@ int GameCharacter::takeDamage(int damage, GameCharacter* attacker) {
 }
 
 bool GameCharacter::wantUseSkill() {
-    return currHp <= maxHp/2;
+    return skill.available() && currHp <= maxHp/2;
 }
 
 bool GameCharacter::attack(GameCharacter* rival, Item* equipment) {
