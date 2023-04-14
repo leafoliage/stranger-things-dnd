@@ -18,7 +18,7 @@ bool Ally::triggerEvent(Object* obj) {
     for (auto it = script.begin()+1; it != script.end(); ++it) {
         log(*it);
     }
-    cout << "Wanna team up with me? ($10) (Y/n) ";
+    cout << "Recruit " << getName() << " as your Ally? ($10) (Y/n) ";
     bool teamUp = p->inputBoolPrompt();
     if (teamUp && p->pay(10)) {
         if (p->getAlly() != NULL) p->getCurrentRoom()->add(p->getAlly());
