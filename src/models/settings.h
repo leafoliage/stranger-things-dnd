@@ -93,7 +93,8 @@ const map<int,RoomRecord> roomMap = {
     {1340,{"", false, {}, {29,29}}},
     {1350,{"", false, {}, {}}},
     {1360,{"", false, {}, {}}},
-    {1370,{"The Creel's", false, {}, {31}}},
+    {1370,{"The Creel's", false, {}, {}}},
+    {1371,{"", false, {}, {31}}},
     {1410,{"Hawkins Middle", false, {}, {30,30,31,31}}},
     {1420,{"Palace Arcade", false, {}, {}}},
     {1430,{"Radio Shack", false, {}, {31,31}}},
@@ -122,9 +123,11 @@ const map<int,vector<string>> plotMap = {
     {261,{"You: What's that disgusting smell?", "Why are there mice all over the ground?"}},
     {331,{"You see Will and Mike walking by. Seems like they're talking about something.", "Will: You sure you didn't see her?", "Mike: Not at all, I've searched through every corner but there's no sign of her", "Will: Well, maybe she slept over.", "Mike: Impossible, El never comes to school late", "You: Hi! What's the matter?", "Mike: Eleven's didn't come to school today!", "You: What? Why?", "Mike: Don't know!", "Will: Let's wait for her, Mike. Easy", "Mike can't but sit at his desk unwillingly", "", "***", "", "Will, Mike and You waited for the whole day, but Eleven didn't show up.", "After school, Mike has decided to go find her", "Hint: Go in to the classroom"}},
     {332,{"Dustin and Steve are in the classroom.", "Hint: Steve is a ally of yours, who can help find Eleven with you.", "You would meet several other potential allies on the exploring.", "Talk to Steve to invite him."}},
+    {371,{"There's a clock.", "Tik.", "Tok.", "Tik.", "Tok."}},
     {421,{"Max is playing DigDug, and Lucas is by her side", "You: Hey Lucas, Max. Is El here? She's gone all day.", "Lucas: I know, I know. But, I didn't see her in this arcade. Max, did you s-", "Max: Shhh, not now", "Lucas: alright", "He shrouded"}},
     {720,{"Jim Hopper is pacing back and forth in front of his cabin, but no signs of Eleven", "You: Mr. Hopper! Did you find El?", "Hopper: (A long sigh) No. I don't know where she is. Where the hell could she be...", "You: Could she be at the lab? The National Hawkins Lab?", "Hopper: I've just gone there. I tried to break in, but then I was expelled.", "You're right, something's not right with that place.", "You: Thank you, Mr. Hopper!", "Jim Hopper hop on his jeep and drove away."}},
     {760,{"You saw a man wearing lab coat running out of the lab.", "You: Hey sir, what happened?", "The scientist: People are disappearing! Everyone is gone!", "You: Why are they gone?", "The scientist: It must be Vecna! He has come after us! Kid, don't get close!", "The scientist ran away.", "You: Wait!", "He did not come back. Seems that the only way now is to find the Upside Down and Vecna."}},
+    {1371,{"There's a clock.", "Tik.", "Tok.", "Bong-", "Bong-", "Bong-", "Bong-", "..."}},
     {1600,{"\"This is it. The Upside Down.\" You think.", "It's dark and creepy here, and you feel pretty cold."}},
     {1760,{"There are several figures stading in front of the vine-covered Hawkins Lab. You recognized the one in the center with grim, ferocious face.", "It's Vecna", "Aside of him is Dr. Martin Brenner.", "You: What have you done to him?", "Vecna: He's become my puppet.", "And so will you.", "You: Hmph!"}}
 };
