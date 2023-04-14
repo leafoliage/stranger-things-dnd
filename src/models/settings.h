@@ -115,7 +115,7 @@ const map<int,RoomRecord> roomMap = {
 
 const map<int,vector<string>> plotMap = {
     {20,{"You knocked on the door of the Wheeler's", "Nancy: Oh hey! Mike isn't here. Come on in."}},
-    {30,{"Hint: Go north to the school"}},
+    {30,{"Hint: Go north to the school (Hawkins High)"}},
     {32,{"You woke up in your bedroom, feeling awkwardly cold", "Somethings not right...", "But what is it?", "Looking at the clock, you noticed that you're already late for school", "Anyways, you have to go to school first"}},
     {221,{"You: Hello Mr. Powell. Is Chief Hopper here?", "Powell: Hello!", "Unfortunately, he isn\'t here.", "We were looking for Eleven for the whole day, he's probably still out there searching.", "Why don't you check out his cabin first?"}},
     {331,{"You see Will and Mike walking by. Seems like they're talking about something.", "Will: You sure you didn't see her?", "Mike: Not at all, I've searched through every corner but there's no sign of her", "Will: Well, maybe she slept over.", "Mike: Impossible, El never comes to school late", "You: Hi! What's the matter?", "Mike: Eleven's didn't come to school today!", "Will: Let's wait for her, alight. Easy", "Mike can't but sit at his desk unwillingly", "", "***", "", "Will, Mike and You waited for the whole day, but Eleven didn't show up.", "After school, Mike has decided to go find her"}},
