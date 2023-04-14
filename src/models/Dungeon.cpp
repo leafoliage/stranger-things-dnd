@@ -174,9 +174,9 @@ void Dungeon::runDungeon() {
     log("A fangame for the Stranger Things Series");
     log("\nAlso a DSOOP midterm project");
     pause(1000);
-    system("clear");
+    clearScreen();
     startGame();
-    system("clear");
+    clearScreen();
     pause(1000);
     while (checkGameLogic()) {
         runRoom();

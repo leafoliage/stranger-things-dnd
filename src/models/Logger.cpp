@@ -25,3 +25,11 @@ void redText() {
 void whiteText() {
     printf("%c[%dm", 0x1B, 37);
 }
+
+void clearScreen() {
+    #if _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}

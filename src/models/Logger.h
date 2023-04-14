@@ -22,6 +22,8 @@ void redText();
 
 void whiteText();
 
+void clearScreen();
+
 template<typename ... Args>
 std::string fstring(const std::string& format, Args ... args) {
     int size_s = snprintf( nullptr, 0, format.c_str(), args ... ) + 1; 
