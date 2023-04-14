@@ -49,7 +49,7 @@ public:
     bool acquire(Item*);
     int inputNumPrompt(int lowbound, int upbound);
     bool inputBoolPrompt();
-    void listInventory();
+    void listInventory(bool battle);
 
     /* Set & Get function*/
     void setCurrentRoom(Room*);

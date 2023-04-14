@@ -239,7 +239,7 @@ const map<int,CharaterRecord> characterMap = {
     {28, {"The Spider Monster", ENEMY, 40, {5,5,0,0}, {-1,-1,-1},18}},
     {29, {"Demogorgon", ENEMY, 20, {3,1,0,0}, {-1,-1,-1},19}},
     {30, {"Demodog", ENEMY, 20, {3,1,0,0}, {-1,-1,-1},19}},
-    {31, {"Demobat", ENEMY, 15, {0,6,0,0}, {-1,-1,-1},-1}},
+    {31, {"Demobat", ENEMY, 15, {1,6,0,0}, {-1,-1,-1},-1}},
     {32, {"Vine", ENEMY, 10, {2,-2,0,0}, {-1,-1,-1},-1}},
     {33, {"Doctor", NEUTRAL, MAX_HEALTH, {-1,-1,-1,-1},{-1,-1,-1},-1}},
     {34, {"Nurse", NEUTRAL, MAX_HEALTH, {-1,-1,-1,-1},{-1,-1,-1},-1}},

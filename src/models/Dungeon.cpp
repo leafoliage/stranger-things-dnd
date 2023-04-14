@@ -160,7 +160,7 @@ void Dungeon::chooseAction() {
     if (innerRoom != NULL && action==objectsSize) handleMoveTo(innerRoom);
     else if (action==otherChoiceStart) chooseRoom();
     else if (action==otherChoiceStart+1) player.triggerEvent(NULL);
-    else if (action==otherChoiceStart+2) player.listInventory();
+    else if (action==otherChoiceStart+2) player.listInventory(false);
     else handleEvent(objects[action]);
 }
 
