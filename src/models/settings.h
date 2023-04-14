@@ -44,6 +44,7 @@ const map<int,RoomRecord> roomMap = {
     {261,{"", false, {}, {28}}},
     {300,{"Hawkins Memorial Hospital", false, {}, {}}},
     {301,{"", false, {}, {33,34}}},
+    {310,{"", false, {}, {}}},
     {320,{"Melvald's General", false, {}, {}}},
     {321,{"", false, {}, {19}}},
     {330,{"Hawkins High", false, {}, {}}},
