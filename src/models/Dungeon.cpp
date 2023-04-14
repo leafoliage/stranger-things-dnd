@@ -5,13 +5,13 @@ Dungeon::Dungeon() {}
 void Dungeon::createPlayer() {
     string name;
     cout << endl;
-    cout << "------Profile------" << endl;
+    cout << "------Citizen Profile------" << endl;
     cout << "Your name: ";
     getline(cin, name);
     cout << "0. Basketball Player  1. Guitarist  2. Cheerleader  3. Reporter  4. Scoops Ahoy" << endl;
     cout << "Your job: ";
     int job = inputNumPrompt(0,5);
-    cout << "-------------------" << endl;
+    cout << "---------------------------" << endl;
     player = Player(name, job);
 }
 
