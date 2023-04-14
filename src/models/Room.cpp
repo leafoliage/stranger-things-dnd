@@ -70,6 +70,7 @@ Room* Room::getRoom(int direction) {
 void Room::readPlots() {
     if (visited || plots.empty()) return;
     visited = true;
+    log("");
     for (auto it=plots.begin();it!=plots.end();++it) {
         log(*it);
     }

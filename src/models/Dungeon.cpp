@@ -61,8 +61,7 @@ void Dungeon::handleMoveTo(Room* nextRoom) {
     player.setPreviousRoom(player.getCurrentRoom());
     player.setCurrentRoom(nextRoom);
     if (nextRoom->getName().length() > 0) {
-        cout << endl;
-        cout << "Current location: " << nextRoom->getName() << endl;
+        logf("\nCurrent Location: %s", nextRoom->getName().c_str());
     }
 }
 
