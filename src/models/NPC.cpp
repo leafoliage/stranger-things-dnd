@@ -12,9 +12,7 @@ bool NPC::triggerEvent(Object* obj) {
     Player* p = dynamic_cast<Player*>(obj);
     if (!p) return false;
 
-    for (auto it = script.begin(); it != script.end(); ++it) {
-        log(*it);
-    }
+    readScript();
 
     if (commodity.size()<=0) return false;
     int choice;
@@ -49,6 +47,14 @@ void NPC::listCommodity() {
     } 
     cout << i << ": leave" << endl;
     cout << "-----------------------" << endl;
+}
+
+void NPC::readScript() {
+    if (script.empty()) return;
+    log("");
+    for (string sentence : script) {
+        log(sentence);
+    }
 }
 
 void NPC::setScript(vector<string> script) {

@@ -29,6 +29,8 @@ public:
     Item* getWeapon();
     void add(Item*);
 
+    void readScript();
+
     /* Set & Get function*/
     void setScript(vector<string>);
     void setCommodity(vector<Item*>);
